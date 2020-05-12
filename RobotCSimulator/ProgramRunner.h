@@ -10,7 +10,6 @@ class ProgramRunner
 {
 public:
 	ProgramRunner() = default;
-
 	void RunProgram();
 };
 

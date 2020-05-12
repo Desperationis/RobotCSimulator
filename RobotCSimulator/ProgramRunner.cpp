@@ -1,6 +1,8 @@
 #include "ProgramRunner.h"
 #include "Program.h"
+#include "RobotC.h"
 
 void ProgramRunner::RunProgram() {
-	_main();
+	// Start main function as a thread.
+	startTask(_main);
 }

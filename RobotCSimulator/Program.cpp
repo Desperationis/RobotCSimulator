@@ -1,5 +1,16 @@
 #include "Program.h"
+#include "RobotC.h"
 
-void _main() {
-	std::cout << "_main function is called." << std::endl;
+task PrintTest() {
+	while (true) {
+		std::cout << "test function is called." << std::endl;
+
+		delay(300);
+	}
+	
+}
+
+task _main() {
+	startTask(PrintTest);
+
 }

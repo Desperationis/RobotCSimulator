@@ -1,0 +1,10 @@
+#include "RobotC.h"
+std::vector<std::unique_ptr<std::thread>> threads;
+
+void startTask(std::function<task()> func) {
+	threads.push_back(std::make_unique<std::thread>(func));
+}
+
+void delay(int ms) {
+	std::this_thread::sleep_for(std::chrono::milliseconds(ms));
+}
