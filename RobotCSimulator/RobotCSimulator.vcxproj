@@ -152,10 +152,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="TestCode.cpp" />
+    <ClCompile Include="Program.cpp" />
+    <ClCompile Include="Program.h" />
+    <ClCompile Include="ProgramRunner.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="UnitTestAttacher.h" />
+    <ClInclude Include="ProgramRunner.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

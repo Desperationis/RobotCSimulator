@@ -1,9 +1,13 @@
-// RobotCSimulator.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
-
 #include <iostream>
+#include <memory>
+#include "ProgramRunner.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	//std::unique_ptr<ProgramRunner> programRunner = std::make_unique<ProgramRunner>();
+
+	//programRunner->RunProgram();
+
+	system("pause");
+	return 0;
 }
