@@ -8,3 +8,7 @@ void startTask(std::function<task()> func) {
 void delay(int ms) {
 	std::this_thread::sleep_for(std::chrono::milliseconds(ms));
 }
+
+void config(std::string name, MotorPort& motor, MotorPort port) {
+	motor = port;
+}

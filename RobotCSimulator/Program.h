@@ -1,4 +1,5 @@
 #pragma once
+#include "RobotC.h"
 #include <iostream>
 
 /*
@@ -7,5 +8,5 @@
  * Used for function definitions for Program.cpp.
  */
 
-
-void _main();
+void SetUp();
+task _main();
