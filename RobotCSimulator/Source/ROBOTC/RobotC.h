@@ -19,6 +19,8 @@ enum VexRt { Btn5U, Btn5D, Btn6U, Btn6D, Btn7L, Btn7R, Btn7U, Btn7D, Btn8L, Btn8
 
 extern std::vector<std::unique_ptr<std::thread>> threads;
 extern std::array<int, 10> motor;
+extern std::array<bool, 10> motorReversed;
+extern std::array<std::string, 10> motorName;
 extern std::array<int, 16> vexRT;
 
 // Currently, these functionalities are not supported:
@@ -26,4 +28,4 @@ extern std::array<int, 16> vexRT;
 //			stopAllTasks()
 void startTask(std::function<task()> func);
 void delay(int ms);
-void config(std::string name, MotorPort& motor, MotorPort port);
+void config(std::string name, MotorPort& motorPort, MotorPort port, bool reversed = false);

@@ -27,20 +27,22 @@ public:
 		ImGui::Text(form.c_str());
 	}
 
+	static int isReversed(MotorPort motor) {
+		if (motorReversed[motor]) {
+			return -1;
+		}
+		return 1;
+	}
+
 	static void Update() {
 
 		ImGui::Begin("Robot Info");
 
-		toText("Motor Port 1: ", motor[port1]);
-		toText("Motor Port 2: ", motor[port2]);
-		toText("Motor Port 3: ", motor[port3]);
-		toText("Motor Port 4: ", motor[port4]);
-		toText("Motor Port 5: ", motor[port5]);
-		toText("Motor Port 6: ", motor[port6]);
-		toText("Motor Port 7: ", motor[port7]);
-		toText("Motor Port 8: ", motor[port8]);
-		toText("Motor Port 9: ", motor[port9]);
-		toText("Motor Port 10: ", motor[port10]);
+		// Update Motor Ports.
+		for (int i = 0; i < 10; i++) {
+			toText(motorName[i] + ": ", motor[i] * isReversed((MotorPort)i));
+		}
+
 		toText("FPS: ", Debug::getFps());
 
 		ImGui::End();

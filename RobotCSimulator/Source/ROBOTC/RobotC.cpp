@@ -9,6 +9,8 @@ void delay(int ms) {
 	std::this_thread::sleep_for(std::chrono::milliseconds(ms));
 }
 
-void config(std::string name, MotorPort& motor, MotorPort port) {
-	motor = port;
+void config(std::string name, MotorPort& motorPort, MotorPort port, bool reverse) {
+	motorPort = port;
+	motorReversed[port] = reverse;
+	motorName[port] = name;
 }

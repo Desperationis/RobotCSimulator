@@ -1,6 +1,6 @@
 #pragma once
-#include <iostream>
 #include "RobotC.h"
+#include "CLibrary.h"
 
 /*
  * Program.h
@@ -9,5 +9,24 @@
  */
 
 
-void SetUp();
-task programMain();
+MotorPort leftMotor, rightMotor;
+
+void SetUp() {
+	config("leftMotor", leftMotor, port1, false);
+	config("rightMotor", rightMotor, port2, true);
+}
+
+
+task programMain()
+{
+	SetAverageDelay(20);
+	SetLeftMotor(port1);
+	SetRightMotor(port2);
+	SetControllerSpeed(1);
+	startTask(RightArcadeControl);
+
+	while (true) {
+		// Keep program alive.
+		delay(20);
+	}
+}

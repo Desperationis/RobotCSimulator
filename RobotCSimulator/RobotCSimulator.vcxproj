@@ -144,7 +144,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\ROBOTC\Program.cpp" />
     <ClCompile Include="Source\ROBOTC\ProgramRunner.cpp" />
     <ClCompile Include="Source\ROBOTC\RobotC.cpp" />
     <ClCompile Include="Source\Util\Debug\Debug.cpp" />
@@ -166,6 +165,7 @@
     <ClInclude Include="Source\ROBOTC\RobotC.h" />
     <ClInclude Include="Source\ROBOTC\RobotDisplayer.h" />
     <ClInclude Include="Source\ROBOTC\VEXController.h" />
+    <ClInclude Include="Source\ROBOTC\CLibrary.h" />
     <ClInclude Include="Source\Util\Debug\Debug.h" />
     <ClInclude Include="Source\Util\DeltaClock.h" />
     <ClInclude Include="Source\Util\Input\MouseInput.h" />
