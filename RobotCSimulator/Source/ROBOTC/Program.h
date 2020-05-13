@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "RobotC.h"
 
 /*
  * Program.h
@@ -7,5 +8,6 @@
  * Used for function definitions for Program.cpp.
  */
 
+
 void SetUp();
-void _main();
+task programMain();

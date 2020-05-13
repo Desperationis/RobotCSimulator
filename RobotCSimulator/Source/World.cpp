@@ -1,10 +1,21 @@
 #include "World.h"
 #include <cstdlib>
 #include <ctime>
+#include <iostream>
+#include <cstdlib>
+#include <csignal>
 #include <Input/MouseInput.h>
 #include <Debug/Debug.h>
 #include <DeltaClock.h>
 #include "..//ROBOTC///RobotDisplayer.h"
+
+void signal_handler(int signal)
+{
+	if (signal == SIGABRT) {
+		std::cerr << "SIGABRT received. Aborting program....\n";
+	}
+	std::_Exit(EXIT_FAILURE);
+}
 
 World::World(sf::VideoMode mode, const std::string windowTitle, const bool vsync, const unsigned int framerate) {
 	// create window
@@ -24,12 +35,16 @@ World::World(sf::VideoMode mode, const std::string windowTitle, const bool vsync
 	MouseInput::MouseInput(window);
 	Debug::Debug(window);
 
+	// Setup handler
+	auto previous_handler = std::signal(SIGABRT, signal_handler);
+
 }
 
 void World::render() {
 	window->clear(sf::Color(0, 0, 0, 255));
 
 	Debug::update();
+
 	RobotDisplayer::Update();
 
 	Debug::render();
@@ -41,6 +56,7 @@ void World::render() {
 const bool World::isRunning() const {
 	return window->isOpen();
 }
+
 
 void World::pollEvents() {
 	while (window->pollEvent(event)) {
@@ -56,6 +72,7 @@ void World::pollEvents() {
 			switch (event.key.code) {
 			case sf::Keyboard::Escape:
 				window->close();
+				std::abort();
 				break;
 
 			// Fullscreen

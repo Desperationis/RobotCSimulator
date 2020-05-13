@@ -4,23 +4,15 @@
 MotorPort motor1;
 
 void SetUp() {
-	config("motor1", motor1, port1);
-}
-
-task PrintTest() {
-	while (true) {
-		std::cout << motor[port1] << std::endl;
-
-		delay(300);
-	}
+	config("motor1", motor1, port7);
 }
 
 task test() {
-	motor[motor1] = 100;
+	motor[motor1] = 69;
+	vexRT[Ch3] = 127;
+	vexRT[Btn7U] = 1;
 }
 
-task _main() {
+task programMain() {
 	startTask(test);
-	startTask(PrintTest);
-
 }

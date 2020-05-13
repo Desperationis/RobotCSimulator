@@ -23,6 +23,5 @@ int main()
 		world.render();
 	}
 
-	system("pause");
 	return 0;
 }
