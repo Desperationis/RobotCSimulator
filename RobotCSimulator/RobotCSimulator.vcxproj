@@ -165,6 +165,7 @@
     <ClInclude Include="Source\ROBOTC\ProgramRunner.h" />
     <ClInclude Include="Source\ROBOTC\RobotC.h" />
     <ClInclude Include="Source\ROBOTC\RobotDisplayer.h" />
+    <ClInclude Include="Source\ROBOTC\VEXController.h" />
     <ClInclude Include="Source\Util\Debug\Debug.h" />
     <ClInclude Include="Source\Util\DeltaClock.h" />
     <ClInclude Include="Source\Util\Input\MouseInput.h" />

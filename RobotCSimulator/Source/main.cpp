@@ -2,6 +2,11 @@
 #include <memory>
 #include "ROBOTC/ProgramRunner.h"
 #include "World.h"
+#include "ROBOTC\RobotC.h"
+
+// Only define extern variables ONCE
+std::array<int, 10> motor;
+std::array<int, 16> vexRT;
 
 /*
  * main.cpp

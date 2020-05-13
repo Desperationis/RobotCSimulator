@@ -4,8 +4,6 @@
 #include <Debug/Debug.h>
 #include <imgui.h>
 #include <imgui-SFML.h>
-std::array<int, 10> motor;
-std::array<int, 16> vexRT;
 
 /*
  * RobotDisplayer.h

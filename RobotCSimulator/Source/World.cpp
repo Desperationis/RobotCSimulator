@@ -8,6 +8,7 @@
 #include <Debug/Debug.h>
 #include <DeltaClock.h>
 #include "..//ROBOTC///RobotDisplayer.h"
+#include "..//ROBOTC///VEXController.h"
 
 void signal_handler(int signal)
 {
@@ -45,6 +46,7 @@ void World::render() {
 
 	Debug::update();
 
+	VEXController::Update();
 	RobotDisplayer::Update();
 
 	Debug::render();
