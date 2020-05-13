@@ -1,0 +1,30 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<Entities>
+  <Entity name = "Wall">
+    <Position y ="400" x ="400"/>
+    <Movement/>
+    <Drawable>
+      <Rectangle Width ="50" Height ="50"/>
+      <Color r="155" g="155" b="155"/>
+    </Drawable>
+    <Collision />
+
+  </Entity>
+
+  <Entity name = "Player">
+    <Position x ="100" y ="0"/>
+    <Movement accelerationy ="4800"/>
+    <Drawable>
+      <Rectangle Width ="50" Height ="50"/>
+      <Color r="255" g="155" b="255"/>
+    </Drawable>
+    <Input/>
+    <Debug/>
+    <Loop/>
+    <Collision>
+      <WallCollision/>
+      <RenderCollision/>
+    </Collision>
+  </Entity>
+
+</Entities>

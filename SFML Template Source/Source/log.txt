@@ -1,0 +1,137 @@
+
+1/4/2020 13:38:12 - New Run initiated
+1/4/2020 13:38:12 - expected =
+
+1/4/2020 13:38:30 - New Run initiated
+1/4/2020 13:38:30 - "Posiion" is not defined in the deserialization of component.
+1/4/2020 13:38:30 - "Movment" is not defined in the deserialization of component.
+1/4/2020 13:38:30 - "Drwable" is not defined in the deserialization of component.
+
+1/4/2020 13:38:46 - New Run initiated
+
+1/4/2020 13:38:55 - New Run initiated
+
+1/4/2020 13:39:46 - New Run initiated
+
+1/4/2020 13:39:52 - New Run initiated
+
+1/4/2020 13:42:13 - New Run initiated
+
+1/4/2020 13:42:19 - New Run initiated
+1/4/2020 13:42:19 - "CollisisonComponent" does not exist as a registered component.
+
+1/4/2020 13:42:30 - New Run initiated
+
+1/4/2020 13:42:34 - New Run initiated
+1/4/2020 13:42:34 - "ColslisionSystem" does not exist as a registered system.
+
+1/4/2020 13:42:47 - New Run initiated
+
+1/4/2020 13:42:54 - New Run initiated
+
+1/4/2020 13:47:50 - New Run initiated
+1/4/2020 13:47:50 - System doesn't use "name" as an attribute.
+1/4/2020 13:47:50 - System doesn't use "name" as an attribute.
+1/4/2020 13:47:50 - System doesn't use "name" as an attribute.
+1/4/2020 13:47:50 - System doesn't use "name" as an attribute.
+1/4/2020 13:47:50 - System doesn't use "name" as an attribute.
+1/4/2020 13:47:50 - System doesn't use "name" as an attribute.
+1/4/2020 13:47:50 - System doesn't use "name" as an attribute.
+1/4/2020 13:47:50 - System doesn't use "name" as an attribute.
+1/4/2020 13:47:50 - System doesn't use "name" as an attribute.
+1/4/2020 13:47:50 - System doesn't use "name" as an attribute.
+1/4/2020 13:47:50 - System doesn't use "name" as an attribute.
+
+1/4/2020 13:48:17 - New Run initiated
+1/4/2020 13:48:17 - "name" does not exist as a registered system.
+
+1/4/2020 13:48:50 - New Run initiated
+1/4/2020 13:48:50 - "name" does not exist as a registered system.
+
+1/4/2020 13:51:12 - New Run initiated
+1/4/2020 13:51:12 - "System" does not exist as a registered system.
+
+1/4/2020 13:52:56 - New Run initiated
+
+1/4/2020 13:54:31 - New Run initiated
+1/4/2020 13:54:31 - System doesn't use "name" as an attribute.
+
+1/4/2020 13:54:58 - New Run initiated
+
+1/4/2020 13:55:6 - New Run initiated
+1/4/2020 13:55:6 - CollisionSystem doesn't use "name" as an attribute.
+
+1/4/2020 13:59:15 - New Run initiated
+1/4/2020 13:59:15 - unexpected end of data
+
+1/4/2020 13:59:29 - New Run initiated
+
+1/4/2020 14:3:29 - New Run initiated
+
+1/4/2020 14:3:55 - New Run initiated
+
+1/4/2020 14:4:57 - New Run initiated
+
+1/4/2020 18:18:58 - New Run initiated
+
+1/4/2020 18:19:9 - New Run initiated
+
+1/4/2020 18:19:18 - New Run initiated
+
+1/4/2020 18:19:27 - New Run initiated
+
+1/4/2020 18:19:39 - New Run initiated
+
+1/6/2020 12:36:36 - New Run initiated
+
+1/6/2020 12:37:35 - New Run initiated
+
+1/6/2020 12:47:6 - New Run initiated
+
+1/6/2020 12:47:54 - New Run initiated
+
+1/6/2020 12:48:13 - New Run initiated
+
+1/6/2020 12:48:40 - New Run initiated
+
+1/6/2020 12:49:32 - New Run initiated
+
+1/6/2020 12:49:54 - New Run initiated
+
+1/6/2020 12:50:21 - New Run initiated
+
+1/6/2020 13:1:23 - New Run initiated
+
+1/6/2020 13:2:37 - New Run initiated
+
+1/6/2020 13:34:49 - New Run initiated
+
+1/6/2020 13:35:51 - New Run initiated
+
+1/6/2020 13:37:16 - New Run initiated
+
+1/6/2020 14:1:21 - New Run initiated
+
+1/6/2020 14:17:41 - New Run initiated
+
+1/6/2020 14:22:52 - New Run initiated
+
+1/6/2020 14:26:3 - New Run initiated
+
+1/6/2020 14:28:33 - New Run initiated
+
+2/17/2020 17:21:32 - New Run initiated
+
+3/23/2020 15:33:9 - New Run initiated
+
+3/23/2020 15:47:28 - New Run initiated
+
+5/12/2020 17:42:52 - New Run initiated
+
+5/12/2020 17:51:40 - New Run initiated
+
+5/12/2020 17:55:47 - New Run initiated
+
+5/12/2020 17:56:0 - New Run initiated
+
+5/12/2020 17:56:12 - New Run initiated
