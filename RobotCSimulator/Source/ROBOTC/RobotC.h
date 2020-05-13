@@ -17,7 +17,7 @@ typedef void task;
 enum MotorPort { port1, port2, port3, port4, port5, port6, port7, port8, port9, port10 };
 
 extern std::vector<std::unique_ptr<std::thread>> threads;
-extern std::array<int, 10> motors;
+extern std::array<int, 10> motor;
 
 // Currently, these functionalities are not supported:
 //			stopTask()

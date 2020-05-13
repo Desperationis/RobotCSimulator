@@ -144,7 +144,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\ECS\Registerer.cpp" />
     <ClCompile Include="Source\ROBOTC\Program.cpp" />
     <ClCompile Include="Source\ROBOTC\ProgramRunner.cpp" />
     <ClCompile Include="Source\ROBOTC\RobotC.cpp" />
@@ -160,41 +159,19 @@
     <ClCompile Include="Source\Util\Debug\imgui_widgets.cpp" />
     <ClCompile Include="Source\Util\Input\MouseInput.cpp" />
     <ClCompile Include="Source\Util\Debug\Log.cpp" />
-    <ClCompile Include="Source\ECS\Factory.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\ECS\Registerer.h" />
-    <ClInclude Include="Source\ECS\Systems\CollisionRenderSystem.h" />
-    <ClInclude Include="Source\ECS\Systems\CollisionSystem.h" />
-    <ClInclude Include="Source\ECS\Systems\ColorSystem.h" />
-    <ClInclude Include="Source\ECS\Systems\DebugSystem.h" />
-    <ClInclude Include="Source\ECS\Systems\DimensionSystem.h" />
-    <ClInclude Include="Source\ECS\Systems\LoopSystem.h" />
-    <ClInclude Include="Source\ECS\Systems\WallCollisionSystem.h" />
-    <ClInclude Include="Source\EntityBlueprints.xml" />
     <ClInclude Include="Source\ROBOTC\Program.h" />
     <ClInclude Include="Source\ROBOTC\ProgramRunner.h" />
     <ClInclude Include="Source\ROBOTC\RobotC.h" />
+    <ClInclude Include="Source\ROBOTC\RobotDisplayer.h" />
     <ClInclude Include="Source\Util\Debug\Debug.h" />
     <ClInclude Include="Source\Util\DeltaClock.h" />
     <ClInclude Include="Source\Util\Input\MouseInput.h" />
     <ClInclude Include="Source\Util\Data\packed_array.hpp" />
-    <ClInclude Include="Source\ECS\Managers\ComponentManager.h" />
-    <ClInclude Include="Source\ECS\Components\Components.h" />
-    <ClInclude Include="Source\ECS\ECS.h" />
-    <ClInclude Include="Source\ECS\Managers\EntityManager.h" />
-    <ClInclude Include="Source\ECS\Factory.h" />
-    <ClInclude Include="Source\ECS\Systems\InputSystem.h" />
-    <ClInclude Include="Source\ECS\Systems\MovementSystem.h" />
-    <ClInclude Include="Source\ECS\Systems\TextureSystem.h" />
-    <ClInclude Include="Source\GUI\Button_text.h" />
     <ClInclude Include="Source\Util\Data\XML.h" />
     <ClInclude Include="Source\World.h" />
     <ClInclude Include="Source\Util\Debug\Log.h" />
-    <ClInclude Include="Source\ECS\Namespaces.h" />
-    <ClInclude Include="Source\ECS\Systems\DrawableSystem.h" />
-    <ClInclude Include="Source\ECS\Systems\System.h" />
-    <ClInclude Include="Source\ECS\Managers\SystemManager.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="openal32.dll" />

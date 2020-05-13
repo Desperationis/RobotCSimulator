@@ -1,23 +1,22 @@
 #include "Program.h"
 #include "RobotC.h"
-std::array<int, 10> motors;
 
 MotorPort motor1;
 
 void SetUp() {
-	config("motor1", motor1, port5);
+	config("motor1", motor1, port1);
 }
 
 task PrintTest() {
 	while (true) {
-		std::cout << motors[port5] << std::endl;
+		std::cout << motor[port1] << std::endl;
 
 		delay(300);
 	}
 }
 
 task test() {
-	motors[motor1] = 100;
+	motor[motor1] = 100;
 }
 
 task _main() {

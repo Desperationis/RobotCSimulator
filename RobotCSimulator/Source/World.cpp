@@ -4,9 +4,7 @@
 #include <Input/MouseInput.h>
 #include <Debug/Debug.h>
 #include <DeltaClock.h>
-#include "ECS/ECS.h"
-#include "ECS/Factory.h"
-#include "ECS/Registerer.h"
+#include "..//ROBOTC///RobotDisplayer.h"
 
 World::World(sf::VideoMode mode, const std::string windowTitle, const bool vsync, const unsigned int framerate) {
 	// create window
@@ -23,38 +21,17 @@ World::World(sf::VideoMode mode, const std::string windowTitle, const bool vsync
 	this->isFullscreen = false;
 
 	// initiate utilities
-	Log::Log("Source\\log.txt");
 	MouseInput::MouseInput(window);
 	Debug::Debug(window);
 
-	ecs = std::make_shared<ECS>();
-	Registerer registerer = Registerer(ecs, window, "Source\\SystemBlueprints.xml");
-	factory = std::make_shared<Factory>(ecs, "Source\\EntityBlueprints.xml");
-
-
-	// load entities
-	factory->loadEntity("Player");
-
-	for (int i = 0; i < 21; i++) {
-		Entity wall = factory->loadEntity("Wall");
-
-		auto& drawable = ecs->getComponent<DrawableComponent>(wall);
-		auto& position = ecs->getComponent<PositionComponent>(wall);
-		auto rectangle = std::dynamic_pointer_cast<sf::RectangleShape>(drawable.drawable);
-
-		position.pos.x = (rectangle->getLocalBounds().width + 10) * i - 10;
-		position.pos.y = 900 - rectangle->getLocalBounds().height;
-	}
 }
 
 void World::render() {
 	window->clear(sf::Color(0, 0, 0, 255));
 
 	Debug::update();
-	// if there's a huge unexpected lag spike, stop updating all systems
-	if (DeltaClock::getDelta() < 0.1) {
-		ecs->updateSystems(ecs);
-	}
+	RobotDisplayer::Update();
+
 	Debug::render();
 	DeltaClock::update();
 

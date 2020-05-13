@@ -1,5 +1,4 @@
 #pragma once
-#include "RobotC.h"
 #include <iostream>
 
 /*
@@ -9,4 +8,4 @@
  */
 
 void SetUp();
-task _main();
+void _main();
