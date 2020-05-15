@@ -144,8 +144,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Source\ROBOTC\ProgramRunner.cpp" />
-    <ClCompile Include="Source\ROBOTC\RobotC.cpp" />
+    <ClCompile Include="Source\ROBOTC\Program\ProgramRunner.cpp" />
+    <ClCompile Include="Source\ROBOTC\ROBOTCtoC++\RobotC.cpp" />
     <ClCompile Include="Source\Util\Debug\ImGuiWrapper.cpp" />
     <ClCompile Include="Source\Core.cpp" />
     <ClCompile Include="Source\main.cpp" />
@@ -156,13 +156,14 @@
     <ClCompile Include="Source\Util\Debug\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Source\ROBOTC\DefineGlobalOnce.h" />
-    <ClInclude Include="Source\ROBOTC\Program.h" />
-    <ClInclude Include="Source\ROBOTC\ProgramRunner.h" />
-    <ClInclude Include="Source\ROBOTC\RobotC.h" />
-    <ClInclude Include="Source\ROBOTC\RobotDisplayer.h" />
-    <ClInclude Include="Source\ROBOTC\VEXController.h" />
-    <ClInclude Include="Source\ROBOTC\CLibrary.h" />
+    <ClInclude Include="Source\ROBOTC\ROBOTCtoC++\DefineGlobalOnce.h" />
+    <ClInclude Include="Source\ROBOTC\Program\Program.h" />
+    <ClInclude Include="Source\ROBOTC\Program\ProgramRunner.h" />
+    <ClInclude Include="Source\ROBOTC\RobotAvatar\RobotAvatar.h" />
+    <ClInclude Include="Source\ROBOTC\ROBOTCtoC++\RobotC.h" />
+    <ClInclude Include="Source\ROBOTC\ROBOTCtoC++\RobotDisplayer.h" />
+    <ClInclude Include="Source\ROBOTC\ROBOTCtoC++\VEXController.h" />
+    <ClInclude Include="Source\ROBOTC\Program\CLibrary.h" />
     <ClInclude Include="Source\Util\Debug\ImGuiWrapper.h" />
     <ClInclude Include="Source\Core.h" />
   </ItemGroup>

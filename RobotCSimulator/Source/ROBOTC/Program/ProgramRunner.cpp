@@ -1,6 +1,6 @@
 #include "ProgramRunner.h"
 #include "Program.h"
-#include "RobotC.h"
+#include "../ROBOTCtoC++/RobotC.h"
 
 ProgramRunner::ProgramRunner() {
 	for (int i = 0; i < 10; i ++ ) {

@@ -1,5 +1,5 @@
 #pragma once
-#include "RobotC.h"
+#include "../ROBOTCtoC++/RobotC.h"
 #include "CLibrary.h"
 
 /*
@@ -15,7 +15,6 @@ void SetUp() {
 	config("leftMotor", leftMotor, port1, false);
 	config("rightMotor", rightMotor, port2, true);
 }
-
 
 task programMain()
 {

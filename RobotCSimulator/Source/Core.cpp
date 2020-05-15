@@ -5,8 +5,9 @@
 #include <cstdlib>
 #include <csignal>
 #include <Debug/ImGuiWrapper.h>
-#include "..//ROBOTC///RobotDisplayer.h"
-#include "..//ROBOTC///VEXController.h"
+#include "../ROBOTC/ROBOTCtoC++/RobotDisplayer.h"
+#include "../ROBOTC/ROBOTCtoC++/VEXController.h"
+#include "../ROBOTC/RobotAvatar/RobotAvatar.h"
 
 void signal_handler(int signal)
 {
@@ -15,6 +16,8 @@ void signal_handler(int signal)
 	}
 	std::_Exit(EXIT_FAILURE);
 }
+
+std::shared_ptr<RobotAvatar> robotAvatar;
 
 Core::Core(sf::VideoMode mode, const std::string windowTitle, const bool vsync, const unsigned int framerate) {
 	// Create window
@@ -33,6 +36,7 @@ Core::Core(sf::VideoMode mode, const std::string windowTitle, const bool vsync, 
 	// Initialize utilities
 	ImGuiWrapper::ImGuiWrapper(window);
 	RobotDisplayer::RobotDisplayer();
+	robotAvatar = std::make_shared<RobotAvatar>();
 
 	// Setup handler (Aborts program forcefully)
 	auto previous_handler = std::signal(SIGABRT, signal_handler);
@@ -42,6 +46,9 @@ int i = 0;
 void Core::Render() {
 	window->clear(sf::Color(0, 0, 0, 255));
 
+	robotAvatar->Update();
+	window->draw(*robotAvatar);
+
 	ImGuiWrapper::update();
 	ImGui::ShowMetricsWindow();
 
@@ -49,6 +56,7 @@ void Core::Render() {
 	RobotDisplayer::Update();
 
 	ImGuiWrapper::render();
+
 
 	window->display();
 }

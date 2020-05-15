@@ -1,5 +1,4 @@
-#pragma once
-#include "RobotC.h"
+#include "../ROBOTCtoC++/RobotC.h"
 
 // Notes:
 //		90 degree turns aren't possible.

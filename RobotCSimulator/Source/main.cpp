@@ -1,6 +1,6 @@
 #include <memory>
-#include "ROBOTC/ProgramRunner.h"
-#include "ROBOTC/DefineGlobalOnce.h"
+#include "ROBOTC/Program/ProgramRunner.h"
+#include "ROBOTC/ROBOTCtoC++/DefineGlobalOnce.h"
 #include "Core.h"
 
 /*
