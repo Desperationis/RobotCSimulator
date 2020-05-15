@@ -40,7 +40,19 @@ public:
 
 		// Update Motor Ports.
 		for (int i = 0; i < 10; i++) {
-			toText(motorName[i] + ": ", motor[i] * isReversed((MotorPort)i));
+			std::string direction;
+
+			if (motor[i] > 0) {
+				direction = "(Forward) ";
+			}
+			else if (motor[i] < 0) {
+				direction = "(Backward) ";
+			}
+			else if (motor[i] == 0) {
+				direction = "(Still) ";
+			}
+
+			toText(direction + motorName[i] + ": ", motor[i] * isReversed((MotorPort)i));
 		}
 
 		toText("FPS: ", Debug::getFps());

@@ -81,5 +81,25 @@ task RightArcadeControl() {
 }
 
 task CustomTankControl() {
+	// Keep thread alive.
+	while (true) {
+		// Tank control with both joysticks.
+		motor[leftMotorPort] = -vexRT[Ch3] / controllerSpeed;
+		motor[rightMotorPort] = -vexRT[Ch2] / controllerSpeed;
 
+		delay(taskDelay);
+	}
+}
+
+task GamerControl() {
+	// Keep thread alive.
+	while (true) {
+		// Game control (Similar to controls in racing games)
+		// Left Axis: up / down
+		// Right Axis: right / left
+		motor[leftMotorPort] = Clamp(-vexRT[Ch3] + vexRT[Ch1] / controllerSpeed);
+		motor[rightMotorPort] = Clamp(-vexRT[Ch3] - vexRT[Ch1] / controllerSpeed);
+
+		delay(taskDelay);
+	}
 }

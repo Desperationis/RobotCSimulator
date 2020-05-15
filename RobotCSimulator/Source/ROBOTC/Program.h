@@ -23,7 +23,7 @@ task programMain()
 	SetLeftMotor(port1);
 	SetRightMotor(port2);
 	SetControllerSpeed(1);
-	startTask(RightArcadeControl);
+	startTask(GamerControl);
 
 	while (true) {
 		// Keep program alive.
