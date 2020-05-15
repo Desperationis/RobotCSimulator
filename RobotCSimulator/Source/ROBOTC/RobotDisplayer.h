@@ -5,6 +5,7 @@
 #include <imgui.h>
 #include <imgui-SFML.h>
 #include <deque>
+#include <vector>
 
 /*
  * RobotDisplayer.h
@@ -14,8 +15,18 @@
 
 class RobotDisplayer {
 public:
+	static std::vector<std::deque<float>> motorQueue;
+
+	RobotDisplayer() {
+		// Initialize all motor plot graphs.
+		for (int i = 0; i < 10; i++) {
+			motorQueue.push_back(std::deque<float>());
+		}
+	}
+
 	template<class T>
 	static std::string toStr(T arg) {
+		// Converts a generic argument into a string.
 		std::stringstream buf;
 		buf << arg;
 
@@ -24,48 +35,20 @@ public:
 
 	template<typename T>
 	static void toText(std::string label, T value) {
+		// Conjoins string and value together in ImGui and displays it.
 		std::string form = label + toStr(value);
 		ImGui::Text(form.c_str());
 	}
 
 	static int isReversed(MotorPort motor) {
-		if (motorReversed[motor]) {
+		// Returns a positive-negative based integer.
+		if (motorInfo[motor]->reversed) {
 			return -1;
 		}
 		return 1;
 	}
 
-	static std::deque<float> motorQueue;
-
-	static void Update() {
-		ImGui::Begin("Left Motor Info");
-
-		motorQueue.push_back(motor[port1]);
-
-		if (motorQueue.size() > 400) {
-			motorQueue.pop_front();
-		}
-
-		float motorValue[400];
-
-		for (int i = 0; i < motorQueue.size(); i ++ ) {
-			motorValue[i] = motorQueue[i];
-		}
-
-		ImGui::PlotLines("Motor Value", motorValue, IM_ARRAYSIZE(motorValue), 0, (const char*)0, -127, 127,ImVec2(600,200));
-
-
-		ImGui::End();
-
-
-
-
-
-
-
-
-
-
+	static void DisplayMotorValues() {
 		ImGui::Begin("Robot Info");
 
 		// Update Motor Ports.
@@ -82,11 +65,13 @@ public:
 				direction = "(Still) ";
 			}
 
-			toText(direction + motorName[i] + ": ", motor[i] * isReversed((MotorPort)i));
+			toText(direction + motorInfo[i]->name + ": ", motor[i] * isReversed((MotorPort)i));
 		}
 
 		ImGui::End();
+	}
 
+	static void DisplayControllerValues() {
 		ImGui::Begin("Controller Info");
 
 		toText("VexRT Btn 5U: ", vexRT[Btn5U]);
@@ -105,9 +90,43 @@ public:
 		toText("VexRT Ch 2: ", vexRT[Ch2]);
 		toText("VexRT Ch 3: ", vexRT[Ch3]);
 		toText("VexRT Ch 4: ", vexRT[Ch4]);
-		
+
 		ImGui::End();
+	}
+
+	static void DisplayMotorGraphs() {
+		ImGui::Begin("Motor Graphs");
+
+		for (int i = 0; i < 10; i++) {
+			// Only display motor values that are being used.
+			if (motorInfo[i]->name != "<none>") {
+
+				// Push back current motor value
+				motorQueue[i].push_back(motor[i]);
+
+				// Limit its size.
+				if (motorQueue[i].size() > 400) {
+					motorQueue[i].pop_front();
+				}
+
+				// ImGUI buffer.
+				float motorValue[400];
+				for (int j = 0; j < motorQueue[i].size(); j++) {
+					motorValue[j] = motorQueue[i][j];
+				}
+
+				ImGui::PlotLines(motorInfo[i]->name.c_str(), motorValue, IM_ARRAYSIZE(motorValue), 0, (const char*)0, -127, 127, ImVec2(600, 200));
+			}
+		}
+		ImGui::End();
+	}
+
+
+	static void Update() {
+		DisplayMotorGraphs();
+		DisplayMotorValues();
+		DisplayControllerValues();
 	};
 };
 
-std::deque<float> RobotDisplayer::motorQueue;
+std::vector<std::deque<float>> RobotDisplayer::motorQueue;

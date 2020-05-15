@@ -9,7 +9,7 @@
 class ProgramRunner
 {
 public:
-	ProgramRunner() = default;
+	ProgramRunner();
 	void RunProgram();
 };
 

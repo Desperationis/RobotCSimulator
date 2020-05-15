@@ -32,6 +32,7 @@ Core::Core(sf::VideoMode mode, const std::string windowTitle, const bool vsync, 
 
 	// Initialize utilities
 	ImGuiWrapper::ImGuiWrapper(window);
+	RobotDisplayer::RobotDisplayer();
 
 	// Setup handler (Aborts program forcefully)
 	auto previous_handler = std::signal(SIGABRT, signal_handler);

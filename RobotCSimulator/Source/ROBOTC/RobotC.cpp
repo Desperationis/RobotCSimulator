@@ -11,6 +11,5 @@ void delay(int ms) {
 
 void config(std::string name, MotorPort& motorPort, MotorPort port, bool reverse) {
 	motorPort = port;
-	motorReversed[port] = reverse;
-	motorName[port] = name;
+	motorInfo[port] = std::make_unique<MotorInfo>(name, reverse);
 }
