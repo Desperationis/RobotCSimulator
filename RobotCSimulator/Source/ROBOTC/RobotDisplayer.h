@@ -1,7 +1,7 @@
 #pragma once
 #include "RobotC.h"
 #include <SFML/Graphics.hpp>
-#include <Debug/Debug.h>
+#include <Debug/ImGuiWrapper.h>
 #include <imgui.h>
 #include <imgui-SFML.h>
 #include <deque>
@@ -35,11 +35,10 @@ public:
 		return 1;
 	}
 
-	static std::deque<int> motorQueue;
+	static std::deque<float> motorQueue;
 
 	static void Update() {
 		ImGui::Begin("Left Motor Info");
-
 
 		motorQueue.push_back(motor[port1]);
 
@@ -86,8 +85,6 @@ public:
 			toText(direction + motorName[i] + ": ", motor[i] * isReversed((MotorPort)i));
 		}
 
-		toText("FPS: ", Debug::getFps());
-
 		ImGui::End();
 
 		ImGui::Begin("Controller Info");
@@ -109,11 +106,8 @@ public:
 		toText("VexRT Ch 3: ", vexRT[Ch3]);
 		toText("VexRT Ch 4: ", vexRT[Ch4]);
 		
-		toText("FPS: ", Debug::getFps());
-
-
 		ImGui::End();
 	};
 };
 
-std::deque<int> RobotDisplayer::motorQueue;
+std::deque<float> RobotDisplayer::motorQueue;

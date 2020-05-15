@@ -4,7 +4,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <csignal>
-#include <Debug/Debug.h>
+#include <Debug/ImGuiWrapper.h>
 #include "..//ROBOTC///RobotDisplayer.h"
 #include "..//ROBOTC///VEXController.h"
 
@@ -31,7 +31,7 @@ Core::Core(sf::VideoMode mode, const std::string windowTitle, const bool vsync, 
 	this->isFullscreen = false;
 
 	// Initialize utilities
-	Debug::Debug(window);
+	ImGuiWrapper::ImGuiWrapper(window);
 
 	// Setup handler (Aborts program forcefully)
 	auto previous_handler = std::signal(SIGABRT, signal_handler);
@@ -41,12 +41,13 @@ int i = 0;
 void Core::Render() {
 	window->clear(sf::Color(0, 0, 0, 255));
 
-	Debug::update();
+	ImGuiWrapper::update();
+	ImGui::ShowMetricsWindow();
 
 	VEXController::Update();
 	RobotDisplayer::Update();
 
-	Debug::render();
+	ImGuiWrapper::render();
 
 	window->display();
 }
@@ -58,7 +59,7 @@ bool Core::IsRunning() const {
 
 void Core::PollEvents() {
 	while (window->pollEvent(event)) {
-		Debug::pollEvents(event);
+		ImGuiWrapper::pollEvents(event);
 
 		switch (event.type) {
 		case sf::Event::Closed:
