@@ -147,19 +147,16 @@
     <ClCompile Include="Source\ROBOTC\ProgramRunner.cpp" />
     <ClCompile Include="Source\ROBOTC\RobotC.cpp" />
     <ClCompile Include="Source\Util\Debug\Debug.cpp" />
-    <ClCompile Include="Source\Util\Data\XML.cpp" />
-    <ClCompile Include="Source\Util\DeltaClock.cpp" />
-    <ClCompile Include="Source\World.cpp" />
+    <ClCompile Include="Source\Core.cpp" />
     <ClCompile Include="Source\main.cpp" />
     <ClCompile Include="Source\Util\Debug\imgui-SFML.cpp" />
     <ClCompile Include="Source\Util\Debug\imgui.cpp" />
     <ClCompile Include="Source\Util\Debug\imgui_demo.cpp" />
     <ClCompile Include="Source\Util\Debug\imgui_draw.cpp" />
     <ClCompile Include="Source\Util\Debug\imgui_widgets.cpp" />
-    <ClCompile Include="Source\Util\Input\MouseInput.cpp" />
-    <ClCompile Include="Source\Util\Debug\Log.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\ROBOTC\DefineGlobalOnce.h" />
     <ClInclude Include="Source\ROBOTC\Program.h" />
     <ClInclude Include="Source\ROBOTC\ProgramRunner.h" />
     <ClInclude Include="Source\ROBOTC\RobotC.h" />
@@ -167,12 +164,7 @@
     <ClInclude Include="Source\ROBOTC\VEXController.h" />
     <ClInclude Include="Source\ROBOTC\CLibrary.h" />
     <ClInclude Include="Source\Util\Debug\Debug.h" />
-    <ClInclude Include="Source\Util\DeltaClock.h" />
-    <ClInclude Include="Source\Util\Input\MouseInput.h" />
-    <ClInclude Include="Source\Util\Data\packed_array.hpp" />
-    <ClInclude Include="Source\Util\Data\XML.h" />
-    <ClInclude Include="Source\World.h" />
-    <ClInclude Include="Source\Util\Debug\Log.h" />
+    <ClInclude Include="Source\Core.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="openal32.dll" />

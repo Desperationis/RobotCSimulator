@@ -4,6 +4,7 @@
 #include <Debug/Debug.h>
 #include <imgui.h>
 #include <imgui-SFML.h>
+#include <deque>
 
 /*
  * RobotDisplayer.h
@@ -34,7 +35,37 @@ public:
 		return 1;
 	}
 
+	static std::deque<int> motorQueue;
+
 	static void Update() {
+		ImGui::Begin("Left Motor Info");
+
+
+		motorQueue.push_back(motor[port1]);
+
+		if (motorQueue.size() > 400) {
+			motorQueue.pop_front();
+		}
+
+		float motorValue[400];
+
+		for (int i = 0; i < motorQueue.size(); i ++ ) {
+			motorValue[i] = motorQueue[i];
+		}
+
+		ImGui::PlotLines("Motor Value", motorValue, IM_ARRAYSIZE(motorValue), 0, (const char*)0, -127, 127,ImVec2(600,200));
+
+
+		ImGui::End();
+
+
+
+
+
+
+
+
+
 
 		ImGui::Begin("Robot Info");
 
@@ -84,3 +115,5 @@ public:
 		ImGui::End();
 	};
 };
+
+std::deque<int> RobotDisplayer::motorQueue;

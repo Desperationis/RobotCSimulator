@@ -1,12 +1,10 @@
-#include "World.h"
+#include "Core.h"
 #include <cstdlib>
 #include <ctime>
 #include <iostream>
 #include <cstdlib>
 #include <csignal>
-#include <Input/MouseInput.h>
 #include <Debug/Debug.h>
-#include <DeltaClock.h>
 #include "..//ROBOTC///RobotDisplayer.h"
 #include "..//ROBOTC///VEXController.h"
 
@@ -18,30 +16,29 @@ void signal_handler(int signal)
 	std::_Exit(EXIT_FAILURE);
 }
 
-World::World(sf::VideoMode mode, const std::string windowTitle, const bool vsync, const unsigned int framerate) {
-	// create window
+Core::Core(sf::VideoMode mode, const std::string windowTitle, const bool vsync, const unsigned int framerate) {
+	// Create window
 	sf::ContextSettings settings;
 	window = std::make_shared<sf::RenderWindow>(mode, windowTitle, sf::Style::Close);
 	window->setFramerateLimit(framerate);
 	window->setVerticalSyncEnabled(vsync);
 	srand(static_cast<unsigned int>(time(0)));
 
-	// initialize window information
+	// Debug window information
 	this->framerate = framerate;
 	this->vsync = vsync;
 	this->windowTitle = windowTitle;
 	this->isFullscreen = false;
 
-	// initiate utilities
-	MouseInput::MouseInput(window);
+	// Initialize utilities
 	Debug::Debug(window);
 
-	// Setup handler
+	// Setup handler (Aborts program forcefully)
 	auto previous_handler = std::signal(SIGABRT, signal_handler);
-
 }
 
-void World::render() {
+int i = 0;
+void Core::Render() {
 	window->clear(sf::Color(0, 0, 0, 255));
 
 	Debug::update();
@@ -50,19 +47,17 @@ void World::render() {
 	RobotDisplayer::Update();
 
 	Debug::render();
-	DeltaClock::update();
 
 	window->display();
 }
 
-const bool World::isRunning() const {
+bool Core::IsRunning() const {
 	return window->isOpen();
 }
 
 
-void World::pollEvents() {
+void Core::PollEvents() {
 	while (window->pollEvent(event)) {
-		MouseInput::pollEvents(event);
 		Debug::pollEvents(event);
 
 		switch (event.type) {
@@ -71,6 +66,7 @@ void World::pollEvents() {
 			break;
 
 		case sf::Event::KeyReleased:
+			// Close window when "escape" is pressed
 			switch (event.key.code) {
 			case sf::Keyboard::Escape:
 				window->close();
