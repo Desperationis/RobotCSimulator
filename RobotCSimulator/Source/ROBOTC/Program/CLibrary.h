@@ -1,4 +1,6 @@
+#pragma once
 #include "../ROBOTCtoC++/RobotC.h"
+
 
 // Notes:
 //		90 degree turns aren't possible.

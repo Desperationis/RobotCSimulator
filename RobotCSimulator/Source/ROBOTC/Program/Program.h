@@ -2,29 +2,28 @@
 #include "../ROBOTCtoC++/RobotC.h"
 #include "CLibrary.h"
 
-/*
- * Program.h
- *
- * Used for function definitions for Program.cpp.
- */
 
 
-MotorPort leftMotor, rightMotor;
-
+MotorPort leftMotor;
+MotorPort rightMotor;
 void SetUp() {
 	config("leftMotor", leftMotor, port1, false);
 	config("rightMotor", rightMotor, port2, true);
 }
 
-task programMain()
-{
+task test1();
+int test2();
+bool test3;
+double test4();
+float h();
+task programMain() {
 	SetAverageDelay(20);
 	SetLeftMotor(port1);
 	SetRightMotor(port2);
-	SetControllerSpeed(1);
-	startTask(GamerControl);
+	SetControllerSpeed(2);
+	startTask(LeftArcadeControl);
 
-	while (true) {
+	while(true) {
 		// Keep program alive.
 		delay(20);
 	}

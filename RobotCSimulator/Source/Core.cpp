@@ -11,6 +11,7 @@
 
 void signal_handler(int signal)
 {
+	// Used to make sure out program exits "safely"
 	if (signal == SIGABRT) {
 		std::cerr << "SIGABRT received. Aborting program....\n";
 	}
@@ -49,13 +50,13 @@ void Core::Render() {
 	robotAvatar->Update();
 	window->draw(*robotAvatar);
 
-	ImGuiWrapper::update();
+	ImGuiWrapper::Update();
 	ImGui::ShowMetricsWindow();
 
 	VEXController::Update();
 	RobotDisplayer::Update();
 
-	ImGuiWrapper::render();
+	ImGuiWrapper::Render();
 
 
 	window->display();
@@ -68,7 +69,7 @@ bool Core::IsRunning() const {
 
 void Core::PollEvents() {
 	while (window->pollEvent(event)) {
-		ImGuiWrapper::pollEvents(event);
+		ImGuiWrapper::PollEvents(event);
 
 		switch (event.type) {
 		case sf::Event::Closed:

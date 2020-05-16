@@ -27,11 +27,13 @@ struct MotorInfo {
 	}
 };
 
+// ROBOTC Variables
 extern std::vector<std::unique_ptr<std::thread>> threads;
 extern std::array<int, 10> motor;
 extern std::array<std::unique_ptr<MotorInfo>, 10> motorInfo;
 extern std::array<int, 16> vexRT;
 
+// ROBOTC Functions
 // Currently, these functionalities are not supported:
 //			stopTask()
 //			stopAllTasks()
