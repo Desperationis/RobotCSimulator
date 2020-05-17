@@ -1,4 +1,3 @@
-#pragma once
 #include "../ROBOTCtoC++/RobotC.h"
 #include "CLibrary.h"
 
@@ -21,7 +20,7 @@ task programMain() {
 	SetLeftMotor(port1);
 	SetRightMotor(port2);
 	SetControllerSpeed(2);
-	startTask(LeftArcadeControl);
+	startTask(RightArcadeControl);
 
 	while(true) {
 		// Keep program alive.

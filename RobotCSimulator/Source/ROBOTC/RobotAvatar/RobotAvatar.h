@@ -17,6 +17,7 @@ struct RobotAvatar : public sf::Drawable {
 	sf::Texture texture;
 
 	// Everything else
+	enum Turn {LeftTurn, RightTurn, Still, MOVIN};
 	sf::Vector2f position;
 	sf::Vector2f velocity;
 	float angle = 0;
@@ -54,8 +55,8 @@ struct RobotAvatar : public sf::Drawable {
 		MotorPort rightMotorPort = port2;
 		int leftMotor = motor[leftMotorPort];
 		int rightMotor = motor[rightMotorPort];
-		float turnSpeed = 2;
-
+		float turnSpeed = 5;
+		float movementSpeed = 10;
 
 		// Set angle based on motor's values.
 		float speed = turnSpeed * (abs(leftMotor - rightMotor) / 254.0f);
@@ -67,12 +68,51 @@ struct RobotAvatar : public sf::Drawable {
 		}
 
 		// Set actual speed.
-		velocity.x = cos(angle * (M_PI / 180.0f)) * ((leftMotor + rightMotor) / 254.0f);
-		velocity.y = sin(angle * (M_PI / 180.0f)) * ((leftMotor + rightMotor) / 254.0f);
+		switch (GetTurn()) {
+		case LeftTurn:
+			velocity.x = cos(angle * (M_PI / 180.0f)) * (rightMotor / 254.0f) * movementSpeed;
+			velocity.y = sin(angle * (M_PI / 180.0f)) * (rightMotor / 254.0f) * movementSpeed;
+			break;
+		case RightTurn:
+			velocity.x = cos(angle * (M_PI / 180.0f)) * (leftMotor / 254.0f) * movementSpeed;
+			velocity.y = sin(angle * (M_PI / 180.0f)) * (leftMotor / 254.0f) * movementSpeed;
+			break;
+		case MOVIN:
+			velocity.x = cos(angle * (M_PI / 180.0f)) * (leftMotor / 254.0f) * movementSpeed;
+			velocity.y = sin(angle * (M_PI / 180.0f)) * (leftMotor / 254.0f) * movementSpeed;
+			break;
+		case Still:
+			velocity.x = 0;
+			velocity.y = 0;
+			break;
+		}
 
 		position.x += velocity.x;
 		position.y += velocity.y;
 
 	}
+
+	Turn GetTurn() {
+		float maxDif = 20.0f;
+		// Manually set up left and right motor ports.
+		MotorPort leftMotorPort = port1;
+		MotorPort rightMotorPort = port2;
+		int leftMotor = motor[leftMotorPort];
+		int rightMotor = motor[rightMotorPort];
+
+		if (rightMotor > leftMotor && abs(rightMotor - leftMotor) > maxDif) {
+			return LeftTurn;
+		}
+		if (rightMotor < leftMotor && abs(rightMotor - leftMotor) > maxDif) {
+			return RightTurn;
+		}
+		if (abs(rightMotor) > maxDif && abs(leftMotor) > maxDif) {
+			return MOVIN;
+		}
+
+		return Still;
+	}
+
+
 
 };
