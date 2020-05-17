@@ -1,7 +1,7 @@
 #pragma once
 #include "RobotC.h"
 #include <SFML/Graphics.hpp>
-#include <Debug/ImGuiWrapper.h>
+#include <ImGuiWrapper/ImGuiWrapper.h>
 #include <imgui.h>
 #include <imgui-SFML.h>
 #include <deque>

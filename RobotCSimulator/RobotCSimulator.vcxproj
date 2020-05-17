@@ -148,12 +148,12 @@
     <ClCompile Include="Source\ROBOTC\ROBOTCtoC++\RobotC.cpp" />
     <ClCompile Include="Source\Core.cpp" />
     <ClCompile Include="Source\main.cpp" />
-    <ClCompile Include="Source\Util\Debug\imgui-SFML.cpp" />
-    <ClCompile Include="Source\Util\Debug\imgui.cpp" />
-    <ClCompile Include="Source\Util\Debug\ImGuiWrapper.cpp" />
-    <ClCompile Include="Source\Util\Debug\imgui_demo.cpp" />
-    <ClCompile Include="Source\Util\Debug\imgui_draw.cpp" />
-    <ClCompile Include="Source\Util\Debug\imgui_widgets.cpp" />
+    <ClCompile Include="Source\Util\ImGuiWrapper\imgui-SFML.cpp" />
+    <ClCompile Include="Source\Util\ImGuiWrapper\imgui.cpp" />
+    <ClCompile Include="Source\Util\ImGuiWrapper\ImGuiWrapper.cpp" />
+    <ClCompile Include="Source\Util\ImGuiWrapper\imgui_demo.cpp" />
+    <ClCompile Include="Source\Util\ImGuiWrapper\imgui_draw.cpp" />
+    <ClCompile Include="Source\Util\ImGuiWrapper\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\ROBOTC\ROBOTCtoC++\DefineGlobalOnce.h" />
@@ -165,7 +165,7 @@
     <ClInclude Include="Source\ROBOTC\ROBOTCtoC++\VEXController.h" />
     <ClInclude Include="Source\ROBOTC\Program\CLibrary.h" />
     <ClInclude Include="Source\Core.h" />
-    <ClInclude Include="Source\Util\Debug\ImGuiWrapper.h" />
+    <ClInclude Include="Source\Util\ImGuiWrapper\ImGuiWrapper.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="openal32.dll" />

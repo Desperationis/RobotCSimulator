@@ -4,7 +4,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <csignal>
-#include <Debug/ImGuiWrapper.h>
+#include <ImGuiWrapper/ImGuiWrapper.h>
 #include "../ROBOTC/ROBOTCtoC++/RobotDisplayer.h"
 #include "../ROBOTC/ROBOTCtoC++/VEXController.h"
 #include "../ROBOTC/RobotAvatar/RobotAvatar.h"
