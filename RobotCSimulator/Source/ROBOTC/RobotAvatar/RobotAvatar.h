@@ -24,9 +24,9 @@ struct RobotAvatar : public sf::Drawable {
 
 	RobotAvatar() {
 		// Load texture.
-		texture.loadFromFile("Assets\\test.jpg");
+		texture.loadFromFile("Assets\\Clawbot.jpg");
 		rect.setTexture(&texture);
-		rect.setSize(sf::Vector2f(40, 40));
+		rect.setSize(sf::Vector2f(80, 80));
 
 		// Initial position and speed.
 		position.x = 900;

@@ -49,7 +49,7 @@ public:
 	}
 
 	static void DisplayMotorValues() {
-		ImGui::Begin("Robot Info");
+		ImGui::Begin("Motor Info");
 
 		// Update Motor Ports.
 		for (int i = 0; i < 10; i++) {
@@ -121,11 +121,21 @@ public:
 		ImGui::End();
 	}
 
+	static void DisplaySensorValues() {
+		ImGui::Begin("Sensor Info");
+
+		for (int i = 0; i < 20; i ++) {
+			toText(sensorInfo[i]->name + ": ", SensorValue[i]);
+		}
+
+		ImGui::End();
+	}
 
 	static void Update() {
 		DisplayMotorGraphs();
 		DisplayMotorValues();
 		DisplayControllerValues();
+		DisplaySensorValues();
 	};
 };
 
