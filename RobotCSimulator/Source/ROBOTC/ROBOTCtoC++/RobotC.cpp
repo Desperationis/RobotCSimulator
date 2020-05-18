@@ -1,6 +1,5 @@
 #include "RobotC.h"
 
-
 void startTask(std::function<task()> func) {
 	threads.push_back(std::make_unique<std::thread>(func));
 }
