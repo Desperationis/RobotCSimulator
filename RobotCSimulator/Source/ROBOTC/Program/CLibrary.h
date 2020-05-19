@@ -42,6 +42,22 @@ void SetRightEncoder(int port) {
 	rightEncoderPort = port;
 }
 
+int GetLeftMotor(){
+	return leftMotorPort;
+}
+
+int GetRightMotor(){
+	return rightMotorPort;
+}
+
+int GetLeftEncoder(){
+	return leftEncoderPort;
+}
+
+int GetRightEncoder(){
+	return rightEncoderPort;
+}
+
 void SetControllerSpeed(double speed) {
 	controllerSpeed = speed;
 	maximumMotorValue = 127.0 / speed;

@@ -22,6 +22,10 @@ void SetControllerSpeed(double speed);
 void SetAverageDelay(int delayTime);
 
 // Getters
+int GetLeftMotor();
+int GetRightMotor();
+int GetLeftEncoder();
+int GetRightEncoder();
 int GetDelay();
 
 // Functions

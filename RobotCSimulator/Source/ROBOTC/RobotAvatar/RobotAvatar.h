@@ -11,108 +11,41 @@
  * A little robot on screen that reacts to the motor value!
  */
 
-struct RobotAvatar : public sf::Drawable {
+class RobotAvatar : public sf::Drawable {
+private:
 	// Drawing variables
 	sf::RectangleShape rect;
 	sf::Texture texture;
 
-	// Everything else
-	enum Turn {LeftTurn, RightTurn, Still, MOVIN};
+	// Movement
 	sf::Vector2f position;
 	sf::Vector2f velocity;
-	float angle = 0;
+	float speed;
+	float turnSpeed;
+	float angle;
 
-	RobotAvatar() {
-		// Load texture.
-		texture.loadFromFile("Assets\\Clawbot.jpg");
-		rect.setTexture(&texture);
-		rect.setSize(sf::Vector2f(80, 80));
+	// Motors and Sensors
+	int leftMotorValue, rightMotorValue;
+	int leftEncoderValue, rightEncoderValue;
 
-		// Initial position and speed.
-		position.x = 900;
-		position.y = 700;
-		velocity.x = 0;
-		velocity.y = 0;
+public:
+	enum Turn {LeftTurn, RightTurn, Still, MOVIN};
 
-		// Origin in center.
-		sf::Vector2f newOrigin;
-		newOrigin.x = rect.getLocalBounds().width / 2;
-		newOrigin.y = rect.getLocalBounds().height / 2;
-		rect.setOrigin(newOrigin);
-	}
+	RobotAvatar();
 
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const override {
-		states.transform.translate(position);
-		states.transform.rotate(angle);
+	int GetRadians(float degree);
 
-		target.draw(rect, states);
+	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
-	}
+	void Update();
 
-	void Update() {
-		// Manually set up left and right motor ports.
-		MotorPort leftMotorPort = port1;
-		MotorPort rightMotorPort = port2;
-		int leftMotor = motor[leftMotorPort];
-		int rightMotor = motor[rightMotorPort];
-		float turnSpeed = 5;
-		float movementSpeed = 10;
+	void UpdateVelocity();
 
-		// Set angle based on motor's values.
-		float speed = turnSpeed * (abs(leftMotor - rightMotor) / 254.0f);
-		if (leftMotor > rightMotor) {
-			angle += speed;
-		}
-		else if (leftMotor < rightMotor) {
-			angle -= speed;
-		}
+	void UpdateTurning();
 
-		// Set actual speed.
-		switch (GetTurn()) {
-		case LeftTurn:
-			velocity.x = cos(angle * (M_PI / 180.0f)) * (rightMotor / 254.0f) * movementSpeed;
-			velocity.y = sin(angle * (M_PI / 180.0f)) * (rightMotor / 254.0f) * movementSpeed;
-			break;
-		case RightTurn:
-			velocity.x = cos(angle * (M_PI / 180.0f)) * (leftMotor / 254.0f) * movementSpeed;
-			velocity.y = sin(angle * (M_PI / 180.0f)) * (leftMotor / 254.0f) * movementSpeed;
-			break;
-		case MOVIN:
-			velocity.x = cos(angle * (M_PI / 180.0f)) * (leftMotor / 254.0f) * movementSpeed;
-			velocity.y = sin(angle * (M_PI / 180.0f)) * (leftMotor / 254.0f) * movementSpeed;
-			break;
-		case Still:
-			velocity.x = 0;
-			velocity.y = 0;
-			break;
-		}
+	void UpdateMotors();
 
-		position.x += velocity.x;
-		position.y += velocity.y;
+	void UpdateSensors();
 
-	}
-
-	Turn GetTurn() {
-		float maxDif = 20.0f;
-		// Manually set up left and right motor ports.
-		MotorPort leftMotorPort = port1;
-		MotorPort rightMotorPort = port2;
-		int leftMotor = motor[leftMotorPort];
-		int rightMotor = motor[rightMotorPort];
-
-		if (rightMotor > leftMotor && abs(rightMotor - leftMotor) > maxDif) {
-			return LeftTurn;
-		}
-		if (rightMotor < leftMotor && abs(rightMotor - leftMotor) > maxDif) {
-			return RightTurn;
-		}
-		if (abs(rightMotor) > maxDif && abs(leftMotor) > maxDif) {
-			return MOVIN;
-		}
-
-		return Still;
-	}
-
-
-
+	Turn GetTurn();
 };

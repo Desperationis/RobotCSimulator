@@ -144,6 +144,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Source\ROBOTC\RobotAvatar\RobotAvatar.cpp" />
     <ClCompile Include="Source\ROBOTC\ROBOTCtoC++\RobotC.cpp" />
     <ClCompile Include="Source\Core.cpp" />
     <ClCompile Include="Source\main.cpp" />

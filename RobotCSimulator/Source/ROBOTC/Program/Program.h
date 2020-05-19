@@ -21,8 +21,10 @@ task programMain() {
 	SetLeftEncoder(leftEncoder);
 	SetRightEncoder(rightEncoder);
 	SetControllerSpeed(1);
-	//startTask(GamerControl);
-	//startTask(MotorSpeed);
+
+
+	startTask(MotorSpeed);
+
 
 	while(true) {
 		// Keep program alive.
@@ -32,12 +34,12 @@ task programMain() {
 
 task MotorSpeed() {
 	while(true){
-		if(vexRT[Btn8D]){
-			SetControllerSpeed(2);
+		if(abs(SensorValue[leftEncoder]) > 300){
+			motor[leftMotor] = 0;
+			break;
 		}
-		else {
-			SetControllerSpeed(1);
-		}
+
+		motor[leftMotor] = 127;
 
 		delay(GetDelay());
 	}
