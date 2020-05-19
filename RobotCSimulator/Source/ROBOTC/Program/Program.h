@@ -2,7 +2,6 @@
 #include "CLibrary.h"
 
 
-
 SensorPort leftEncoder;
 SensorPort rightEncoder;
 MotorPort leftMotor;
@@ -22,12 +21,12 @@ task programMain() {
 	SetLeftEncoder(leftEncoder);
 	SetRightEncoder(rightEncoder);
 	SetControllerSpeed(1);
-	startTask(GamerControl);
-	startTask(MotorSpeed);
+	//startTask(GamerControl);
+	//startTask(MotorSpeed);
 
 	while(true) {
 		// Keep program alive.
-		delay(20);
+		delay(GetDelay());
 	}
 }
 

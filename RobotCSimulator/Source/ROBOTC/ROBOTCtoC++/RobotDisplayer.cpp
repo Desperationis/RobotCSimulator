@@ -24,7 +24,7 @@ void RobotDisplayer::DisplayMotorValues() {
 	ImGui::Begin("Motor Info");
 
 	// Update Motor Ports.
-	for (int i = 0; i < 10; i++) {
+	for (int i = 0; i < motor.max_size(); i++) {
 		std::string direction;
 
 		if (motor[i] > 0) {
@@ -96,7 +96,7 @@ void RobotDisplayer::DisplayMotorGraphs() {
 void RobotDisplayer::DisplaySensorValues() {
 	ImGui::Begin("Sensor Info");
 
-	for (int i = 0; i < 20; i++) {
+	for (int i = 0; i < sensorInfo.max_size(); i++) {
 		toText(sensorInfo[i]->name + ": ", SensorValue[i]);
 	}
 

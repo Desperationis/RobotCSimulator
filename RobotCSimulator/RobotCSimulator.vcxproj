@@ -156,6 +156,7 @@
     <ClCompile Include="Source\Util\ImGuiWrapper\imgui_widgets.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\ROBOTC\Program\CLibraryDeclarations.h" />
     <ClInclude Include="Source\ROBOTC\ROBOTCtoC++\DefineGlobalOnce.h" />
     <ClInclude Include="Source\ROBOTC\Program\Program.h" />
     <ClInclude Include="Source\ROBOTC\Program\ProgramRunner.h" />

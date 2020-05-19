@@ -1,16 +1,9 @@
 #pragma once
 #include "../ROBOTCtoC++/RobotC.h"
-
-
-// Notes:
-//		90 degree turns aren't possible.
-//		Partner joytsicks ARE discontinued.
+#include "CLibraryDeclarations.h"
 
 
 // TODO:
-// 		Arcade Control
-// 		Tank Control
-// 		Gamer Control
 //		Slew Control
 // 		PID Control
 //		Precision Control With Encoder
@@ -33,6 +26,7 @@ int rightEncoderPort;
 int taskDelay = 20;
 
 void SetLeftMotor(int port) {
+	SetUpInfo i;
 	leftMotorPort = port;
 }
 
