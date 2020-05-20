@@ -77,6 +77,11 @@ short GetDelay() {
 }
 
 // Helper Functions
+void ResetEncoders() {
+	SensorValue[leftEncoderPort] = 0;
+	SensorValue[rightEncoderPort] = 0;
+}
+
 short Clamp(short value) {
 	// Clamps integers to maximum motor value; 127
 	if (value > 127) {
@@ -144,10 +149,14 @@ task GamerControl() {
 	}
 }
 
-void MoveForwardUntil(short encoderValue) {
+// Functions
+void MoveUntil(short encoderValue, short Lpow, short Rpow) {
+	ResetEncoders();
 	while(!BothHasReached(leftEncoderPort, rightEncoderPort, encoderValue)) {
-		motor[leftMotorPort] = 127;
-		motor[rightMotorPort] = 127;
+		motor[leftMotorPort] = Clamp(Lpow);
+		motor[rightMotorPort] = Clamp(Rpow);
 		delay(taskDelay);
 	}
+	motor[leftMotorPort] = 0;
+	motor[rightMotorPort] = 0;
 }

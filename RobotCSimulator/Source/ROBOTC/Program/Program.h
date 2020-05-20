@@ -14,6 +14,8 @@ void SetUp() {
 }
 
 task programMain() {
+	ResetEncoders();
+
 	SetLeftMotor(port1);
 	SetRightMotor(port5);
 	SetLeftEncoder(leftEncoder);
@@ -21,8 +23,11 @@ task programMain() {
 	SetAverageDelay(20);
 	SetControllerSpeed(1);
 
-	startTask(CustomTankControl);
-	//MoveForwardUntil(300);
+	MoveUntil(2000, 127, 127);
+	delay(4000);
+	MoveUntil(500, -127, 127);
+	delay(4000);
+	MoveUntil(2000, 127, 127);
 
 	while(true) {
 		// Keep program alive.
