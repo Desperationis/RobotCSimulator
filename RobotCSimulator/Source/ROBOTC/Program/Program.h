@@ -15,19 +15,23 @@ void SetUp() {
 
 task programMain() {
 	ResetEncoders();
+	startTask(Slew);
 
-	SetLeftMotor(port1);
-	SetRightMotor(port5);
+	SetLeftMotor(leftMotor);
+	SetRightMotor(rightMotor);
 	SetLeftEncoder(leftEncoder);
 	SetRightEncoder(rightEncoder);
 	SetAverageDelay(20);
 	SetControllerSpeed(1);
+	SetSlewStep(10);
 
 	MoveUntil(2000, 127, 127);
-	delay(4000);
+	delay(1000);
 	MoveUntil(500, -127, 127);
-	delay(4000);
+	delay(1000);
 	MoveUntil(2000, 127, 127);
+
+	startTask(GamerControl);
 
 	while(true) {
 		// Keep program alive.
