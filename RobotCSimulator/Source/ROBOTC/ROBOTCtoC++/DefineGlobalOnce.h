@@ -8,9 +8,9 @@
  */
 
 // Pure RobotC
-std::array<int, 16> vexRT;
-std::array<int, 10> motor;
-std::array<int, 20> SensorValue;
+std::array<short, 16> vexRT;
+std::array<short, 10> motor;
+std::array<short, 20> SensorValue;
 
 // My variables
 std::array<std::unique_ptr<MotorInfo>, 10> motorInfo;

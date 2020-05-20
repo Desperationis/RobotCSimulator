@@ -25,15 +25,17 @@ private:
 	float angle;
 
 	// Motors and Sensors
-	int leftMotorValue, rightMotorValue;
-	int leftEncoderValue, rightEncoderValue;
+	short& leftMotorValue;
+	short& rightMotorValue;
+	short& leftEncoderValue;
+	short& rightEncoderValue;
 
 public:
 	enum Turn {LeftTurn, RightTurn, Still, MOVIN};
 
 	RobotAvatar();
 
-	int GetRadians(float degree);
+	float GetRadians(float degree);
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
@@ -42,10 +44,6 @@ public:
 	void UpdateVelocity();
 
 	void UpdateTurning();
-
-	void UpdateMotors();
-
-	void UpdateSensors();
 
 	Turn GetTurn();
 };

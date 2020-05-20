@@ -10,37 +10,22 @@ void SetUp() {
 	config("leftEncoder", leftEncoder, dgtl1);
 	config("rightEncoder", rightEncoder, dgtl3);
 	config("leftMotor", leftMotor, port1, false);
-	config("rightMotor", rightMotor, port2, true);
+	config("rightMotor", rightMotor, port5, true);
 }
 
-task MotorSpeed();
 task programMain() {
-	SetAverageDelay(20);
 	SetLeftMotor(port1);
-	SetRightMotor(port2);
+	SetRightMotor(port5);
 	SetLeftEncoder(leftEncoder);
 	SetRightEncoder(rightEncoder);
+	SetAverageDelay(20);
 	SetControllerSpeed(1);
 
-
-	startTask(MotorSpeed);
-
+	startTask(CustomTankControl);
+	//MoveForwardUntil(300);
 
 	while(true) {
 		// Keep program alive.
-		delay(GetDelay());
-	}
-}
-
-task MotorSpeed() {
-	while(true){
-		if(abs(SensorValue[leftEncoder]) > 300){
-			motor[leftMotor] = 0;
-			break;
-		}
-
-		motor[leftMotor] = 127;
-
 		delay(GetDelay());
 	}
 }

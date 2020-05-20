@@ -95,9 +95,9 @@ struct SensorInfo {
 };
 
 // Pure RobotC Variables
-extern std::array<int, 10> motor;
-extern std::array<int, 20> SensorValue;
-extern std::array<int, 16> vexRT;
+extern std::array<short, 10> motor;
+extern std::array<short, 20> SensorValue;
+extern std::array<short, 16> vexRT;
 
 // My own classes
 extern std::vector<std::unique_ptr<std::thread>> threads;

@@ -1,21 +1,28 @@
 #include "RobotAvatar.h"
+#include "../Program/CLibraryDeclarations.h"
+#include <iostream>
 
-int RobotAvatar::GetRadians(float degrees) {
+float RobotAvatar::GetRadians(float degrees) {
 	return angle * (M_PI / 180.0f);
 }
 
-RobotAvatar::RobotAvatar() {
+RobotAvatar::RobotAvatar() : leftMotorValue(motor.at(GetLeftMotor())), 
+							 rightMotorValue(motor.at(GetRightMotor())),
+							 leftEncoderValue(SensorValue.at(GetLeftEncoder())), 
+							 rightEncoderValue(SensorValue.at(GetRightEncoder())) {
+
 	// Load texture.
 	texture.loadFromFile("Assets\\Clawbot.jpg");
 	rect.setTexture(&texture);
 	rect.setSize(sf::Vector2f(80, 80));
 
-	// Initial position and speed.
+	// Position variables.
 	position.x = 900;
 	position.y = 700;
-	velocity.x = 0;
-	velocity.y = 0;
+	angle = 0.0f;
 
+	// Speed variables
+	velocity.x = velocity.y = 0;
 	turnSpeed = 5;
 	speed = 10;
 
@@ -24,9 +31,6 @@ RobotAvatar::RobotAvatar() {
 	newOrigin.x = rect.getLocalBounds().width / 2;
 	newOrigin.y = rect.getLocalBounds().height / 2;
 	rect.setOrigin(newOrigin);
-
-	leftMotorValue = rightMotorValue = 0;
-	leftEncoderValue = rightEncoderValue = 0;
 }
 
 void RobotAvatar::draw(sf::RenderTarget& target, sf::RenderStates states) const {
@@ -39,56 +43,44 @@ void RobotAvatar::draw(sf::RenderTarget& target, sf::RenderStates states) const 
 void RobotAvatar::Update() {
 	UpdateTurning();
 	UpdateVelocity();
-	UpdateMotors();
-	UpdateSensors();
-}
-
-void RobotAvatar::UpdateMotors() {
-	leftMotorValue = motor[port1];
-	rightMotorValue = motor[port2];
-}
-
-void RobotAvatar::UpdateSensors() {
-	SensorValue[dgtl1] = leftEncoderValue;
-	SensorValue[dgtl3] = rightEncoderValue;
 }
 
 void RobotAvatar::UpdateTurning() {
 	// Turn based on motor's values.
 
-	float speed = turnSpeed * (abs(leftMotorValue - rightMotorValue) / 254.0f);
+	float angularSpeed = turnSpeed * (abs(leftMotorValue - rightMotorValue) / 254.0f);
 	if (leftMotorValue > rightMotorValue) {
-		angle += speed;
+		angle += angularSpeed;
 	}
 	else if (leftMotorValue < rightMotorValue) {
-		angle -= speed;
+		angle -= angularSpeed;
 	}
 }
 
 void RobotAvatar::UpdateVelocity() {
-	// Set velocity
+	// Set velocity based on motor values
 	switch (GetTurn()) {
 	case LeftTurn:
 		velocity.x = cos(GetRadians(angle)) * (rightMotorValue / 254.0f) * speed;
 		velocity.y = sin(GetRadians(angle)) * (rightMotorValue / 254.0f) * speed;
 
-		leftEncoderValue -= leftMotorValue / 4;
-		rightEncoderValue += rightMotorValue / 4;
+		leftEncoderValue -= leftMotorValue / turnSpeed;
+		rightEncoderValue += rightMotorValue / turnSpeed;
 
 		break;
 	case RightTurn:
 		velocity.x = cos(GetRadians(angle)) * (leftMotorValue / 254.0f) * speed;
 		velocity.y = sin(GetRadians(angle)) * (leftMotorValue / 254.0f) * speed;
 
-		leftEncoderValue += leftMotorValue / 4;
-		rightEncoderValue -= rightMotorValue / 4;
+		leftEncoderValue += leftMotorValue / turnSpeed;
+		rightEncoderValue -= rightMotorValue / turnSpeed;
 		break;
 	case MOVIN:
 		velocity.x = cos(GetRadians(angle)) * (leftMotorValue / 254.0f) * speed;
 		velocity.y = sin(GetRadians(angle)) * (leftMotorValue / 254.0f) * speed;
 
-		leftEncoderValue += leftMotorValue / 4;
-		rightEncoderValue += rightMotorValue / 4;
+		leftEncoderValue += leftMotorValue / turnSpeed;
+		rightEncoderValue += rightMotorValue / turnSpeed;
 		break;
 	case Still:
 		velocity.x = 0;
