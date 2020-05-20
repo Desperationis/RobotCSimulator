@@ -33,7 +33,7 @@ bool HasReached(short encoderPort, short value);                 // Returns if a
 bool BothHasReached(short enc1, short enc2, short value);        // Returns if two encoders have passed a threshold.
 
 // Tasks
-task Slew();
+task Slew();                                                     // Slew all motors
 task LeftArcadeControl();                                        // Control chassis with only the left joystick
 task RightArcadeControl();                                       // Control chassis with only the right joystick
 task CustomTankControl();                                        // Control chassis with both joysticks like a tank
@@ -41,3 +41,5 @@ task GamerControl();                                             // Control chas
 
 // Functions
 void MoveUntil(short encoderValue, short Lpow, short Rpow);      // Move chassis based on encoder value
+short PIDCalculate(short encoderValue, short target);            // Calculate motor speed using PID
+void PID();

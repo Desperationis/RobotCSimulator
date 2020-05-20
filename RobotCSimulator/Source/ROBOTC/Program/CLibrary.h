@@ -15,6 +15,7 @@
 // Right Axle Variables
 // Ch1: X -> Ch2: Y Positive Down
 
+// Public
 short slewMotor[10];
 short leftMotorPort;
 short leftEncoderPort;
@@ -26,6 +27,9 @@ double maximumMotorValue;
 
 short taskDelay;
 short slewStep;
+
+// Private
+double integral = 0.0;
 
 // Setters
 void SetLeftMotor(short port) {
@@ -189,4 +193,24 @@ void MoveUntil(short encoderValue, short Lpow, short Rpow) {
 	}
 	slewMotor[leftMotorPort] = 0;
 	slewMotor[rightMotorPort] = 0;
+}
+
+short PIDCalculate(short encoderValue, short target) {
+	double kP = 0.2;
+	double kI = 0.02;
+	double kD = 0.0;
+
+	// LEFTMOTOR
+	double difference = target - encoderValue;
+	integral += difference;
+
+	return Clamp((difference * kP) + (integral * kI));
+}
+
+void PID() {
+	while(SensorValue[leftEncoderPort] < 2000) {
+		slewMotor[leftMotorPort] = PIDCalculate(SensorValue[leftEncoderPort], 2000);
+
+		delay(taskDelay);
+	}
 }

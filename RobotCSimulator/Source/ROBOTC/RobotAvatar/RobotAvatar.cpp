@@ -18,13 +18,14 @@ RobotAvatar::RobotAvatar() : leftMotorValue(motor.at(GetLeftMotor())),
 
 	// Position variables.
 	position.x = 900;
-	position.y = 700;
+	position.y = 500;
 	angle = 0.0f;
 
 	// Speed variables
 	velocity.x = velocity.y = 0;
 	turnSpeed = 5;
 	speed = 10;
+	staticFriction = 40;
 
 	// Origin in center.
 	sf::Vector2f newOrigin;
@@ -47,49 +48,52 @@ void RobotAvatar::Update() {
 
 void RobotAvatar::UpdateTurning() {
 	// Turn based on motor's values.
-
-	float angularSpeed = turnSpeed * (abs(leftMotorValue - rightMotorValue) / 254.0f);
-	if (leftMotorValue > rightMotorValue) {
-		angle += angularSpeed;
-	}
-	else if (leftMotorValue < rightMotorValue) {
-		angle -= angularSpeed;
+	if (abs(leftMotorValue) > staticFriction || abs(rightMotorValue) > staticFriction) {
+		float angularSpeed = turnSpeed * (abs(leftMotorValue - rightMotorValue) / 254.0f);
+		if (leftMotorValue > rightMotorValue) {
+			angle += angularSpeed;
+		}
+		else if (leftMotorValue < rightMotorValue) {
+			angle -= angularSpeed;
+		}
 	}
 }
 
 void RobotAvatar::UpdateVelocity() {
 	// Set velocity based on motor values
-	switch (GetTurn()) {
-	case LeftTurn:
-		velocity.x = cos(GetRadians(angle)) * (rightMotorValue / 254.0f) * speed;
-		velocity.y = sin(GetRadians(angle)) * (rightMotorValue / 254.0f) * speed;
+	if (abs(leftMotorValue) > staticFriction || abs(rightMotorValue) > staticFriction) {
+		switch (GetTurn()) {
+		case LeftTurn:
+			velocity.x = cos(GetRadians(angle)) * (rightMotorValue / 254.0f) * speed;
+			velocity.y = sin(GetRadians(angle)) * (rightMotorValue / 254.0f) * speed;
 
-		leftEncoderValue -= leftMotorValue / turnSpeed;
-		rightEncoderValue += rightMotorValue / turnSpeed;
+			leftEncoderValue -= leftMotorValue / 20;
+			rightEncoderValue += rightMotorValue / 20;
 
-		break;
-	case RightTurn:
-		velocity.x = cos(GetRadians(angle)) * (leftMotorValue / 254.0f) * speed;
-		velocity.y = sin(GetRadians(angle)) * (leftMotorValue / 254.0f) * speed;
+			break;
+		case RightTurn:
+			velocity.x = cos(GetRadians(angle)) * (leftMotorValue / 254.0f) * speed;
+			velocity.y = sin(GetRadians(angle)) * (leftMotorValue / 254.0f) * speed;
 
-		leftEncoderValue += leftMotorValue / turnSpeed;
-		rightEncoderValue -= rightMotorValue / turnSpeed;
-		break;
-	case MOVIN:
-		velocity.x = cos(GetRadians(angle)) * (leftMotorValue / 254.0f) * speed;
-		velocity.y = sin(GetRadians(angle)) * (leftMotorValue / 254.0f) * speed;
+			leftEncoderValue += leftMotorValue / 20;
+			rightEncoderValue -= rightMotorValue / 20;
+			break;
+		case MOVIN:
+			velocity.x = cos(GetRadians(angle)) * (leftMotorValue / 254.0f) * speed;
+			velocity.y = sin(GetRadians(angle)) * (leftMotorValue / 254.0f) * speed;
 
-		leftEncoderValue += leftMotorValue / turnSpeed;
-		rightEncoderValue += rightMotorValue / turnSpeed;
-		break;
-	case Still:
-		velocity.x = 0;
-		velocity.y = 0;
-		break;
+			leftEncoderValue += leftMotorValue / 20;
+			rightEncoderValue += rightMotorValue / 20;
+			break;
+		case Still:
+			velocity.x = 0;
+			velocity.y = 0;
+			break;
+		}
+
+		position.x += velocity.x;
+		position.y += velocity.y;
 	}
-
-	position.x += velocity.x;
-	position.y += velocity.y;
 }
 
 RobotAvatar::Turn RobotAvatar::GetTurn() {

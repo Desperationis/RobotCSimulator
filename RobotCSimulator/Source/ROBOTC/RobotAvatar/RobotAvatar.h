@@ -23,6 +23,7 @@ private:
 	float speed;
 	float turnSpeed;
 	float angle;
+	float staticFriction;
 
 	// Motors and Sensors
 	short& leftMotorValue;
