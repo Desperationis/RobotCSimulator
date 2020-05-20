@@ -115,6 +115,20 @@ short Step(short original, short step, short target){
 	return target;
 }
 
+short SlewStep(short original, short step, short target){
+	if(abs(original - target) > step){
+		// Ignore if target is "less" of a motor power than original
+		if(abs(target) < abs(original) && target < 0 && original < 0) {
+			return target;
+		}
+		if(abs(target) < abs(original) && target > 0 && original > 0) {
+			return target;
+		}
+		return Step(original, step, target);
+	}
+	return target;
+}
+
 bool HasReached(short encoderPort, short value) {
 	return abs(SensorValue[encoderPort]) > value;
 }
@@ -131,7 +145,7 @@ task Slew() {
 
 	while(true) {
 		for(short i = 0; i < 10; i++) {
-			motor[i] = Clamp(Step(motor[i], slewStep, slewMotor[i]));
+			motor[i] = Clamp(SlewStep(motor[i], slewStep, slewMotor[i]));
 		}
 		delay(taskDelay);
 	}
@@ -213,8 +227,8 @@ short PIDCalculate(short encoderValue, short target) {
 
 void PID(short target, short leftReverse, short rightReverse) {
 	while(true) {
-		motor[leftMotorPort] = PIDCalculate(SensorValue[leftEncoderPort], target) * leftReverse;
-		motor[rightMotorPort] = PIDCalculate(-SensorValue[rightEncoderPort], target) * rightReverse;
+		slewMotor[leftMotorPort] = PIDCalculate(SensorValue[leftEncoderPort], target) * leftReverse;
+		slewMotor[rightMotorPort] = PIDCalculate(-SensorValue[rightEncoderPort], target) * rightReverse;
 
 		delay(taskDelay);
 	}
