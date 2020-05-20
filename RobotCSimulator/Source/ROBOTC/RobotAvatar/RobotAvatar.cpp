@@ -17,7 +17,7 @@ RobotAvatar::RobotAvatar() : leftMotorValue(motor.at(GetLeftMotor())),
 	rect.setSize(sf::Vector2f(80, 80));
 
 	// Position variables.
-	position.x = 900;
+	position.x = 100;
 	position.y = 500;
 	angle = 0.0f;
 
@@ -25,7 +25,7 @@ RobotAvatar::RobotAvatar() : leftMotorValue(motor.at(GetLeftMotor())),
 	velocity.x = velocity.y = 0;
 	turnSpeed = 5;
 	speed = 10;
-	staticFriction = 40;
+	staticFriction = 30;
 
 	// Origin in center.
 	sf::Vector2f newOrigin;
@@ -68,7 +68,7 @@ void RobotAvatar::UpdateVelocity() {
 			velocity.y = sin(GetRadians(angle)) * (rightMotorValue / 254.0f) * speed;
 
 			leftEncoderValue -= leftMotorValue / 20;
-			rightEncoderValue += rightMotorValue / 20;
+			rightEncoderValue -= rightMotorValue / 20;
 
 			break;
 		case RightTurn:
@@ -76,14 +76,14 @@ void RobotAvatar::UpdateVelocity() {
 			velocity.y = sin(GetRadians(angle)) * (leftMotorValue / 254.0f) * speed;
 
 			leftEncoderValue += leftMotorValue / 20;
-			rightEncoderValue -= rightMotorValue / 20;
+			rightEncoderValue += rightMotorValue / 20;
 			break;
 		case MOVIN:
 			velocity.x = cos(GetRadians(angle)) * (leftMotorValue / 254.0f) * speed;
 			velocity.y = sin(GetRadians(angle)) * (leftMotorValue / 254.0f) * speed;
 
 			leftEncoderValue += leftMotorValue / 20;
-			rightEncoderValue += rightMotorValue / 20;
+			rightEncoderValue -= rightMotorValue / 20;
 			break;
 		case Still:
 			velocity.x = 0;

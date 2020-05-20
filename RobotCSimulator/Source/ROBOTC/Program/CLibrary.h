@@ -196,20 +196,25 @@ void MoveUntil(short encoderValue, short Lpow, short Rpow) {
 }
 
 short PIDCalculate(short encoderValue, short target) {
-	double kP = 0.2;
-	double kI = 0.02;
+	double kP = 1.5;
+	double kI = 0.1;
 	double kD = 0.0;
 
 	// LEFTMOTOR
 	double difference = target - encoderValue;
 	integral += difference;
 
+	if(abs(difference) < 5) {
+		integral = 0;
+	}
+
 	return Clamp((difference * kP) + (integral * kI));
 }
 
-void PID() {
-	while(SensorValue[leftEncoderPort] < 2000) {
-		slewMotor[leftMotorPort] = PIDCalculate(SensorValue[leftEncoderPort], 2000);
+void PID(short target, short leftReverse, short rightReverse) {
+	while(true) {
+		motor[leftMotorPort] = PIDCalculate(SensorValue[leftEncoderPort], target) * leftReverse;
+		motor[rightMotorPort] = PIDCalculate(-SensorValue[rightEncoderPort], target) * rightReverse;
 
 		delay(taskDelay);
 	}

@@ -42,4 +42,4 @@ task GamerControl();                                             // Control chas
 // Functions
 void MoveUntil(short encoderValue, short Lpow, short Rpow);      // Move chassis based on encoder value
 short PIDCalculate(short encoderValue, short target);            // Calculate motor speed using PID
-void PID();
+void PID(short target, short leftReverse, short rightReverse);
