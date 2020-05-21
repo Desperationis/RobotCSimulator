@@ -1,7 +1,7 @@
 #include "../ROBOTCtoC++/RobotC.h"
 #include "CLibrary.h"
 
-
+#include <iostream>
 SensorPort leftEncoder;
 SensorPort rightEncoder;
 MotorPort leftMotor;
@@ -25,8 +25,8 @@ task programMain() {
 	SetControllerSpeed(1);
 	SetSlewStep(10);
 
-	//PID(500, 1, 1);
-	startTask(GamerControl);
+	PID(500, 1, 1);
+	//startTask(GamerControl);
 	while(true) {
 		// Keep program alive.
 		delay(GetDelay());

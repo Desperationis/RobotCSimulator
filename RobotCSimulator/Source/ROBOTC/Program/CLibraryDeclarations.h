@@ -1,12 +1,22 @@
 #pragma once
 #include "../ROBOTCtoC++/RobotC.h"
-
+#include <iostream>
 /*
  * CLibrary.h
  *
  * A list of declarations that are defined in CLibrary.c
  *
 */
+
+typedef struct {
+	double kP;
+	double kI;
+	double kD;
+	short proportion;
+	short integral;
+	short derivative;
+	short pastError;
+} PIDInfo;
 
 // Setters
 void SetLeftMotor(short port);                      					   // Sets the left motor port
@@ -42,5 +52,5 @@ task GamerControl();                                             // Control chas
 
 // Functions
 void MoveUntil(short encoderValue, short Lpow, short Rpow);      // Move chassis based on encoder value
-short PIDCalculate(short encoderValue, short target);            // Calculate motor speed using PID
+short PIDCalculate(short encoderValue, short target, PIDInfo* info );           // Calculate motor speed using PID
 void PID(short target, short leftReverse, short rightReverse);
