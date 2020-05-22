@@ -1,6 +1,7 @@
 #include "../ROBOTCtoC++/RobotC.h"
 #include "Globals.h"
 #include "Helpers.h"
+#include <iostream>
 
 #ifndef HELPERS_SOURCE
 
@@ -12,6 +13,11 @@
 void ResetEncoders() {
 	SensorValue[GetLeftEncoder()] = 0;
 	SensorValue[GetRightEncoder()] = 0;
+}
+
+void SetChassisMotor(byte leftMotorValue, byte rightMotorValue) {
+	motor[GetLeftMotor()] = Clamp(leftMotorValue);
+	motor[GetRightMotor()] = Clamp(rightMotorValue);
 }
 
 short Clamp(short value) {

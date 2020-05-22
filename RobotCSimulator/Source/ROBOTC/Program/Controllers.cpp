@@ -2,9 +2,9 @@
 #include "Controllers.h"
 #include "Globals.h"
 #include "Helpers.h"
+#include <iostream>
 
 #ifndef CONTROLLERS_SOURCE
-
 #define CONTROLLERS_SOURCE
 
 // TODO:
@@ -19,15 +19,10 @@
 // Right Axle Variables
 // Ch1: X -> Ch2: Y Positive Down
 
-// Public
 short slewMotor[10];
-
-// Private
 PIDInfo leftPID;
 PIDInfo rightPID;
 
-
-// Tasks
 task Slew() {
 	for(short i = 0; i < 10; i++) {
 		slewMotor[i] = 0;
@@ -36,7 +31,7 @@ task Slew() {
 	while(true) {
 		for(short i = 0; i < 10; i++) {
 			// Replace with SlewStep for real-life
-			motor[i] = Clamp(SlewStep(motor[i], GetSlewStep(), slewMotor[i])) * (GetMaximumMotor() / 127.0);
+			motor[i] = Clamp(SlewStep(motor[i], GetSlewStep(), slewMotor[i] * GetControllerSpeed()));
 		}
 		delay(GetDelay());
 	}
@@ -88,16 +83,13 @@ task GamerControl() {
 	}
 }
 
-// Functions
 void MoveUntil(short encoderValue, short Lpow, short Rpow) {
 	ResetEncoders();
 	while(!BothHasReached(GetLeftEncoder(), GetRightEncoder(), encoderValue)) {
-		slewMotor[GetLeftMotor()] = Clamp(Lpow);
-		slewMotor[GetRightMotor()] = Clamp(Rpow);
+		SetChassisMotor(Clamp(Lpow), Clamp(Rpow));
 		delay(GetDelay());
 	}
-	slewMotor[GetLeftMotor()] = 0;
-	slewMotor[GetRightMotor()] = 0;
+	SetChassisMotor(0,0);
 }
 
 short PIDCalculate(short encoderValue, short target, PIDInfo* info ) {
@@ -120,7 +112,6 @@ void PID(short target, short leftReverse, short rightReverse) {
 	double kP = 1.1;
 	double kI = 0.0;
 	double kD = 0;
-
 
 	leftPID.kP = kP;
 	leftPID.kI = kI;

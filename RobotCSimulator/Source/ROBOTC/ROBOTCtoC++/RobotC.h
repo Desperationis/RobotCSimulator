@@ -14,6 +14,10 @@
 
 // Typedefs
 typedef void task;
+typedef char byte;
+typedef unsigned char ubyte;
+typedef unsigned char tMotor;
+typedef unsigned char tSensors;
 
 // Ports
 enum MotorPort { 

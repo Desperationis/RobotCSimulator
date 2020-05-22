@@ -1,3 +1,4 @@
+#include "Globals.h"
 
 #ifndef CONTROLLERS_HEADER
 
@@ -9,17 +10,6 @@
  * Functions and Tasks that directly control the robot's movements.
  *
 */
-
-typedef struct {
-	double kP;
-	double kI;
-	double kD;
-	short proportion;
-	short integral;
-	short derivative;
-	short pastError;
-} PIDInfo;
-
 
 // Tasks
 task Slew();                                                     // Slew all motors

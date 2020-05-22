@@ -24,7 +24,7 @@ task programMain() {
 	SetLeftEncoder(leftEncoder);
 	SetRightEncoder(rightEncoder);
 	SetAverageDelay(20);
-	SetControllerSpeed(1);
+	SetControllerSpeed(0.9);
 	SetSlewStep(10);
 
 	PID(500, 1, 1);
