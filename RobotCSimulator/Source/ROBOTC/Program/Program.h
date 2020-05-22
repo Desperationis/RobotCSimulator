@@ -1,7 +1,9 @@
 #include "../ROBOTCtoC++/RobotC.h"
-#include "CLibrary.h"
-
+#include "Controllers.h"
+#include "Globals.h"
+#include "Helpers.h"
 #include <iostream>
+
 SensorPort leftEncoder;
 SensorPort rightEncoder;
 MotorPort leftMotor;

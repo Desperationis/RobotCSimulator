@@ -1,5 +1,5 @@
 #include "RobotAvatar.h"
-#include "../Program/CLibraryDeclarations.h"
+#include "../Program/Globals.h"
 #include <iostream>
 
 float RobotAvatar::GetRadians(float degrees) {
