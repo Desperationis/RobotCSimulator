@@ -32,8 +32,6 @@ private:
 	short& rightEncoderValue;
 
 public:
-	enum Turn {LeftTurn, RightTurn, Still, MOVIN};
-
 	RobotAvatar();
 
 	float GetRadians(float degree);
@@ -45,6 +43,4 @@ public:
 	void UpdateVelocity();
 
 	void UpdateTurning();
-
-	Turn GetTurn();
 };

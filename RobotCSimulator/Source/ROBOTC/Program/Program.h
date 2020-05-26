@@ -27,8 +27,8 @@ task programMain() {
 	SetControllerSpeed(0.9);
 	SetSlewStep(10);
 
-	PID(500, 1, 1);
-	//startTask(GamerControl);
+	//PID(500, 1, 1);
+	startTask(GamerControl);
 	while(true) {
 		// Keep program alive.
 		delay(GetDelay());
