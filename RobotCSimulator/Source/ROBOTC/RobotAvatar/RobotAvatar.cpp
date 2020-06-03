@@ -19,21 +19,26 @@ RobotAvatar::RobotAvatar() : leftMotorValue(motor.at(GetLeftMotor())),
 							 leftEncoderValue(SensorValue.at(GetLeftEncoder())), 
 							 rightEncoderValue(SensorValue.at(GetRightEncoder())) {
 
+	auto& textureFileName = ROBOT_AVATAR_SETTINGS::textureFileName;
+	auto& size = ROBOT_AVATAR_SETTINGS::size;
+
 	// Load texture.
-	texture.loadFromFile("Assets\\Clawbot.png");
+	texture.loadFromFile(textureFileName);
 	rect.setTexture(&texture);
-	rect.setSize(sf::Vector2f(80, 80));
+	rect.setSize(size);
+
+	auto& initialPosition = ROBOT_AVATAR_SETTINGS::initialPosition;
+	auto& initialAngle = ROBOT_AVATAR_SETTINGS::initialAngle;
 
 	// Position variables.
-	position.x = 300;
-	position.y = 500;
-	angle = 0.0f;
+	position = initialPosition;
+	angle = initialAngle;
+
+	auto& speed = ROBOT_AVATAR_SETTINGS::speed;
 
 	// Speed variables
-	velocity.x = velocity.y = 0;
-	turnSpeed = 5;
-	speed = 5;
-	staticFriction = 30; // Motor Value it takes to overcome static friction
+	velocity = sf::Vector2f(0, 0);
+	calculatedTurnSpeed = (speed / ((float)rect.getLocalBounds().width * M_PI)) * 360;
 
 	// Origin in center.
 	sf::Vector2f newOrigin;
@@ -50,30 +55,53 @@ void RobotAvatar::draw(sf::RenderTarget& target, sf::RenderStates states) const 
 }
 
 void RobotAvatar::Update() {
-	UpdateTurning();
-	UpdateVelocity();
+	auto delta = DeltaClock::GetDelta();
+	UpdateFriction();
+
+	// Only move if static friction is overcome.
+	if (canOvercomeFriction) {
+		UpdateTurning(delta);
+		UpdateVelocity(delta);
+		UpdateEncoders(delta);
+	}
 }
 
-void RobotAvatar::UpdateTurning() {
+void RobotAvatar::UpdateFriction() {
+	auto& staticFriction = ROBOT_AVATAR_SETTINGS::staticFriction;
+
+	canOvercomeFriction = abs(leftMotorValue) + abs(rightMotorValue) > staticFriction;
+}
+
+void RobotAvatar::UpdateTurning(float delta) {
 	// Turn based on motor's values.
-	if (abs(leftMotorValue) + abs(rightMotorValue) > staticFriction) {
-		float angularSpeed = ((leftMotorValue - rightMotorValue) / 254.0f) * turnSpeed;
-		angle += angularSpeed;
-	}
+	float angularSpeed = ((leftMotorValue - rightMotorValue) / 254.0f) * calculatedTurnSpeed;
+	angle += angularSpeed * delta;
 }
 
-void RobotAvatar::UpdateVelocity() {
+void RobotAvatar::UpdateVelocity(float delta) {
+	auto& speed = ROBOT_AVATAR_SETTINGS::speed;
+
 	// Set velocity based on motor values
-	if (abs(leftMotorValue) > staticFriction || abs(rightMotorValue) > staticFriction) {
-		float relativeSpeed = ((leftMotorValue + rightMotorValue) / 254.0f) * speed;
+	float radianAngle = GetRadians(angle);
+	float combinedSpeed = ((leftMotorValue + rightMotorValue) / 254.0f) * speed;
 
-		velocity.x = cos(GetRadians(angle)) * relativeSpeed;
-		velocity.y = sin(GetRadians(angle)) * relativeSpeed;
+	velocity.x = cos(radianAngle) * combinedSpeed * delta;
+	velocity.y = sin(radianAngle) * combinedSpeed * delta;
 
-		leftEncoderValue += leftMotorValue / 20.0f;
-		rightEncoderValue += rightMotorValue / 20.0f;
+	position.x += velocity.x;
+	position.y += velocity.y;
+}
 
-		position.x += velocity.x;
-		position.y += velocity.y;
-	}
+void RobotAvatar::UpdateEncoders(float delta) {
+	auto& turnTime = ROBOT_AVATAR_SETTINGS::encoderTurnTime;
+
+	// Set velocity based on motor values
+	float leftEncoderSpeed = ((float)leftMotorValue / 127.0f) * 360.0f;
+	float rightEncoderSpeed = ((float)rightMotorValue / 127.0f) * 360.0f;
+
+	leftEncoderValue += leftEncoderSpeed * delta * turnTime;
+	rightEncoderValue += rightEncoderSpeed * delta * turnTime;
+
+	position.x += velocity.x;
+	position.y += velocity.y;
 }

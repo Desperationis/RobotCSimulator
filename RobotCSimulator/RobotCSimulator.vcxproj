@@ -158,12 +158,14 @@
     <ClCompile Include="Source\Util\ImGuiWrapper\imgui_demo.cpp" />
     <ClCompile Include="Source\Util\ImGuiWrapper\imgui_draw.cpp" />
     <ClCompile Include="Source\Util\ImGuiWrapper\imgui_widgets.cpp" />
+    <ClCompile Include="Source\Util\Time\DeltaClock.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\ROBOTC\Program\Controllers.h" />
     <ClInclude Include="Source\ROBOTC\Program\Globals.h" />
     <ClInclude Include="Source\ROBOTC\Program\Helpers.h" />
     <ClInclude Include="Source\ROBOTC\Program\Program.h" />
+    <ClInclude Include="Source\ROBOTC\RobotAvatar\ROBOT_AVATAR_SETTINGS.h" />
     <ClInclude Include="Source\ROBOTC\ROBOTCtoC++\DefineGlobalOnce.h" />
     <ClInclude Include="Source\ROBOTC\Program\ProgramRunner.h" />
     <ClInclude Include="Source\ROBOTC\RobotAvatar\RobotAvatar.h" />
@@ -172,6 +174,7 @@
     <ClInclude Include="Source\ROBOTC\ROBOTCtoC++\VEXController.h" />
     <ClInclude Include="Source\Core.h" />
     <ClInclude Include="Source\Util\ImGuiWrapper\ImGuiWrapper.h" />
+    <ClInclude Include="Source\Util\Time\DeltaClock.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="openal32.dll" />

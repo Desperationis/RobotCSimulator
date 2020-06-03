@@ -5,6 +5,7 @@
 #include <cstdlib>
 #include <csignal>
 #include <ImGuiWrapper/ImGuiWrapper.h>
+#include <Time/DeltaClock.h>
 #include "../ROBOTC/ROBOTCtoC++/RobotDisplayer.h"
 #include "../ROBOTC/ROBOTCtoC++/VEXController.h"
 #include "../ROBOTC/RobotAvatar/RobotAvatar.h"
@@ -43,19 +44,19 @@ Core::Core(sf::VideoMode mode, const std::string windowTitle, const bool vsync, 
 	auto previous_handler = std::signal(SIGABRT, signal_handler);
 }
 
-int i = 0;
 void Core::Render() {
 	window->clear(sf::Color(0, 0, 0, 255));
+
+	// Update utilities
+	DeltaClock::Update();
+	ImGuiWrapper::Update();
+	VEXController::Update();
+	RobotDisplayer::Update();
 
 	robotAvatar->Update();
 	window->draw(*robotAvatar);
 
-	ImGuiWrapper::Update();
 	ImGui::ShowMetricsWindow();
-
-	VEXController::Update();
-	RobotDisplayer::Update();
-
 	ImGuiWrapper::Render();
 
 

@@ -1,7 +1,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <memory>
+#include <Time/DeltaClock.h>
 #include "../ROBOTCtoC++/RobotC.h"
+#include "ROBOT_AVATAR_SETTINGS.h"
 
 #define M_PI 3.1415
 
@@ -20,16 +22,15 @@ private:
 	// Movement
 	sf::Vector2f position;
 	sf::Vector2f velocity;
-	float speed;
-	float turnSpeed;
 	float angle;
-	float staticFriction;
+	float calculatedTurnSpeed;
+	bool canOvercomeFriction;
 
 	// Motors and Sensors
 	short& leftMotorValue;
 	short& rightMotorValue;
-	short& leftEncoderValue;
-	short& rightEncoderValue;
+	float& leftEncoderValue;
+	float& rightEncoderValue;
 
 public:
 	RobotAvatar();
@@ -40,7 +41,11 @@ public:
 
 	void Update();
 
-	void UpdateVelocity();
+	void UpdateVelocity(float delta);
 
-	void UpdateTurning();
+	void UpdateTurning(float delta);
+
+	void UpdateFriction();
+
+	void UpdateEncoders(float delta);
 };

@@ -97,7 +97,7 @@ void RobotDisplayer::DisplaySensorValues() {
 	ImGui::Begin("Sensor Info");
 
 	for (int i = 0; i < sensorInfo.max_size(); i++) {
-		toText(sensorInfo[i]->name + ": ", SensorValue[i]);
+		toText(sensorInfo[i]->name + ": ", floor(SensorValue[i]));
 	}
 
 	ImGui::End();
