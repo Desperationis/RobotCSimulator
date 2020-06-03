@@ -15,7 +15,7 @@ int main()
 	programRunner->RunProgram();
 
 	// Create Window
-	Core world(sf::VideoMode(1500, 900), "RobotCSimulator", false, 60);
+	Core world(sf::VideoMode(1500, 900), "RobotCSimulator", true, 60);
 
 	// Program Loop
 	while (world.IsRunning()) {

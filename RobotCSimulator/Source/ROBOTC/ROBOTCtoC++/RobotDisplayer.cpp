@@ -25,19 +25,21 @@ void RobotDisplayer::DisplayMotorValues() {
 
 	// Update Motor Ports.
 	for (int i = 0; i < motor.max_size(); i++) {
-		std::string direction;
+		if (motorInfo[i]->name != "<none>") {
+			std::string direction;
 
-		if (motor[i] > 0) {
-			direction = "(Forward) ";
-		}
-		else if (motor[i] < 0) {
-			direction = "(Backward) ";
-		}
-		else if (motor[i] == 0) {
-			direction = "(Still) ";
-		}
+			if (motor[i] > 0) {
+				direction = "(Forward) ";
+			}
+			else if (motor[i] < 0) {
+				direction = "(Backward) ";
+			}
+			else if (motor[i] == 0) {
+				direction = "(Still) ";
+			}
 
-		toText(direction + motorInfo[i]->name + ": ", motor[i] * isReversed((MotorPort)i));
+			toText("Port " + toStr(i) + " " + direction + motorInfo[i]->name + ": ", motor[i] * isReversed((MotorPort)i));
+		}
 	}
 
 	ImGui::End();
@@ -97,7 +99,9 @@ void RobotDisplayer::DisplaySensorValues() {
 	ImGui::Begin("Sensor Info");
 
 	for (int i = 0; i < sensorInfo.max_size(); i++) {
-		toText(sensorInfo[i]->name + ": ", floor(SensorValue[i]));
+		if (sensorInfo[i]->name != "<none>") {
+			toText(sensorInfo[i]->name + ": ", floor(SensorValue[i]));
+		}
 	}
 
 	ImGui::End();

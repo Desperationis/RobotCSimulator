@@ -48,4 +48,6 @@ public:
 	void UpdateFriction();
 
 	void UpdateEncoders(float delta);
+
+	void UpdateLoop();
 };

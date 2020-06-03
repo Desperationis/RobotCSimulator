@@ -64,6 +64,8 @@ void RobotAvatar::Update() {
 		UpdateVelocity(delta);
 		UpdateEncoders(delta);
 	}
+
+	UpdateLoop();
 }
 
 void RobotAvatar::UpdateFriction() {
@@ -104,4 +106,31 @@ void RobotAvatar::UpdateEncoders(float delta) {
 
 	position.x += velocity.x;
 	position.y += velocity.y;
+}
+
+void RobotAvatar::UpdateLoop() {
+	// Basic Screen Wrap
+
+	float width = rect.getLocalBounds().width;
+	float height = rect.getLocalBounds().height;
+
+	float maxX = 1500 + width;
+	float maxY = 900 + height;
+
+	float minX = 0 - width;
+	float minY = 0 - height;
+
+	if (position.x > maxX) {
+		position.x = minX;
+	}
+	else if (position.x < minX) {
+		position.x = maxX;
+	}
+
+	if (position.y > maxY) {
+		position.y = minY;
+	}
+	else if (position.y < minY) {
+		position.y = maxY;
+	}
 }
