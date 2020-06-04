@@ -8,4 +8,11 @@ void InitSlew();
 void AllowSlew(tMotor port);
 bool CanSlew(tMotor port);
 
+/*
+ * Set maximum slew step of the slew controller. Slewing ffected by SetTaskDelay().
+*/
+void SetSlewStep(ubyte step);
+
+ubyte GetSlewStep();                                                                 // Gets the step amount of slew controller
+
 #endif

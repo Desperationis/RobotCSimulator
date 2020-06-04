@@ -13,7 +13,6 @@ tMotor rightMotorPort;
 tSensors rightEncoderPort;
 
 ubyte taskDelay;
-ubyte slewStep;
 double controllerSpeed;
 
 
@@ -44,10 +43,6 @@ void SetAverageDelay(ubyte delayTime) {
 	taskDelay = delayTime;
 }
 
-void SetSlewStep(ubyte step) {
-	slewStep = step;
-}
-
 // Getters
 tMotor GetLeftMotor(){
 	return leftMotorPort;
@@ -67,10 +62,6 @@ tSensors GetRightEncoder(){
 
 ubyte GetDelay() {
 	return taskDelay;
-}
-
-ubyte GetSlewStep() {
-	return slewStep;
 }
 
 double GetControllerSpeed(){
