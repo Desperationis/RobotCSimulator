@@ -24,7 +24,7 @@ public:
 	void RunProgram() {
 		// Configure Motor and Sensor Values.
 		SetUp();
-		
+
 		// Start main function as a thread.
 		startTask(programMain);
 	}

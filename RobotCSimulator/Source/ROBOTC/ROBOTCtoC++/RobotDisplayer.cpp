@@ -89,7 +89,7 @@ void RobotDisplayer::DisplayMotorGraphs() {
 				motorValue[j] = motorValues[i][j];
 			}
 
-			ImGui::PlotLines(motorInfo[i]->name.c_str(), motorValue, IM_ARRAYSIZE(motorValue), 0, (const char*)0, -127, 127, ImVec2(600, 200));
+			ImGui::PlotLines(motorInfo[i]->name.c_str(), motorValue, IM_ARRAYSIZE(motorValue), 0, (const char*)0, -127, 127, ImVec2(400, 200));
 		}
 	}
 	ImGui::End();

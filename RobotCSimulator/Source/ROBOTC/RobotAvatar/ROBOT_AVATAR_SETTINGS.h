@@ -12,7 +12,7 @@ namespace ROBOT_AVATAR_SETTINGS {
 	// Looks
 	static const char* textureFileName = "Assets\\Clawbot.png"; // File name of texture to be loaded up.
 	static sf::Vector2f size(80, 80);							// Size of robot avatar texture.
-	static sf::Vector2f initialPosition(800,800);				// Initial position of robot avatar.
+	static sf::Vector2f initialPosition(800, 800);				// Initial position of robot avatar.
 	static float initialAngle = 0;								// Initial angle of robot avatar.
 
 	// Physics

@@ -2,6 +2,7 @@
 #include "Controllers.h"
 #include "Globals.h"
 #include "Helpers.h"
+#include "Slew.h"
 #include <iostream>
 
 SensorPort leftEncoder;
@@ -17,10 +18,14 @@ void SetUp() {
 
 task programMain() {
 	ResetEncoders();
+	InitSlew();
 	startTask(Slew);
 
 	SetLeftMotor(leftMotor);
 	SetRightMotor(rightMotor);
+	AllowSlew(leftMotor);
+	AllowSlew(rightMotor);
+
 	SetLeftEncoder(leftEncoder);
 	SetRightEncoder(rightEncoder);
 	SetAverageDelay(20);
