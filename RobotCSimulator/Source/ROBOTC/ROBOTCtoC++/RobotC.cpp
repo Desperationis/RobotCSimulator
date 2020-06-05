@@ -17,3 +17,14 @@ void config(std::string name, SensorPort& sensorPort, SensorPort port) {
 	sensorPort = port;
 	sensorInfo[port] = std::make_unique<SensorInfo>(name);
 }
+
+int sgn(int input) {
+	if (input < 0) {
+		return -1;
+	}
+	if (input > 0) {
+		return 1;
+	}
+
+	return 0;
+}

@@ -10,17 +10,34 @@
  *
 */
 
+
 /*
- * Slew Controller system. Should always be called on task main().
- * Slews all motors.
+ * Arcade control with the left joystick. Supports slewing motors.
 */
+task LeftArcadeControl();
 
-task LeftArcadeControl();                                                            // Control chassis with only the left joystick
-task RightArcadeControl();                                                           // Control chassis with only the right joystick
-task CustomTankControl();                                                            // Control chassis with both joysticks like a tank
-task GamerControl();                                                                 // Control chassis with both joysticks like a gamer
 
-// Functions
+/*
+ * Arcade control with the right joystick. Supports slewing motors.
+*/
+task RightArcadeControl();
+
+
+/*
+ * Tank control with slewing support.
+*/
+task CustomTankControl();
+
+
+/*
+ * Control the chassis like a video game car! Supports slewing motors.
+*/
+task GamerControl();
+
+
+/*
+ * Calculate the motor speed of a motor given its encoder and information.
+*/
 short PIDCalculate(short encoderValue, short target, PIDInfo* info );                // Calculate motor speed using PID
 void PID(short target, short leftReverse, short rightReverse);
 

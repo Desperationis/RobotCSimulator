@@ -113,3 +113,4 @@ void startTask(std::function<task()> func);
 void delay(int ms);
 void config(std::string name, MotorPort& motorPort, MotorPort port, bool reversed = false);
 void config(std::string name, SensorPort& motorPort, SensorPort port);
+int sgn(int input);
