@@ -4,6 +4,7 @@
 #include "Helpers.h"
 #include "Slew.h"
 #include "PID.h"
+#include "Setup.h"
 #include <iostream>
 
 SensorPort leftEncoder;
@@ -18,22 +19,27 @@ void SetUp() {
 }
 
 task programMain() {
-	ResetEncoders();
-	InitSlew();
-	startTask(Slew);
+	InitCustomLibrary();
 
 	SetLeftMotor(leftMotor);
 	SetRightMotor(rightMotor);
-	AllowSlew(leftMotor);
-	AllowSlew(rightMotor);
+	AllowSlew(leftMotor, true);
+	AllowSlew(rightMotor, true);
 
 	SetLeftEncoder(leftEncoder);
 	SetRightEncoder(rightEncoder);
 	SetAverageDelay(20);
-	SetControllerSpeed(0.9);
-	SetSlewStep(10);
+	SetMaxSpeed(0.8);
+	SetSlewStep(30);
 
-	PID(500);
+	startTask(Slew);
+	startTask(PID);
+
+	AllowPID(true);
+	SetK(1.1, 0.0, 0.0);
+	SetPIDTarget(LEFT, 300);
+	SetPIDTarget(RIGHT, 400);
+
 	//startTask(GamerControl);
 	while(true) {
 		// Keep program alive.

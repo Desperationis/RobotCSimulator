@@ -8,9 +8,6 @@
 #ifndef CONTROLLERS_SOURCE
 #define CONTROLLERS_SOURCE
 
-// TODO:
-// 		PID Control
-
 
 // Positive Power turns left motor clockwise. + Forward - Backward
 

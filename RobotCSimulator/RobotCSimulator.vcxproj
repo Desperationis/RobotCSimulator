@@ -148,6 +148,7 @@
     <ClCompile Include="Source\ROBOTC\Program\Globals.cpp" />
     <ClCompile Include="Source\ROBOTC\Program\Helpers.cpp" />
     <ClCompile Include="Source\ROBOTC\Program\PID.cpp" />
+    <ClCompile Include="Source\ROBOTC\Program\Setup.cpp" />
     <ClCompile Include="Source\ROBOTC\Program\Slew.cpp" />
     <ClCompile Include="Source\ROBOTC\RobotAvatar\RobotAvatar.cpp" />
     <ClCompile Include="Source\ROBOTC\ROBOTCtoC++\RobotC.cpp" />
@@ -168,6 +169,7 @@
     <ClInclude Include="Source\ROBOTC\Program\Helpers.h" />
     <ClInclude Include="Source\ROBOTC\Program\PID.h" />
     <ClInclude Include="Source\ROBOTC\Program\Program.h" />
+    <ClInclude Include="Source\ROBOTC\Program\Setup.h" />
     <ClInclude Include="Source\ROBOTC\Program\Slew.h" />
     <ClInclude Include="Source\ROBOTC\RobotAvatar\ROBOT_AVATAR_SETTINGS.h" />
     <ClInclude Include="Source\ROBOTC\ROBOTCtoC++\DefineGlobalOnce.h" />
