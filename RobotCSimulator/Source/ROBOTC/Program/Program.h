@@ -33,7 +33,7 @@ task programMain() {
 	SetControllerSpeed(0.9);
 	SetSlewStep(10);
 
-	PID(500, 1, 1);
+	PID(500);
 	//startTask(GamerControl);
 	while(true) {
 		// Keep program alive.
