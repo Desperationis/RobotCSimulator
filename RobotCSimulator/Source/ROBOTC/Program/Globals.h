@@ -13,47 +13,49 @@
  * variables, so it's fine to not use this.
 */
 
-typedef struct {
-	double kP;
-	double kI;
-	double kD;
-	short proportion;
-	short integral;
-	short derivative;
-	short pastError;
-} PIDInfo;
-
 
 /*
+ * [SETUP]
+ *
  * Set the motor port of the left motor. Needed for library to function properly.
 */
 void SetLeftMotor(tMotor port);
 
 
 /*
+ * [SETUP]
+ *
  * Set the motor port of the right motor. Needed for library to function properly.
 */
 void SetRightMotor(tMotor port);
 
 
 /*
+ * [SETUP]
+ *
  * Set the sensor port of the left encoder. Needed for PID controller to function properly.
 */
 void SetLeftEncoder(tSensors port);
 
 /*
+ * [SETUP]
+ *
  * Set the sensor port of the right encoder. Needed for PID controller to function properly.
 */
 void SetRightEncoder(tSensors port);
 
 
 /*
+ * [SETUP]
+ *
  * Set the maximum speed of the robot. Only applies to motors that have been slewed.
 */
 void SetControllerSpeed(double speed);
 
 
 /*
+ * [SETUP]
+ *
  * Set the delay of each task in this library. Prevents the Cortex from heating up too much.
 */
 void SetAverageDelay(ubyte delayTime);

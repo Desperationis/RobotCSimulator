@@ -102,7 +102,7 @@ void RobotAvatar::UpdateEncoders(float delta) {
 	float rightEncoderSpeed = ((float)rightMotorValue / 127.0f) * 360.0f;
 
 	leftEncoderValue += leftEncoderSpeed * delta * turnTime;
-	rightEncoderValue += rightEncoderSpeed * delta * turnTime;
+	rightEncoderValue -= rightEncoderSpeed * delta * turnTime;
 
 	position.x += velocity.x;
 	position.y += velocity.y;

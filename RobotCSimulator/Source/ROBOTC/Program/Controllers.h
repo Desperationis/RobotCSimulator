@@ -34,11 +34,4 @@ task CustomTankControl();
 */
 task GamerControl();
 
-
-/*
- * Calculate the motor speed of a motor given its encoder and information.
-*/
-short PIDCalculate(short encoderValue, short target, PIDInfo* info );                // Calculate motor speed using PID
-void PID(short target, short leftReverse, short rightReverse);
-
 #endif
