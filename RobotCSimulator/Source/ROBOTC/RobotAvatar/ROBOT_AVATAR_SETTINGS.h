@@ -16,7 +16,7 @@ namespace ROBOT_AVATAR_SETTINGS {
 	static float initialAngle = 0;								// Initial angle of robot avatar.
 
 	// Physics
-	static float speed = 600;									// Pixels traveled in a given second.
-	static float encoderTurnTime = 1.0f;						// Number of seconds required for 1 wheel turn.
-	static int staticFriction = 40;								// Motor value required to overcome static friction.
+	static float speed = 300;									// Pixels traveled in a given second.
+	static float encoderTurnTime = 1.0f;						// Number of seconds required for 1 wheel turn at full speed
+	static int staticFriction = 20;								// Motor value required to overcome static friction.
 }

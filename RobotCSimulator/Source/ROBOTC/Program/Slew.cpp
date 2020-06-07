@@ -63,4 +63,6 @@ void AllowSlew(tMotor port, bool active) {
 bool CanSlew(tMotor port) {
 	return slewWhitelist[port];
 }
+
+
 #endif
