@@ -18,8 +18,17 @@ void SetUp() {
 	config("rightMotor", rightMotor, port5, true);
 }
 
+// start
+// Notes:
+// You can download files from cortex using Robot > Advanced Tools > File Management
+// You can download view joystick values using Robot > Advanced Tools > Joystick Viewer
+// You can check battery level by using nImmediateBatterLevel; Found in Battery > Variables
+// You can use controller accelerameter values.
+
 // Running tasks PID() and Slew() will give you 8 concurrent tassks left.
+
 void GoForward(int amount);
+
 task programMain() {
 	InitCustomLibrary();
 

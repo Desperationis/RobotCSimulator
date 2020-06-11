@@ -48,8 +48,6 @@ task PID() {
 		if(canPID) {
 			SetMotorSlew( GetLeftMotor(), PIDCalculate(SensorValue[GetLeftEncoder()], target[0], &leftPID));
 			SetMotorSlew( GetRightMotor(), PIDCalculate(-SensorValue[GetRightEncoder()], target[1], &rightPID));
-
-			std::cout<<leftPID.integral<<std::endl;
 		}
 
 		delay(GetDelay());
@@ -68,6 +66,11 @@ short PIDCalculate(short encoderValue, short target, PIDInfo* info ) {
 
 	if(abs(info->proportion) < 5) {
 		info->integral = 0;
+	}
+
+	if(abs(info->proportion) > 12000) {
+		// Needs to be tuned
+		//info->integral = 0;
 	}
 
 	return Clamp((info->proportion * info->kP) + (info->integral * info->kI) + (info->derivative * info->kD));
