@@ -1,6 +1,7 @@
 #include "Globals.h"
 #include "../ROBOTCtoC++/RobotC.h"
 #include <iostream>
+#include <cmath>
 
 #ifndef PID_HEADER
 #define PID_HEADER

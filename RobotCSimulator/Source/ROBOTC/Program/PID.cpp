@@ -4,6 +4,7 @@
 #include "Slew.h"
 #include "../ROBOTCtoC++/RobotC.h"
 #include <iostream>
+#include <cmath>
 
 #ifndef PID_SOURCE
 #define PID_SOURCE

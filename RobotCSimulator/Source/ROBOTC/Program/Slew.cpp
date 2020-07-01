@@ -3,6 +3,7 @@
 #include "Globals.h"
 #include "../ROBOTCtoC++/RobotC.h"
 #include <iostream>
+#include <cmath>
 
 #ifndef SLEW_SOURCE
 #define SLEW_SOURCE

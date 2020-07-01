@@ -1,6 +1,7 @@
 #include "Globals.h"
 #include "../ROBOTCtoC++/RobotC.h"
 #include <iostream>
+#include <cmath>
 
 #ifndef GLOBALS_SOURCE
 #define GLOBALS_SOURCE

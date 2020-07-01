@@ -6,6 +6,7 @@
 #include "Setup.h"
 #include "../ROBOTCtoC++/RobotC.h"
 #include <iostream>
+#include <cmath>
 
 SensorPort leftEncoder;
 SensorPort rightEncoder;

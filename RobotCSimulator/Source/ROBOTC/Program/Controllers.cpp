@@ -4,6 +4,7 @@
 #include "Slew.h"
 #include "../ROBOTCtoC++/RobotC.h"
 #include <iostream>
+#include <cmath>
 
 #ifndef CONTROLLERS_SOURCE
 #define CONTROLLERS_SOURCE

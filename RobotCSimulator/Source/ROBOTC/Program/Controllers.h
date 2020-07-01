@@ -1,6 +1,7 @@
 #include "Globals.h"
 #include "../ROBOTCtoC++/RobotC.h"
 #include <iostream>
+#include <cmath>
 
 #ifndef CONTROLLERS_HEADER
 #define CONTROLLERS_HEADER
