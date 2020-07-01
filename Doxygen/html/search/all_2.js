@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['exampleappconsole_7',['ExampleAppConsole',['../struct_example_app_console.html',1,'']]],
-  ['exampleappdocuments_8',['ExampleAppDocuments',['../struct_example_app_documents.html',1,'']]],
-  ['exampleapplog_9',['ExampleAppLog',['../struct_example_app_log.html',1,'']]]
+  ['deltaclock_5',['DeltaClock',['../class_delta_clock.html',1,'']]],
+  ['deltaclock_2eh_6',['DeltaClock.h',['../_delta_clock_8h.html',1,'']]],
+  ['draw_7',['draw',['../class_classic_sprite.html#af03f65f205095d23129d4c02feee2f00',1,'ClassicSprite']]]
 ];

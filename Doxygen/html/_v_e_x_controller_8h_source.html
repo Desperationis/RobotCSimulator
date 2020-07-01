@@ -69,58 +69,54 @@ $(function() {
 <div class="title">VEXController.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;RobotC.h&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * VEXController.h</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * Uses a PS4 Controller as a VEX Controller.</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_v_e_x_controller.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_v_e_x_controller.html">VEXController</a> {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> AxisNormalize(<span class="keywordtype">int</span> value) {</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        <span class="comment">// Normalizes Axis value to VEX motor value.</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keywordflow">return</span> (value / 100.0f) * 127;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    }</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> Update() {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">if</span> (sf::Joystick::isConnected(0)) {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            <span class="comment">// Right Joystick X</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            vexRT[Ch1] = AxisNormalize(sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::Z));</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="comment">// Right Joystick Y</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            vexRT[Ch2] = AxisNormalize(sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::R));</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="comment">// Left Joystick X</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            vexRT[Ch4] = -AxisNormalize(sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::X));</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="comment">// Left Joystick Y</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            vexRT[Ch3] = AxisNormalize(sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::Y));</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="comment">// Triggers</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            vexRT[Btn5D] = sf::Joystick::isButtonPressed(0, 6);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;            vexRT[Btn6D] = sf::Joystick::isButtonPressed(0, 7);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <span class="comment">// Bumpers</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            vexRT[Btn5U] = sf::Joystick::isButtonPressed(0, 4);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            vexRT[Btn6U] = sf::Joystick::isButtonPressed(0, 5);</div>
+<a href="_v_e_x_controller_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************/</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;RobotC.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_v_e_x_controller.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_v_e_x_controller.html">VEXController</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_v_e_x_controller.html#a9eb9925cd1d9182d82852077e26cb46c">   24</a></span>&#160;    <span class="keyword">static</span> <span class="keywordtype">int</span> <a class="code" href="class_v_e_x_controller.html#a9eb9925cd1d9182d82852077e26cb46c">AxisNormalize</a>(<span class="keywordtype">int</span> value) {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">return</span> (value / 100.0f) * 127;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="class_v_e_x_controller.html#a035df1981daeff3ad3e4035a7fbacf6d">   31</a></span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_v_e_x_controller.html#a035df1981daeff3ad3e4035a7fbacf6d">Update</a>() {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">if</span> (sf::Joystick::isConnected(0)) {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;            <span class="comment">// Right Joystick X</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            vexRT[Ch1] = <a class="code" href="class_v_e_x_controller.html#a9eb9925cd1d9182d82852077e26cb46c">AxisNormalize</a>(sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::Z));</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <span class="comment">// Right Joystick Y</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            vexRT[Ch2] = <a class="code" href="class_v_e_x_controller.html#a9eb9925cd1d9182d82852077e26cb46c">AxisNormalize</a>(sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::R));</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="comment">// Buttons</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            vexRT[Btn8L] = sf::Joystick::isButtonPressed(0, 0);</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            vexRT[Btn8D] = sf::Joystick::isButtonPressed(0, 1);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            vexRT[Btn8R] = sf::Joystick::isButtonPressed(0, 2);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            vexRT[Btn8U] = sf::Joystick::isButtonPressed(0, 3);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            vexRT[Btn7U] = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::PovY) == 100;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            vexRT[Btn7D] = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::PovY) == -100;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            vexRT[Btn7L] = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::PovX) == -100;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            vexRT[Btn7R] = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::PovX) == 100;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    };</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;};</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            <span class="comment">// Left Joystick X</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;            vexRT[Ch4] = -<a class="code" href="class_v_e_x_controller.html#a9eb9925cd1d9182d82852077e26cb46c">AxisNormalize</a>(sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::X));</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="comment">// Left Joystick Y</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            vexRT[Ch3] = <a class="code" href="class_v_e_x_controller.html#a9eb9925cd1d9182d82852077e26cb46c">AxisNormalize</a>(sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::Y));</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="comment">// Triggers</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            vexRT[Btn5D] = sf::Joystick::isButtonPressed(0, 6);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            vexRT[Btn6D] = sf::Joystick::isButtonPressed(0, 7);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="comment">// Bumpers</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            vexRT[Btn5U] = sf::Joystick::isButtonPressed(0, 4);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            vexRT[Btn6U] = sf::Joystick::isButtonPressed(0, 5);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <span class="comment">// Buttons</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            vexRT[Btn8L] = sf::Joystick::isButtonPressed(0, 0);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            vexRT[Btn8D] = sf::Joystick::isButtonPressed(0, 1);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            vexRT[Btn8R] = sf::Joystick::isButtonPressed(0, 2);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            vexRT[Btn8U] = sf::Joystick::isButtonPressed(0, 3);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            vexRT[Btn7U] = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::PovY) == 100;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            vexRT[Btn7D] = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::PovY) == -100;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            vexRT[Btn7L] = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::PovX) == -100;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            vexRT[Btn7R] = sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::PovX) == 100;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    };</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclass_v_e_x_controller_html"><div class="ttname"><a href="class_v_e_x_controller.html">VEXController</a></div><div class="ttdef"><b>Definition:</b> VEXController.h:11</div></div>
+<div class="ttc" id="aclass_v_e_x_controller_html_a9eb9925cd1d9182d82852077e26cb46c"><div class="ttname"><a href="class_v_e_x_controller.html#a9eb9925cd1d9182d82852077e26cb46c">VEXController::AxisNormalize</a></div><div class="ttdeci">static int AxisNormalize(int value)</div><div class="ttdef"><b>Definition:</b> VEXController.h:24</div></div>
+<div class="ttc" id="aclass_v_e_x_controller_html"><div class="ttname"><a href="class_v_e_x_controller.html">VEXController</a></div><div class="ttdef"><b>Definition:</b> VEXController.h:16</div></div>
+<div class="ttc" id="aclass_v_e_x_controller_html_a035df1981daeff3ad3e4035a7fbacf6d"><div class="ttname"><a href="class_v_e_x_controller.html#a035df1981daeff3ad3e4035a7fbacf6d">VEXController::Update</a></div><div class="ttdeci">static void Update()</div><div class="ttdef"><b>Definition:</b> VEXController.h:31</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

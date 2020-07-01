@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['update_34',['Update',['../class_robot_avatar.html#aa8d71e06924be93695b604770153e810',1,'RobotAvatar::Update()'],['../class_im_gui_wrapper.html#ae99916be604eb0a43e20870a1bf4d89f',1,'ImGuiWrapper::Update()'],['../class_delta_clock.html#a20328fb4cd11ac991428f5dfe9441398',1,'DeltaClock::Update()']]]
+  ['sensorinfo_35',['SensorInfo',['../struct_sensor_info.html',1,'']]],
+  ['setsize_36',['SetSize',['../class_classic_sprite.html#a094ada7dfb24afa415b00efa03d09069',1,'ClassicSprite']]]
 ];

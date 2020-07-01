@@ -1,7 +1,4 @@
 var searchData=
 [
-  ['classicsprite_0',['ClassicSprite',['../class_classic_sprite.html',1,'ClassicSprite'],['../class_classic_sprite.html#a91eed42217e5cbea0602f21166c9f1c9',1,'ClassicSprite::ClassicSprite()']]],
-  ['classicsprite_2eh_1',['ClassicSprite.h',['../_classic_sprite_8h.html',1,'']]],
-  ['core_2',['Core',['../class_core.html',1,'']]],
-  ['core_2eh_3',['Core.h',['../_core_8h.html',1,'']]]
+  ['axisnormalize_0',['AxisNormalize',['../class_v_e_x_controller.html#a9eb9925cd1d9182d82852077e26cb46c',1,'VEXController']]]
 ];

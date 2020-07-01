@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['getclock_64',['GetClock',['../class_delta_clock.html#ab00bb6ed59a03964560ec19cddb13eae',1,'DeltaClock']]],
-  ['getdelta_65',['GetDelta',['../class_delta_clock.html#ae62b1d58af70c4ac87ca9502db57eee4',1,'DeltaClock']]],
-  ['gettime_66',['GetTime',['../class_delta_clock.html#abedbab2439950fc1a2ee7c81c3748a2c',1,'DeltaClock']]]
+  ['draw_71',['draw',['../class_classic_sprite.html#af03f65f205095d23129d4c02feee2f00',1,'ClassicSprite']]]
 ];

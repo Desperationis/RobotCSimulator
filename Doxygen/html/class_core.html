@@ -73,22 +73,125 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a12172e980e4f64d0aa6e85a9470f9c75"><td class="memItemLeft" align="right" valign="top"><a id="a12172e980e4f64d0aa6e85a9470f9c75"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Core</b> (sf::VideoMode mode, const std::string windowTitle, const bool vsync=false, const unsigned int framerate=60)</td></tr>
-<tr class="separator:a12172e980e4f64d0aa6e85a9470f9c75"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34df01b462bfc8109e067c84b25e5519"><td class="memItemLeft" align="right" valign="top"><a id="a34df01b462bfc8109e067c84b25e5519"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>Render</b> ()</td></tr>
+<tr class="memitem:a7b47fef0a12a0e6a76528f3ebb9e457f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_core.html#a7b47fef0a12a0e6a76528f3ebb9e457f">Core</a> (sf::VideoMode windowMode, const std::string windowTitle, const bool windowVsync=false, const unsigned int windowFramerate=60)</td></tr>
+<tr class="separator:a7b47fef0a12a0e6a76528f3ebb9e457f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34df01b462bfc8109e067c84b25e5519"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_core.html#a34df01b462bfc8109e067c84b25e5519">Render</a> ()</td></tr>
 <tr class="separator:a34df01b462bfc8109e067c84b25e5519"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5adc5626e2f8e9ba608778f07c9868a1"><td class="memItemLeft" align="right" valign="top"><a id="a5adc5626e2f8e9ba608778f07c9868a1"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>PollEvents</b> ()</td></tr>
+<tr class="memitem:a5adc5626e2f8e9ba608778f07c9868a1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_core.html#a5adc5626e2f8e9ba608778f07c9868a1">PollEvents</a> ()</td></tr>
 <tr class="separator:a5adc5626e2f8e9ba608778f07c9868a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7faff4267ccbcf28755e1e07cb9ce51f"><td class="memItemLeft" align="right" valign="top"><a id="a7faff4267ccbcf28755e1e07cb9ce51f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>IsRunning</b> () const</td></tr>
+<tr class="memitem:a7faff4267ccbcf28755e1e07cb9ce51f"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_core.html#a7faff4267ccbcf28755e1e07cb9ce51f">IsRunning</a> () const</td></tr>
 <tr class="separator:a7faff4267ccbcf28755e1e07cb9ce51f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The core of the application's logic. Updates and renders the window and utilities. </p>
-</div><hr/>The documentation for this class was generated from the following files:<ul>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a7b47fef0a12a0e6a76528f3ebb9e457f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7b47fef0a12a0e6a76528f3ebb9e457f">&#9670;&nbsp;</a></span>Core()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Core::Core </td>
+          <td>(</td>
+          <td class="paramtype">sf::VideoMode&#160;</td>
+          <td class="paramname"><em>windowMode</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::string&#160;</td>
+          <td class="paramname"><em>windowTitle</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>windowVsync</em> = <code>false</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const unsigned int&#160;</td>
+          <td class="paramname"><em>windowFramerate</em> = <code>60</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Constructs the core.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">windowMode</td><td>The sf::VideoMode of the window. </td></tr>
+    <tr><td class="paramname">windowTitle</td><td>The name of the title of the window. </td></tr>
+    <tr><td class="paramname">windowVsync</td><td>Whether or not vsync should be enabled or disabled. </td></tr>
+    <tr><td class="paramname">windowFramerate</td><td>The target framerate of the window. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a7faff4267ccbcf28755e1e07cb9ce51f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7faff4267ccbcf28755e1e07cb9ce51f">&#9670;&nbsp;</a></span>IsRunning()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Core::IsRunning </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Whether or not the program is supposed to be running.</p>
+<dl class="section return"><dt>Returns</dt><dd>A bool telling if the program is supposed to be running. </dd></dl>
+
+</div>
+</div>
+<a id="a5adc5626e2f8e9ba608778f07c9868a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5adc5626e2f8e9ba608778f07c9868a1">&#9670;&nbsp;</a></span>PollEvents()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Core::PollEvents </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Poll window and input events. </p>
+
+</div>
+</div>
+<a id="a34df01b462bfc8109e067c84b25e5519"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34df01b462bfc8109e067c84b25e5519">&#9670;&nbsp;</a></span>Render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Core::Render </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Renders the window and all utilities / classes. </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>C:/Users/smart/Desktop/RobotCSimulator/RobotCSimulator/Source/<a class="el" href="_core_8h_source.html">Core.h</a></li>
 <li>C:/Users/smart/Desktop/RobotCSimulator/RobotCSimulator/Source/Core.cpp</li>
 </ul>

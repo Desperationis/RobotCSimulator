@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['draw_63',['draw',['../class_classic_sprite.html#af03f65f205095d23129d4c02feee2f00',1,'ClassicSprite']]]
+  ['classicsprite_69',['ClassicSprite',['../class_classic_sprite.html#a91eed42217e5cbea0602f21166c9f1c9',1,'ClassicSprite']]],
+  ['core_70',['Core',['../class_core.html#a7b47fef0a12a0e6a76528f3ebb9e457f',1,'Core']]]
 ];

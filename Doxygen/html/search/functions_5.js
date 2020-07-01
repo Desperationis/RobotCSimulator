@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['pollevents_69',['PollEvents',['../class_im_gui_wrapper.html#abfb6b153cfd53e218cff3eba5ba0d635',1,'ImGuiWrapper']]]
+  ['loadtexturefromfile_77',['LoadTextureFromFile',['../class_classic_sprite.html#a45ed4e0d12a6fa78d3156e0304c50c45',1,'ClassicSprite']]]
 ];

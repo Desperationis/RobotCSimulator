@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['loadtexturefromfile_68',['LoadTextureFromFile',['../class_classic_sprite.html#a45ed4e0d12a6fa78d3156e0304c50c45',1,'ClassicSprite']]]
+  ['imguiwrapper_75',['ImGuiWrapper',['../class_im_gui_wrapper.html#abb585d5e185c323740afe68a664b0e3b',1,'ImGuiWrapper']]],
+  ['isrunning_76',['IsRunning',['../class_core.html#a7faff4267ccbcf28755e1e07cb9ce51f',1,'Core']]]
 ];

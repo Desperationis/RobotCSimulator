@@ -7,22 +7,66 @@
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_core_a12172e980e4f64d0aa6e85a9470f9c75}\label{class_core_a12172e980e4f64d0aa6e85a9470f9c75}} 
-{\bfseries Core} (sf\+::\+Video\+Mode mode, const std\+::string window\+Title, const bool vsync=false, const unsigned int framerate=60)
+\mbox{\hyperlink{class_core_a7b47fef0a12a0e6a76528f3ebb9e457f}{Core}} (sf\+::\+Video\+Mode window\+Mode, const std\+::string window\+Title, const bool window\+Vsync=false, const unsigned int window\+Framerate=60)
 \item 
-\mbox{\Hypertarget{class_core_a34df01b462bfc8109e067c84b25e5519}\label{class_core_a34df01b462bfc8109e067c84b25e5519}} 
-void {\bfseries Render} ()
+void \mbox{\hyperlink{class_core_a34df01b462bfc8109e067c84b25e5519}{Render}} ()
 \item 
-\mbox{\Hypertarget{class_core_a5adc5626e2f8e9ba608778f07c9868a1}\label{class_core_a5adc5626e2f8e9ba608778f07c9868a1}} 
-void {\bfseries Poll\+Events} ()
+void \mbox{\hyperlink{class_core_a5adc5626e2f8e9ba608778f07c9868a1}{Poll\+Events}} ()
 \item 
-\mbox{\Hypertarget{class_core_a7faff4267ccbcf28755e1e07cb9ce51f}\label{class_core_a7faff4267ccbcf28755e1e07cb9ce51f}} 
-bool {\bfseries Is\+Running} () const
+bool \mbox{\hyperlink{class_core_a7faff4267ccbcf28755e1e07cb9ce51f}{Is\+Running}} () const
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 The core of the application\textquotesingle{}s logic. Updates and renders the window and utilities. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_core_a7b47fef0a12a0e6a76528f3ebb9e457f}\label{class_core_a7b47fef0a12a0e6a76528f3ebb9e457f}} 
+\index{Core@{Core}!Core@{Core}}
+\index{Core@{Core}!Core@{Core}}
+\doxysubsubsection{\texorpdfstring{Core()}{Core()}}
+{\footnotesize\ttfamily Core\+::\+Core (\begin{DoxyParamCaption}\item[{sf\+::\+Video\+Mode}]{window\+Mode,  }\item[{const std\+::string}]{window\+Title,  }\item[{const bool}]{window\+Vsync = {\ttfamily false},  }\item[{const unsigned int}]{window\+Framerate = {\ttfamily 60} }\end{DoxyParamCaption})}
+
+Constructs the core.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window\+Mode} & The sf\+::\+Video\+Mode of the window. \\
+\hline
+{\em window\+Title} & The name of the title of the window. \\
+\hline
+{\em window\+Vsync} & Whether or not vsync should be enabled or disabled. \\
+\hline
+{\em window\+Framerate} & The target framerate of the window. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_core_a7faff4267ccbcf28755e1e07cb9ce51f}\label{class_core_a7faff4267ccbcf28755e1e07cb9ce51f}} 
+\index{Core@{Core}!IsRunning@{IsRunning}}
+\index{IsRunning@{IsRunning}!Core@{Core}}
+\doxysubsubsection{\texorpdfstring{IsRunning()}{IsRunning()}}
+{\footnotesize\ttfamily bool Core\+::\+Is\+Running (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Whether or not the program is supposed to be running.
+
+\begin{DoxyReturn}{Returns}
+A bool telling if the program is supposed to be running. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_core_a5adc5626e2f8e9ba608778f07c9868a1}\label{class_core_a5adc5626e2f8e9ba608778f07c9868a1}} 
+\index{Core@{Core}!PollEvents@{PollEvents}}
+\index{PollEvents@{PollEvents}!Core@{Core}}
+\doxysubsubsection{\texorpdfstring{PollEvents()}{PollEvents()}}
+{\footnotesize\ttfamily void Core\+::\+Poll\+Events (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Poll window and input events. \mbox{\Hypertarget{class_core_a34df01b462bfc8109e067c84b25e5519}\label{class_core_a34df01b462bfc8109e067c84b25e5519}} 
+\index{Core@{Core}!Render@{Render}}
+\index{Render@{Render}!Core@{Core}}
+\doxysubsubsection{\texorpdfstring{Render()}{Render()}}
+{\footnotesize\ttfamily void Core\+::\+Render (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Renders the window and all utilities / classes. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
