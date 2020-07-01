@@ -54,9 +54,7 @@ task programMain() {
 	SetSlewStep(30);
 
 	// PID Settings
-	AllowPID(true);
-	SetK(1.1, 0.5, 0.0);
-	GoForward(300);
+	startTask(GamerControl);
 
 	while(true) {
 		// Keep program alive.

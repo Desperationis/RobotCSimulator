@@ -1,0 +1,102 @@
+\hypertarget{class_classic_sprite}{}\doxysection{Classic\+Sprite Class Reference}
+\label{class_classic_sprite}\index{ClassicSprite@{ClassicSprite}}
+
+
+{\ttfamily \#include $<$Classic\+Sprite.\+h$>$}
+
+Inheritance diagram for Classic\+Sprite\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_classic_sprite}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_classic_sprite_a91eed42217e5cbea0602f21166c9f1c9}{Classic\+Sprite}} ()=default
+\item 
+bool \mbox{\hyperlink{class_classic_sprite_a45ed4e0d12a6fa78d3156e0304c50c45}{Load\+Texture\+From\+File}} (std\+::string file\+Name)
+\item 
+void \mbox{\hyperlink{class_classic_sprite_a094ada7dfb24afa415b00efa03d09069}{Set\+Size}} (sf\+::\+Vector2f size)
+\item 
+virtual void \mbox{\hyperlink{class_classic_sprite_af03f65f205095d23129d4c02feee2f00}{draw}} (sf\+::\+Render\+Target \&target, sf\+::\+Render\+States states) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Rectangle\+Shape \mbox{\hyperlink{class_classic_sprite_a8014e53f30252dfb4ee6534e3871175f}{rect}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A sf\+::\+Drawable with properties needed for a sprite. Differs from sf\+::\+Sprite by providing a sizeable, textured, sf\+::\+Rectangle\+Shape. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_classic_sprite_a91eed42217e5cbea0602f21166c9f1c9}\label{class_classic_sprite_a91eed42217e5cbea0602f21166c9f1c9}} 
+\index{ClassicSprite@{ClassicSprite}!ClassicSprite@{ClassicSprite}}
+\index{ClassicSprite@{ClassicSprite}!ClassicSprite@{ClassicSprite}}
+\doxysubsubsection{\texorpdfstring{ClassicSprite()}{ClassicSprite()}}
+{\footnotesize\ttfamily Classic\+Sprite\+::\+Classic\+Sprite (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+Construct the sprite. No parameters necessary. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_classic_sprite_af03f65f205095d23129d4c02feee2f00}\label{class_classic_sprite_af03f65f205095d23129d4c02feee2f00}} 
+\index{ClassicSprite@{ClassicSprite}!draw@{draw}}
+\index{draw@{draw}!ClassicSprite@{ClassicSprite}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily void Classic\+Sprite\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Target \&}]{target,  }\item[{sf\+::\+Render\+States}]{states }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [virtual]}}
+
+Internal sf\+::\+Drawable \mbox{\hyperlink{class_classic_sprite_af03f65f205095d23129d4c02feee2f00}{draw()}} function.
+
+
+\begin{DoxyParams}{Parameters}
+{\em target} & \\
+\hline
+{\em states} & \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_classic_sprite_a45ed4e0d12a6fa78d3156e0304c50c45}\label{class_classic_sprite_a45ed4e0d12a6fa78d3156e0304c50c45}} 
+\index{ClassicSprite@{ClassicSprite}!LoadTextureFromFile@{LoadTextureFromFile}}
+\index{LoadTextureFromFile@{LoadTextureFromFile}!ClassicSprite@{ClassicSprite}}
+\doxysubsubsection{\texorpdfstring{LoadTextureFromFile()}{LoadTextureFromFile()}}
+{\footnotesize\ttfamily bool Classic\+Sprite\+::\+Load\+Texture\+From\+File (\begin{DoxyParamCaption}\item[{std\+::string}]{file\+Name }\end{DoxyParamCaption})}
+
+Loads a texture from a file in the root directory.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+Name} & A string representing the name of the file. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A bool stating whether or not the texture successfully loaded. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_classic_sprite_a094ada7dfb24afa415b00efa03d09069}\label{class_classic_sprite_a094ada7dfb24afa415b00efa03d09069}} 
+\index{ClassicSprite@{ClassicSprite}!SetSize@{SetSize}}
+\index{SetSize@{SetSize}!ClassicSprite@{ClassicSprite}}
+\doxysubsubsection{\texorpdfstring{SetSize()}{SetSize()}}
+{\footnotesize\ttfamily void Classic\+Sprite\+::\+Set\+Size (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{size }\end{DoxyParamCaption})}
+
+Sets the size, in pixels, of the sprite\textquotesingle{}s texture.
+
+
+\begin{DoxyParams}{Parameters}
+{\em size} & A sf\+::\+Vector2f representing the dimensions of the texture. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_classic_sprite_a8014e53f30252dfb4ee6534e3871175f}\label{class_classic_sprite_a8014e53f30252dfb4ee6534e3871175f}} 
+\index{ClassicSprite@{ClassicSprite}!rect@{rect}}
+\index{rect@{rect}!ClassicSprite@{ClassicSprite}}
+\doxysubsubsection{\texorpdfstring{rect}{rect}}
+{\footnotesize\ttfamily sf\+::\+Rectangle\+Shape Classic\+Sprite\+::rect\hspace{0.3cm}{\ttfamily [protected]}}
+
+sf\+::\+Rectangle\+Shape representing the sprite\textquotesingle{}s texture. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/smart/\+Desktop/\+Robot\+C\+Simulator/\+Robot\+C\+Simulator/\+Source/\+Util/\mbox{\hyperlink{_classic_sprite_8h}{Classic\+Sprite.\+h}}\item 
+C\+:/\+Users/smart/\+Desktop/\+Robot\+C\+Simulator/\+Robot\+C\+Simulator/\+Source/\+Util/Classic\+Sprite.\+cpp\end{DoxyCompactItemize}

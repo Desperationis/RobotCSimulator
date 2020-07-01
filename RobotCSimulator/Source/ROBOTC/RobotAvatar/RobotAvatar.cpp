@@ -11,7 +11,7 @@ T amax(T a, T b) {
 }
 
 float RobotAvatar::GetRadians(float degrees) {
-	return angle * (M_PI / 180.0f);
+	return getRotation() * (M_PI / 180.0f);
 }
 
 RobotAvatar::RobotAvatar() : leftMotorValue(motor.at(GetLeftMotor())), 
@@ -23,16 +23,15 @@ RobotAvatar::RobotAvatar() : leftMotorValue(motor.at(GetLeftMotor())),
 	auto& size = ROBOT_AVATAR_SETTINGS::size;
 
 	// Load texture.
-	texture.loadFromFile(textureFileName);
-	rect.setTexture(&texture);
-	rect.setSize(size);
+	LoadTextureFromFile(textureFileName);
+	SetSize(size);
 
 	auto& initialPosition = ROBOT_AVATAR_SETTINGS::initialPosition;
 	auto& initialAngle = ROBOT_AVATAR_SETTINGS::initialAngle;
 
 	// Position variables.
-	position = initialPosition;
-	angle = initialAngle;
+	setPosition(initialPosition);
+	setRotation(initialAngle);
 
 	auto& speed = ROBOT_AVATAR_SETTINGS::speed;
 
@@ -44,14 +43,7 @@ RobotAvatar::RobotAvatar() : leftMotorValue(motor.at(GetLeftMotor())),
 	sf::Vector2f newOrigin;
 	newOrigin.x = rect.getLocalBounds().width / 2;
 	newOrigin.y = rect.getLocalBounds().height / 2;
-	rect.setOrigin(newOrigin);
-}
-
-void RobotAvatar::draw(sf::RenderTarget& target, sf::RenderStates states) const {
-	states.transform.translate(position);
-	states.transform.rotate(angle);
-
-	target.draw(rect, states);
+	setOrigin(newOrigin);
 }
 
 void RobotAvatar::Update() {
@@ -77,21 +69,20 @@ void RobotAvatar::UpdateFriction() {
 void RobotAvatar::UpdateTurning(float delta) {
 	// Turn based on motor's values.
 	float angularSpeed = ((leftMotorValue - rightMotorValue) / 254.0f) * calculatedTurnSpeed;
-	angle += angularSpeed * delta;
+	rotate(angularSpeed * delta);
 }
 
 void RobotAvatar::UpdateVelocity(float delta) {
 	auto& speed = ROBOT_AVATAR_SETTINGS::speed;
 
 	// Set velocity based on motor values
-	float radianAngle = GetRadians(angle);
+	float radianAngle = GetRadians(getRotation());
 	float combinedSpeed = ((leftMotorValue + rightMotorValue) / 254.0f) * speed;
 
 	velocity.x = cos(radianAngle) * combinedSpeed * delta;
 	velocity.y = sin(radianAngle) * combinedSpeed * delta;
 
-	position.x += velocity.x;
-	position.y += velocity.y;
+	move(velocity);
 }
 
 void RobotAvatar::UpdateEncoders(float delta) {
@@ -104,8 +95,7 @@ void RobotAvatar::UpdateEncoders(float delta) {
 	leftEncoderValue += leftEncoderSpeed * delta * turnTime;
 	rightEncoderValue -= rightEncoderSpeed * delta * turnTime;
 
-	position.x += velocity.x;
-	position.y += velocity.y;
+	move(velocity);
 }
 
 void RobotAvatar::UpdateLoop() {
@@ -120,6 +110,8 @@ void RobotAvatar::UpdateLoop() {
 	float minX = 0 - width;
 	float minY = 0 - height;
 
+	auto position = getPosition();
+
 	if (position.x > maxX) {
 		position.x = minX;
 	}
@@ -133,4 +125,6 @@ void RobotAvatar::UpdateLoop() {
 	else if (position.y < minY) {
 		position.y = maxY;
 	}
+
+	setPosition(position);
 }
