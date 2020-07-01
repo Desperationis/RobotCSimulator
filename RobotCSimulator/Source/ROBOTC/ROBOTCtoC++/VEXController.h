@@ -1,20 +1,33 @@
+/*****************************************************************//**
+ * \file   VEXController.h
+ * \brief  Converts PS4 controller inputs into VEXNET ones.
+ * 
+ * \author smart
+ * \date   June 2020
+ *********************************************************************/
+
 #pragma once
 #include "RobotC.h"
 #include <SFML/Graphics.hpp>
 
-/*
- * VEXController.h
- *
+/**
  * Uses a PS4 Controller as a VEX Controller.
-*/
-
+ */
 class VEXController {
 public:
+	/**
+	 * Normalizes PS4 axis value to VEX motor value.
+	 * 
+	 * \param The integer given by the PS4 axis value.
+	 * \return The normalized axis value.
+	 */
 	static int AxisNormalize(int value) {
-		// Normalizes Axis value to VEX motor value.
 		return (value / 100.0f) * 127;
 	}
 
+	/**
+	 * Updates PS4 inputs into a global array (vexRT).
+	 */
 	static void Update() {
 		if (sf::Joystick::isConnected(0)) {
 			// Right Joystick X

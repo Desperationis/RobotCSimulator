@@ -1,43 +1,49 @@
+/*****************************************************************//**
+ * \file   ImGuiWrapper.h
+ * \brief  A wrapper for ImGUI.
+ *********************************************************************/
+
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <SFML/System/Clock.hpp>
-#include <sstream>
+#include <Time/DeltaClock.h>
 #include "imgui-SFML.h"
 #include "imgui.h"
 
-/*
-	A wrapper for ImGUI with additional functionality.
-*/
-
+/**
+ * A static wrapper for ImGUI's eccentric workflow and function names.
+ */
 class ImGuiWrapper {
 public:
+	/**
+	 * Initializes the wrapper. Should be called only once.
+	 * 
+	 * \param window The sf::RenderWindow this wrapper will draw to.
+	 */
 	ImGuiWrapper(std::shared_ptr<sf::RenderWindow> window);
 
 	/**
-	*  \brief Polls ImGui.
-	*  \param event The event to be polled.
-	*/
+	 * Polls ImGui events.
+	 * 
+	 * \param The sf::Event holding the information.
+	 */
 	static void PollEvents(sf::Event& event);
 
 	/**
-	*  \brief Updates ImGui. Important: Should only be called once per frame.
-	*/
+	 * \brief Updates ImGui. Should only be called once per frame.
+	 */
 	static void Update();
 
 	/**
-	*  \brief Renders ImGui. Important: Should only be called once per frame.
-	*/
+	 * Renders ImGui. Should only be called once per frame.
+	 */
 	static void Render();
 
-	/**
-	*  \brief Converts an integer to a string
-	*  \return int The integer to be stringified.
-	*/
-	static std::string IntToStr(int integer);
 
 private:
-	static sf::Clock deltaTime;
-	static sf::Clock fpsTime;
-	static unsigned int countedFrames;
+	/**
+	 * A shared pointer of the current window, passed in at
+	 * construction.
+	 */
 	static std::shared_ptr<sf::RenderWindow> window;
 };

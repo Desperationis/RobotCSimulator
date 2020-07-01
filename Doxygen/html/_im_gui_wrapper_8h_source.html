@@ -69,41 +69,35 @@ $(function() {
 <div class="title">ImGuiWrapper.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;SFML/System/Clock.hpp&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;sstream&gt;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;imgui-SFML.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;imgui.h&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment">    A wrapper for ImGUI with additional functionality.</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_im_gui_wrapper.html">   12</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_im_gui_wrapper.html">ImGuiWrapper</a> {</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <a class="code" href="class_im_gui_wrapper.html">ImGuiWrapper</a>(std::shared_ptr&lt;sf::RenderWindow&gt; window);</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_im_gui_wrapper.html#abfb6b153cfd53e218cff3eba5ba0d635">PollEvents</a>(sf::Event&amp; event);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_im_gui_wrapper.html#ae99916be604eb0a43e20870a1bf4d89f">Update</a>();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_im_gui_wrapper.html#aa11e15859d5d895fb3de16e81bb384ed">Render</a>();</div>
+<a href="_im_gui_wrapper_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/*****************************************************************/</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;SFML/Graphics.hpp&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;SFML/System/Clock.hpp&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;<a class="code" href="_delta_clock_8h.html">Time/DeltaClock.h</a>&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;imgui-SFML.h&quot;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &quot;imgui.h&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_im_gui_wrapper.html">   16</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_im_gui_wrapper.html">ImGuiWrapper</a> {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <a class="code" href="class_im_gui_wrapper.html#abb585d5e185c323740afe68a664b0e3b">ImGuiWrapper</a>(std::shared_ptr&lt;sf::RenderWindow&gt; window);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_im_gui_wrapper.html#abfb6b153cfd53e218cff3eba5ba0d635">PollEvents</a>(sf::Event&amp; event);</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">static</span> std::string <a class="code" href="class_im_gui_wrapper.html#a7f2bed52b10aa6ca0b282494736065e7">IntToStr</a>(<span class="keywordtype">int</span> integer);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keyword">static</span> sf::Clock deltaTime;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">static</span> sf::Clock fpsTime;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> countedFrames;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">static</span> std::shared_ptr&lt;sf::RenderWindow&gt; window;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;};</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_im_gui_wrapper.html#ae99916be604eb0a43e20870a1bf4d89f">Update</a>();</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_im_gui_wrapper.html#aa11e15859d5d895fb3de16e81bb384ed">Render</a>();</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">static</span> std::shared_ptr&lt;sf::RenderWindow&gt; window;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclass_im_gui_wrapper_html_ae99916be604eb0a43e20870a1bf4d89f"><div class="ttname"><a href="class_im_gui_wrapper.html#ae99916be604eb0a43e20870a1bf4d89f">ImGuiWrapper::Update</a></div><div class="ttdeci">static void Update()</div><div class="ttdoc">Updates ImGui. Important: Should only be called once per frame.</div><div class="ttdef"><b>Definition:</b> ImGuiWrapper.cpp:18</div></div>
-<div class="ttc" id="aclass_im_gui_wrapper_html"><div class="ttname"><a href="class_im_gui_wrapper.html">ImGuiWrapper</a></div><div class="ttdef"><b>Definition:</b> ImGuiWrapper.h:12</div></div>
-<div class="ttc" id="aclass_im_gui_wrapper_html_a7f2bed52b10aa6ca0b282494736065e7"><div class="ttname"><a href="class_im_gui_wrapper.html#a7f2bed52b10aa6ca0b282494736065e7">ImGuiWrapper::IntToStr</a></div><div class="ttdeci">static std::string IntToStr(int integer)</div><div class="ttdoc">Converts an integer to a string.</div><div class="ttdef"><b>Definition:</b> ImGuiWrapper.cpp:33</div></div>
-<div class="ttc" id="aclass_im_gui_wrapper_html_abfb6b153cfd53e218cff3eba5ba0d635"><div class="ttname"><a href="class_im_gui_wrapper.html#abfb6b153cfd53e218cff3eba5ba0d635">ImGuiWrapper::PollEvents</a></div><div class="ttdeci">static void PollEvents(sf::Event &amp;event)</div><div class="ttdoc">Polls ImGui.</div><div class="ttdef"><b>Definition:</b> ImGuiWrapper.cpp:14</div></div>
-<div class="ttc" id="aclass_im_gui_wrapper_html_aa11e15859d5d895fb3de16e81bb384ed"><div class="ttname"><a href="class_im_gui_wrapper.html#aa11e15859d5d895fb3de16e81bb384ed">ImGuiWrapper::Render</a></div><div class="ttdeci">static void Render()</div><div class="ttdoc">Renders ImGui. Important: Should only be called once per frame.</div><div class="ttdef"><b>Definition:</b> ImGuiWrapper.cpp:29</div></div>
+<div class="ttc" id="aclass_im_gui_wrapper_html_ae99916be604eb0a43e20870a1bf4d89f"><div class="ttname"><a href="class_im_gui_wrapper.html#ae99916be604eb0a43e20870a1bf4d89f">ImGuiWrapper::Update</a></div><div class="ttdeci">static void Update()</div><div class="ttdoc">Updates ImGui. Should only be called once per frame.</div><div class="ttdef"><b>Definition:</b> ImGuiWrapper.cpp:15</div></div>
+<div class="ttc" id="aclass_im_gui_wrapper_html"><div class="ttname"><a href="class_im_gui_wrapper.html">ImGuiWrapper</a></div><div class="ttdef"><b>Definition:</b> ImGuiWrapper.h:16</div></div>
+<div class="ttc" id="a_delta_clock_8h_html"><div class="ttname"><a href="_delta_clock_8h.html">DeltaClock.h</a></div><div class="ttdoc">A clock used for delta timing.</div></div>
+<div class="ttc" id="aclass_im_gui_wrapper_html_abb585d5e185c323740afe68a664b0e3b"><div class="ttname"><a href="class_im_gui_wrapper.html#abb585d5e185c323740afe68a664b0e3b">ImGuiWrapper::ImGuiWrapper</a></div><div class="ttdeci">ImGuiWrapper(std::shared_ptr&lt; sf::RenderWindow &gt; window)</div><div class="ttdef"><b>Definition:</b> ImGuiWrapper.cpp:6</div></div>
+<div class="ttc" id="aclass_im_gui_wrapper_html_abfb6b153cfd53e218cff3eba5ba0d635"><div class="ttname"><a href="class_im_gui_wrapper.html#abfb6b153cfd53e218cff3eba5ba0d635">ImGuiWrapper::PollEvents</a></div><div class="ttdeci">static void PollEvents(sf::Event &amp;event)</div><div class="ttdef"><b>Definition:</b> ImGuiWrapper.cpp:11</div></div>
+<div class="ttc" id="aclass_im_gui_wrapper_html_aa11e15859d5d895fb3de16e81bb384ed"><div class="ttname"><a href="class_im_gui_wrapper.html#aa11e15859d5d895fb3de16e81bb384ed">ImGuiWrapper::Render</a></div><div class="ttdeci">static void Render()</div><div class="ttdef"><b>Definition:</b> ImGuiWrapper.cpp:19</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

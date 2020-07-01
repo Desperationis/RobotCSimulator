@@ -1,9 +1,6 @@
 #include "ImGuiWrapper.h"
 
 std::shared_ptr<sf::RenderWindow> ImGuiWrapper::window;
-sf::Clock ImGuiWrapper::deltaTime;
-sf::Clock ImGuiWrapper::fpsTime;
-unsigned int ImGuiWrapper::countedFrames;
 
 
 ImGuiWrapper::ImGuiWrapper(std::shared_ptr<sf::RenderWindow> window) {
@@ -16,21 +13,9 @@ void ImGuiWrapper::PollEvents(sf::Event& event) {
 };
 
 void ImGuiWrapper::Update() {
-	// reset average FPS timer every 3 seconds to give precise results
-	countedFrames++;
-	if (fpsTime.getElapsedTime().asMilliseconds() > 3000) {
-		countedFrames = 0;
-		fpsTime.restart();
-	}
-
-	ImGui::SFML::Update(*window, deltaTime.restart());
+	ImGui::SFML::Update(*window, DeltaClock::GetTime());
 };
 
 void ImGuiWrapper::Render() {
 	ImGui::SFML::Render(*window);
 };
-
-std::string ImGuiWrapper::IntToStr(int integer) {
-	std::stringstream buf; buf << integer;
-	return buf.str();
-}

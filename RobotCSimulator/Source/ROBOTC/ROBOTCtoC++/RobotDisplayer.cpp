@@ -38,7 +38,7 @@ void RobotDisplayer::DisplayMotorValues() {
 				direction = "(Still) ";
 			}
 
-			toText("Port " + toStr(i) + " " + direction + motorInfo[i]->name + ": ", motor[i] * isReversed((MotorPort)i));
+			toText("Port " + std::to_string(i) + " " + direction + motorInfo[i]->name + ": ", motor[i] * isReversed((MotorPort)i));
 		}
 	}
 

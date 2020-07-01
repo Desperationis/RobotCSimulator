@@ -9,8 +9,7 @@
 #include <ClassicSprite.h>
 #include "../ROBOTCtoC++/RobotC.h"
 #include "ROBOT_AVATAR_SETTINGS.h"
-
-#define M_PI 3.1415
+#include <HelperFunctions.h>
 
 
 /**
@@ -19,8 +18,6 @@
  */
 class RobotAvatar : public ClassicSprite {
 private:
-
-	// Movement
 
 	/**
 	 * Velocity of the robot, represented by a vector.
@@ -53,8 +50,6 @@ public:
 	void Update();
 
 private:
-	float GetRadians(float degree);
-
 	void UpdateVelocity(float delta);
 
 	void UpdateTurning(float delta);

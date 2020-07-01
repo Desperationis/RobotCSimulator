@@ -2,17 +2,6 @@
 #include "../Program/Globals.h"
 #include <iostream>
 
-template <typename T>
-T amax(T a, T b) {
-	if (abs(a) > abs(b)) {
-		return a;
-	}
-	return b;
-}
-
-float RobotAvatar::GetRadians(float degrees) {
-	return getRotation() * (M_PI / 180.0f);
-}
 
 RobotAvatar::RobotAvatar() : leftMotorValue(motor.at(GetLeftMotor())), 
 							 rightMotorValue(motor.at(GetRightMotor())),

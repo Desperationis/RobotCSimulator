@@ -21,50 +21,65 @@ void signal_handler(int signal)
 
 std::shared_ptr<RobotAvatar> robotAvatar;
 
-Core::Core(sf::VideoMode mode, const std::string windowTitle, const bool vsync, const unsigned int framerate) {
+Core::Core(sf::VideoMode windowMode, const std::string windowTitle, const bool windowVsync, const unsigned int windowFramerate) {
 	// Create window
-	sf::ContextSettings settings;
-	window = std::make_shared<sf::RenderWindow>(mode, windowTitle, sf::Style::Close);
-	window->setFramerateLimit(framerate);
-	window->setVerticalSyncEnabled(vsync);
 	srand(static_cast<unsigned int>(time(0)));
 
-	// Debug window information
-	this->framerate = framerate;
-	this->vsync = vsync;
-	this->windowTitle = windowTitle;
 	this->isFullscreen = false;
+
+	// Window information (Used for fullscreen)
+	windowInfo.mode = windowMode;
+	windowInfo.framerate = windowFramerate;
+	windowInfo.vsync = windowVsync;
+	windowInfo.title = windowTitle;
+	windowInfo.size = sf::Vector2u(windowMode.width, windowMode.height);
+
+	CreateWindowWithStyle(sf::Style::Close);
 
 	// Initialize utilities
 	ImGuiWrapper::ImGuiWrapper(window);
 	RobotDisplayer::RobotDisplayer();
 	robotAvatar = std::make_shared<RobotAvatar>();
 
-	// Setup handler (Aborts program forcefully)
+	// Signal handler for abort requests (i.e. closed the window)
+	// Needed to terminate threads without raising an error.
 	auto previous_handler = std::signal(SIGABRT, signal_handler);
 }
 
 void Core::Render() {
 	window->clear(sf::Color(0, 0, 0, 255));
 
-	// Update utilities
+	// Update / Render utilities
 	DeltaClock::Update();
 	ImGuiWrapper::Update();
 	VEXController::Update();
 	RobotDisplayer::Update();
 
+	// Update / Render classes
 	robotAvatar->Update();
 	window->draw(*robotAvatar);
 
+	// Render ImGui Elements
 	ImGui::ShowMetricsWindow();
 	ImGuiWrapper::Render();
-
 
 	window->display();
 }
 
 bool Core::IsRunning() const {
 	return window->isOpen();
+}
+
+void Core::CreateWindowWithStyle(sf::Uint32 style) {
+	// Check if a pointer to the window exists.
+	if(window) {
+		window->create(windowInfo.mode, windowInfo.title, style);
+	}
+	else {
+		window = std::make_shared<sf::RenderWindow>(windowInfo.mode, windowInfo.title, style);
+	}
+	window->setFramerateLimit(windowInfo.framerate);
+	window->setVerticalSyncEnabled(windowInfo.vsync);
 }
 
 
@@ -88,14 +103,13 @@ void Core::PollEvents() {
 			// Fullscreen
 			case sf::Keyboard::F11:
 				if (isFullscreen) {
-					window->create(sf::VideoMode(window->getSize().x, window->getSize().y), windowTitle, sf::Style::Close);
+					windowInfo.mode = sf::VideoMode(windowInfo.size.x, windowInfo.size.y);
+					CreateWindowWithStyle(sf::Style::Close);
 				}
 				else {
-					window->create(sf::VideoMode(window->getSize().x, window->getSize().y), windowTitle, sf::Style::Fullscreen);
+					windowInfo.mode = sf::VideoMode::getDesktopMode();
+					CreateWindowWithStyle(sf::Style::Fullscreen);
 				}
-
-				window->setFramerateLimit(framerate);
-				window->setVerticalSyncEnabled(vsync);
 
 				isFullscreen = !isFullscreen;
 				break;

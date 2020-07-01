@@ -68,18 +68,50 @@ $(function() {
 <div class="title">DeltaClock Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="_delta_clock_8h_source.html">DeltaClock.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a20328fb4cd11ac991428f5dfe9441398"><td class="memItemLeft" align="right" valign="top"><a id="a20328fb4cd11ac991428f5dfe9441398"></a>
-static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_delta_clock.html#a20328fb4cd11ac991428f5dfe9441398">Update</a> ()</td></tr>
-<tr class="memdesc:a20328fb4cd11ac991428f5dfe9441398"><td class="mdescLeft">&#160;</td><td class="mdescRight">Resets the clock's timer. <br /></td></tr>
+<tr class="memitem:a20328fb4cd11ac991428f5dfe9441398"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_delta_clock.html#a20328fb4cd11ac991428f5dfe9441398">Update</a> ()</td></tr>
 <tr class="separator:a20328fb4cd11ac991428f5dfe9441398"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae62b1d58af70c4ac87ca9502db57eee4"><td class="memItemLeft" align="right" valign="top">static float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_delta_clock.html#ae62b1d58af70c4ac87ca9502db57eee4">GetDelta</a> ()</td></tr>
-<tr class="memdesc:ae62b1d58af70c4ac87ca9502db57eee4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the delta time collected by the previous cycle.  <a href="class_delta_clock.html#ae62b1d58af70c4ac87ca9502db57eee4">More...</a><br /></td></tr>
 <tr class="separator:ae62b1d58af70c4ac87ca9502db57eee4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab00bb6ed59a03964560ec19cddb13eae"><td class="memItemLeft" align="right" valign="top">static sf::Clock&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_delta_clock.html#ab00bb6ed59a03964560ec19cddb13eae">GetClock</a> ()</td></tr>
+<tr class="separator:ab00bb6ed59a03964560ec19cddb13eae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abedbab2439950fc1a2ee7c81c3748a2c"><td class="memItemLeft" align="right" valign="top">static sf::Time&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_delta_clock.html#abedbab2439950fc1a2ee7c81c3748a2c">GetTime</a> ()</td></tr>
+<tr class="separator:abedbab2439950fc1a2ee7c81c3748a2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>A global clock that provides the delta time every frame. </p>
+</div><h2 class="groupheader">Member Function Documentation</h2>
+<a id="ab00bb6ed59a03964560ec19cddb13eae"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab00bb6ed59a03964560ec19cddb13eae">&#9670;&nbsp;</a></span>GetClock()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Clock DeltaClock::GetClock </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Get a copy of the current state of the clock.</p>
+<dl class="section return"><dt>Returns</dt><dd>The copy of the current clock as a sf::Clock. </dd></dl>
+
+</div>
+</div>
 <a id="ae62b1d58af70c4ac87ca9502db57eee4"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ae62b1d58af70c4ac87ca9502db57eee4">&#9670;&nbsp;</a></span>GetDelta()</h2>
 
@@ -102,9 +134,61 @@ static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hre
   </tr>
 </table>
 </div><div class="memdoc">
+<p>Get the delta of the current frame, as a float. This delta time is represented in seconds.</p>
+<dl class="section return"><dt>Returns</dt><dd>A float representing the delta time. </dd></dl>
 
-<p>Returns the delta time collected by the previous cycle. </p>
-<dl class="section return"><dt>Returns</dt><dd>float The delta time collected by the previous cycle. </dd></dl>
+</div>
+</div>
+<a id="abedbab2439950fc1a2ee7c81c3748a2c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abedbab2439950fc1a2ee7c81c3748a2c">&#9670;&nbsp;</a></span>GetTime()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Time DeltaClock::GetTime </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Don't want the delta time to be in seconds? Get the current delta clock as a sf::Time.</p>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a id="a20328fb4cd11ac991428f5dfe9441398"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20328fb4cd11ac991428f5dfe9441398">&#9670;&nbsp;</a></span>Update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DeltaClock::Update </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Updates the clock. </p>
 
 </div>
 </div>

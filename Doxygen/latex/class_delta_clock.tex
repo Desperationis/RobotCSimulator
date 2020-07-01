@@ -1,32 +1,68 @@
 \hypertarget{class_delta_clock}{}\doxysection{Delta\+Clock Class Reference}
 \label{class_delta_clock}\index{DeltaClock@{DeltaClock}}
+
+
+{\ttfamily \#include $<$Delta\+Clock.\+h$>$}
+
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_delta_clock_a20328fb4cd11ac991428f5dfe9441398}\label{class_delta_clock_a20328fb4cd11ac991428f5dfe9441398}} 
 static void \mbox{\hyperlink{class_delta_clock_a20328fb4cd11ac991428f5dfe9441398}{Update}} ()
-\begin{DoxyCompactList}\small\item\em Resets the clock\textquotesingle{}s timer. \end{DoxyCompactList}\item 
+\item 
 static float \mbox{\hyperlink{class_delta_clock_ae62b1d58af70c4ac87ca9502db57eee4}{Get\+Delta}} ()
-\begin{DoxyCompactList}\small\item\em Returns the delta time collected by the previous cycle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\item 
+static sf\+::\+Clock \mbox{\hyperlink{class_delta_clock_ab00bb6ed59a03964560ec19cddb13eae}{Get\+Clock}} ()
+\item 
+static sf\+::\+Time \mbox{\hyperlink{class_delta_clock_abedbab2439950fc1a2ee7c81c3748a2c}{Get\+Time}} ()
+\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+A global clock that provides the delta time every frame. 
 
 \doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_delta_clock_ab00bb6ed59a03964560ec19cddb13eae}\label{class_delta_clock_ab00bb6ed59a03964560ec19cddb13eae}} 
+\index{DeltaClock@{DeltaClock}!GetClock@{GetClock}}
+\index{GetClock@{GetClock}!DeltaClock@{DeltaClock}}
+\doxysubsubsection{\texorpdfstring{GetClock()}{GetClock()}}
+{\footnotesize\ttfamily sf\+::\+Clock Delta\+Clock\+::\+Get\+Clock (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Get a copy of the current state of the clock.
+
+\begin{DoxyReturn}{Returns}
+The copy of the current clock as a sf\+::\+Clock. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{class_delta_clock_ae62b1d58af70c4ac87ca9502db57eee4}\label{class_delta_clock_ae62b1d58af70c4ac87ca9502db57eee4}} 
 \index{DeltaClock@{DeltaClock}!GetDelta@{GetDelta}}
 \index{GetDelta@{GetDelta}!DeltaClock@{DeltaClock}}
 \doxysubsubsection{\texorpdfstring{GetDelta()}{GetDelta()}}
 {\footnotesize\ttfamily float Delta\+Clock\+::\+Get\+Delta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
-
-
-Returns the delta time collected by the previous cycle. 
+Get the delta of the current frame, as a float. This delta time is represented in seconds.
 
 \begin{DoxyReturn}{Returns}
-float The delta time collected by the previous cycle. 
+A float representing the delta time. 
 \end{DoxyReturn}
+\mbox{\Hypertarget{class_delta_clock_abedbab2439950fc1a2ee7c81c3748a2c}\label{class_delta_clock_abedbab2439950fc1a2ee7c81c3748a2c}} 
+\index{DeltaClock@{DeltaClock}!GetTime@{GetTime}}
+\index{GetTime@{GetTime}!DeltaClock@{DeltaClock}}
+\doxysubsubsection{\texorpdfstring{GetTime()}{GetTime()}}
+{\footnotesize\ttfamily sf\+::\+Time Delta\+Clock\+::\+Get\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
 
+Don\textquotesingle{}t want the delta time to be in seconds? Get the current delta clock as a sf\+::\+Time.
+
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_delta_clock_a20328fb4cd11ac991428f5dfe9441398}\label{class_delta_clock_a20328fb4cd11ac991428f5dfe9441398}} 
+\index{DeltaClock@{DeltaClock}!Update@{Update}}
+\index{Update@{Update}!DeltaClock@{DeltaClock}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily void Delta\+Clock\+::\+Update (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+Updates the clock. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/\+Users/smart/\+Desktop/\+Robot\+C\+Simulator/\+Robot\+C\+Simulator/\+Source/\+Util/\+Time/Delta\+Clock.\+h\item 
+C\+:/\+Users/smart/\+Desktop/\+Robot\+C\+Simulator/\+Robot\+C\+Simulator/\+Source/\+Util/\+Time/\mbox{\hyperlink{_delta_clock_8h}{Delta\+Clock.\+h}}\item 
 C\+:/\+Users/smart/\+Desktop/\+Robot\+C\+Simulator/\+Robot\+C\+Simulator/\+Source/\+Util/\+Time/Delta\+Clock.\+cpp\end{DoxyCompactItemize}

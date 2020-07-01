@@ -1,3 +1,8 @@
+/*****************************************************************//**
+ * \file   main.cpp
+ * \brief  The main program!
+ *********************************************************************/
+
 #include <memory>
 #include <SFML/Graphics.hpp>
 #include "ROBOTC\Program\ProgramRunner.h"

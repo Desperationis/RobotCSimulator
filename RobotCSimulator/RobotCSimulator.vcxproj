@@ -181,6 +181,7 @@
     <ClInclude Include="Source\ROBOTC\ROBOTCtoC++\VEXController.h" />
     <ClInclude Include="Source\Core.h" />
     <ClInclude Include="Source\Util\ClassicSprite.h" />
+    <ClInclude Include="Source\Util\HelperFunctions.h" />
     <ClInclude Include="Source\Util\ImGuiWrapper\ImGuiWrapper.h" />
     <ClInclude Include="Source\Util\Time\DeltaClock.h" />
   </ItemGroup>

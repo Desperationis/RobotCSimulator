@@ -1,13 +1,20 @@
 #include "DeltaClock.h"
 
 sf::Clock DeltaClock::deltaTime;
-float DeltaClock::bufferDelta = 0.0f;
-
+sf::Time DeltaClock::bufferTime;
 
 void DeltaClock::Update() {
-	bufferDelta = deltaTime.restart().asSeconds();
+	bufferTime = deltaTime.restart();
 }
 
 float DeltaClock::GetDelta() {
-	return bufferDelta;
+	return bufferTime.asSeconds();
+}
+
+sf::Clock DeltaClock::GetClock() {
+	return deltaTime;
+}
+
+sf::Time DeltaClock::GetTime() {
+	return bufferTime;
 }
