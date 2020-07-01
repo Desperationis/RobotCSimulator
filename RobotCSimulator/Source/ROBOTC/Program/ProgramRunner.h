@@ -1,13 +1,15 @@
+/*****************************************************************//**
+ * \file   ProgramRunner.h
+ * \brief  Runs a ROBOTC Program.
+ *********************************************************************/
+
 #pragma once
 #include "Program.h"
 #include "../ROBOTCtoC++/RobotC.h"
 
-/*
- * ProgramRunner.h
- *
+/**
  * Runs the main file of a RobotC Program: Program.h.
  */
-
 class ProgramRunner
 {
 public:

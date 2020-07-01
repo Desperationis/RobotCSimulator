@@ -1,3 +1,5 @@
+#include "../ROBOTCtoC++/RobotC.h"
+#include <iostream>
 
 #ifndef HELPERS_HEADER
 #define HELPERS_HEADER

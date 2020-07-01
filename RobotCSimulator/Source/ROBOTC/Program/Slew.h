@@ -1,3 +1,5 @@
+#include "../ROBOTCtoC++/RobotC.h"
+#include <iostream>
 
 #ifndef SLEW_HEADER
 #define SLEW_HEADER

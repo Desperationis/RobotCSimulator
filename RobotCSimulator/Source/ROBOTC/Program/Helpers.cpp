@@ -1,6 +1,6 @@
-#include "../ROBOTCtoC++/RobotC.h"
 #include "Globals.h"
 #include "Helpers.h"
+#include "../ROBOTCtoC++/RobotC.h"
 #include <iostream>
 
 #ifndef HELPERS_SOURCE

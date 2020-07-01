@@ -69,13 +69,13 @@ $(function() {
 <div class="title">Program.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;../ROBOTCtoC++/RobotC.h&quot;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;Controllers.h&quot;</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;Globals.h&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;Helpers.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;Slew.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;PID.h&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;Setup.h&quot;</span></div>
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &quot;Controllers.h&quot;</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#include &quot;Globals.h&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;Helpers.h&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;Slew.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;PID.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;Setup.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;../ROBOTCtoC++/RobotC.h&quot;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;SensorPort leftEncoder;</div>
@@ -89,59 +89,64 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    config(<span class="stringliteral">&quot;rightMotor&quot;</span>, rightMotor, port5, <span class="keyword">true</span>);</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">// start</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">// Notes:</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">// You can download files from cortex using Robot &gt; Advanced Tools &gt; File Management</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">// You can download view joystick values using Robot &gt; Advanced Tools &gt; Joystick Viewer</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// You can check battery level by using nImmediateBatterLevel; Found in Battery &gt; Variables</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// You can use controller accelerameter values.</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// Running tasks PID() and Slew() will give you 8 concurrent tassks left.</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="keywordtype">void</span> GoForward(<span class="keywordtype">int</span> amount);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;task programMain() {</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    InitCustomLibrary();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">//*!!Code automatically generated by &#39;ROBOTC&#39; configuration wizard               !!*//</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">// Notes:</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">// You can download files from cortex using Robot &gt; Advanced Tools &gt; File Management</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">// You can download view joystick values using Robot &gt; Advanced Tools &gt; Joystick Viewer</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">// You can check battery level by using nImmediateBatterLevel; Found in Battery &gt; Variables</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">// You can use controller accelerameter values.</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">// Running tasks PID() and Slew() will give you 8 concurrent tassks left.</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keywordtype">void</span> GoForward(<span class="keywordtype">int</span> amount);</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// Global Settings</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    SetAverageDelay(20);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    SetMaxSpeed(1);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">// Tell the library our chassis sensors and motors.</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    SetLeftMotor(leftMotor);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    SetRightMotor(rightMotor);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    SetLeftEncoder(leftEncoder);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    SetRightEncoder(rightEncoder);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    delay(2000); <span class="comment">// Delay for RobotCSimulator.</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="comment">// Activate Controllers</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    startTask(Slew);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    startTask(PID);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="comment">// Slew Settings</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    AllowSlew(leftMotor, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    AllowSlew(rightMotor, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    SetSlewStep(30);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="comment">// PID Settings</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    startTask(GamerControl);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;task programMain() {</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    InitCustomLibrary();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">// Global Settings</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    SetAverageDelay(20);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    SetMaxSpeed(1);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">// Tell the library our chassis sensors and motors.</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    SetLeftMotor(leftMotor);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    SetRightMotor(rightMotor);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    SetLeftEncoder(leftEncoder);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    SetRightEncoder(rightEncoder);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    delay(2000); <span class="comment">// Delay for RobotCSimulator.</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="comment">// Activate Controllers</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    startTask(Slew);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    startTask(PID);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">// Slew Settings</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    AllowSlew(leftMotor, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    AllowSlew(rightMotor, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    SetSlewStep(30);</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="comment">// Keep program alive.</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        delay(GetDelay());</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    }</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="keywordtype">void</span> GoForward(<span class="keywordtype">int</span> amount) {</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    SetPIDTarget(LEFT, amount);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    SetPIDTarget(RIGHT, amount);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordflow">while</span>(!BothHasReached(leftEncoder, rightEncoder, -amount, 10)) {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="comment">// Keep program alive.</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        delay(GetDelay());</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="comment">// PID Settings</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    AllowPID(<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    SetK(1.1, 0.5, 0.0);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    GoForward(300);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">while</span>(<span class="keyword">true</span>) {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="comment">// Keep program alive.</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        delay(GetDelay());</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="keywordtype">void</span> GoForward(<span class="keywordtype">int</span> amount) {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    SetPIDTarget(LEFT, amount);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    SetPIDTarget(RIGHT, amount);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordflow">while</span>(!BothHasReached(leftEncoder, rightEncoder, -amount, 10)) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="comment">// Keep program alive.</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        delay(GetDelay());</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

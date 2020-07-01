@@ -9,9 +9,7 @@
 #include "ROBOTC/ROBOTCtoC++/DefineGlobalOnce.h"
 #include "Core.h"
 
-/*
- * main.cpp
- *
+/**
  * The main program.
  */
 int main()

@@ -1,3 +1,5 @@
+#include "../ROBOTCtoC++/RobotC.h"
+#include <iostream>
 
 #ifndef GLOBALS_HEADER
 #define GLOBALS_HEADER

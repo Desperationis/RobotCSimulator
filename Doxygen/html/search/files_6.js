@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vexcontroller_2eh_67',['VEXController.h',['../_v_e_x_controller_8h.html',1,'']]]
+  ['robotavatar_2eh_69',['RobotAvatar.h',['../_robot_avatar_8h.html',1,'']]]
 ];

@@ -1,5 +1,5 @@
-#include "../ROBOTCtoC++/RobotC.h"
 #include "Globals.h"
+#include "../ROBOTCtoC++/RobotC.h"
 #include <iostream>
 
 #ifndef GLOBALS_SOURCE

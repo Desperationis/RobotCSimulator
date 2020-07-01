@@ -1,7 +1,7 @@
-#include "../ROBOTCtoC++/RobotC.h"
 #include "Slew.h"
 #include "Helpers.h"
 #include "Globals.h"
+#include "../ROBOTCtoC++/RobotC.h"
 #include <iostream>
 
 #ifndef SLEW_SOURCE

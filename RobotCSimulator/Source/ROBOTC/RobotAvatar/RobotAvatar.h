@@ -13,7 +13,7 @@
 
 
 /**
- * A sprite on screen that simulates robot hardware. 
+ * A sprite on screen that shows the movement of the robot. 
  * Moves accordingly to motor values.
  */
 class RobotAvatar : public ClassicSprite {
