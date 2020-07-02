@@ -1,4 +1,5 @@
 #include "../ROBOTCtoC++/RobotC.h"
+#include "../ROBOTCtoC++/Cortex.h"
 #include <iostream>
 #include <cmath>
 

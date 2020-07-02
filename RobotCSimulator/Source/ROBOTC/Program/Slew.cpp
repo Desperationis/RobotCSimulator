@@ -2,6 +2,7 @@
 #include "Helpers.h"
 #include "Globals.h"
 #include "../ROBOTCtoC++/RobotC.h"
+#include "../ROBOTCtoC++/Cortex.h"
 #include <iostream>
 #include <cmath>
 

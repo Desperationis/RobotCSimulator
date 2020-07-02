@@ -25,7 +25,7 @@ void RobotDisplayer::DisplayMotorValues() {
 
 	// Update Motor Ports.
 	for (int i = 0; i < motor.max_size(); i++) {
-		if (motorInfo[i]->name != "<none>") {
+		if (Cortex::motorInfo[i]->name != "<none>") {
 			std::string direction;
 
 			if (motor[i] > 0) {
@@ -38,7 +38,7 @@ void RobotDisplayer::DisplayMotorValues() {
 				direction = "(Still) ";
 			}
 
-			toText("Port " + std::to_string(i) + " " + direction + motorInfo[i]->name + ": ", motor[i] * isReversed((MotorPort)i));
+			toText("Port " + std::to_string(i) + " " + direction + Cortex::motorInfo[i]->name + ": ", motor[i] * isReversed((MotorPort)i));
 		}
 	}
 
@@ -73,7 +73,7 @@ void RobotDisplayer::DisplayMotorGraphs() {
 
 	for (int i = 0; i < 10; i++) {
 		// Only display motor values that are being used.
-		if (motorInfo[i]->name != "<none>") {
+		if (Cortex::motorInfo[i]->name != "<none>") {
 
 			// Push back current motor value
 			motorValues[i].push_back(motor[i]);
@@ -89,7 +89,7 @@ void RobotDisplayer::DisplayMotorGraphs() {
 				motorValue[j] = motorValues[i][j];
 			}
 
-			ImGui::PlotLines(motorInfo[i]->name.c_str(), motorValue, IM_ARRAYSIZE(motorValue), 0, (const char*)0, -127, 127, ImVec2(400, 200));
+			ImGui::PlotLines(Cortex::motorInfo[i]->name.c_str(), motorValue, IM_ARRAYSIZE(motorValue), 0, (const char*)0, -127, 127, ImVec2(400, 200));
 		}
 	}
 	ImGui::End();
@@ -98,9 +98,9 @@ void RobotDisplayer::DisplayMotorGraphs() {
 void RobotDisplayer::DisplaySensorValues() {
 	ImGui::Begin("Sensor Info");
 
-	for (int i = 0; i < sensorInfo.max_size(); i++) {
-		if (sensorInfo[i]->name != "<none>") {
-			toText(sensorInfo[i]->name + ": ", floor(SensorValue[i]));
+	for (int i = 0; i < Cortex::sensorInfo.max_size(); i++) {
+		if (Cortex::sensorInfo[i]->name != "<none>") {
+			toText(Cortex::sensorInfo[i]->name + ": ", floor(SensorValue[i]));
 		}
 	}
 

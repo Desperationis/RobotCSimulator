@@ -3,6 +3,7 @@
 #include "Helpers.h"
 #include "Slew.h"
 #include "../ROBOTCtoC++/RobotC.h"
+#include "../ROBOTCtoC++/Cortex.h"
 #include <iostream>
 #include <cmath>
 

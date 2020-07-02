@@ -6,6 +6,7 @@
 #pragma once
 #include "Program.h"
 #include "../ROBOTCtoC++/RobotC.h"
+#include "../ROBOTCtoC++/Cortex.h"
 
 /**
  * Runs the main file of a RobotC Program: Program.h.
@@ -15,11 +16,11 @@ class ProgramRunner
 public:
 	ProgramRunner() {
 		// Initialize information structs.
-		for (int i = 0; i < motorInfo.max_size(); i++) {
-			motorInfo[i] = std::make_unique<MotorInfo>("<none>", false);
+		for (int i = 0; i < Cortex::motorInfo.max_size(); i++) {
+			Cortex::motorInfo[i] = std::make_unique<MotorInfo>("<none>", false);
 		}
-		for (int i = 0; i < sensorInfo.max_size(); i++) {
-			sensorInfo[i] = std::make_unique<SensorInfo>("<none>");
+		for (int i = 0; i < Cortex::sensorInfo.max_size(); i++) {
+			Cortex::sensorInfo[i] = std::make_unique<SensorInfo>("<none>");
 		}
 	}
 

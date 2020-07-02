@@ -5,6 +5,7 @@
 #include "PID.h"
 #include "Setup.h"
 #include "../ROBOTCtoC++/RobotC.h"
+#include "../ROBOTCtoC++/Cortex.h"
 #include <iostream>
 #include <cmath>
 
@@ -13,10 +14,10 @@ SensorPort rightEncoder;
 MotorPort leftMotor;
 MotorPort rightMotor;
 void SetUp() {
-	config("leftEncoder", leftEncoder, dgtl1);
-	config("rightEncoder", rightEncoder, dgtl3);
-	config("leftMotor", leftMotor, port1, false);
-	config("rightMotor", rightMotor, port5, true);
+	Cortex::config("leftEncoder", leftEncoder, dgtl1);
+	Cortex::config("rightEncoder", rightEncoder, dgtl3);
+	Cortex::config("leftMotor", leftMotor, port1, false);
+	Cortex::config("rightMotor", rightMotor, port5, true);
 }
 
 

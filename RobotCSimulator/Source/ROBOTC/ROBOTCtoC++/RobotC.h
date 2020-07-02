@@ -98,19 +98,7 @@ struct SensorInfo {
 	}
 };
 
-// Pure RobotC Variables
-extern std::array<short, 10> motor;
-extern std::array<float, 20> SensorValue;
-extern std::array<short, 16> vexRT;
-
-// My own classes
-extern std::vector<std::unique_ptr<std::thread>> threads;
-extern std::array<std::unique_ptr<SensorInfo>, 20> sensorInfo;
-extern std::array<std::unique_ptr<MotorInfo>, 10> motorInfo;
-
 // RobotC Functions
 void startTask(std::function<task()> func);
 void delay(int ms);
-void config(std::string name, MotorPort& motorPort, MotorPort port, bool reversed = false);
-void config(std::string name, SensorPort& motorPort, SensorPort port);
 int sgn(int input);

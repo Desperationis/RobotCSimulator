@@ -1,5 +1,6 @@
 #pragma once
 #include "RobotC.h"
+#include "Cortex.h"
 #include <deque>
 #include <vector>
 #include <string>
@@ -37,7 +38,7 @@ private:
 
 	static int isReversed(MotorPort motor) {
 		// Returns a positive-negative based integer.
-		if (motorInfo[motor]->reversed) {
+		if (Cortex::motorInfo[motor]->reversed) {
 			return -1;
 		}
 		return 1;
