@@ -12,7 +12,7 @@
  */
 class Cortex {
 public:
-	Cortex() = default;
+	Cortex();
 
 	static void config(std::string name, MotorPort& motorPort, MotorPort port, bool reversed = false);
 	static void config(std::string name, SensorPort& motorPort, SensorPort port);
