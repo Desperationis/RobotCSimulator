@@ -21,7 +21,7 @@ enum MOTOR {
 
 
 /*
- * [SETUP]
+ * @setup
  *
  * Set the motor port of the left motor. Needed for library to function properly.
 */
@@ -29,7 +29,7 @@ void SetLeftMotor(tMotor port);
 
 
 /*
- * [SETUP]
+ * @setup
  *
  * Set the motor port of the right motor. Needed for library to function properly.
 */
@@ -37,14 +37,14 @@ void SetRightMotor(tMotor port);
 
 
 /*
- * [SETUP]
+ * @setup
  *
  * Set the sensor port of the left encoder. Needed for PID controller to function properly.
 */
 void SetLeftEncoder(tSensors port);
 
 /*
- * [SETUP]
+ * @setup
  *
  * Set the sensor port of the right encoder. Needed for PID controller to function properly.
 */
@@ -52,7 +52,7 @@ void SetRightEncoder(tSensors port);
 
 
 /*
- * [SETUP]
+ * @setup
  *
  * Set the maximum speed of any slewed motor [0...1].
  * PID, Slew, and regular controllers automatically use slewed.
@@ -61,7 +61,7 @@ void SetMaxSpeed(float speed);
 
 
 /*
- * [SETUP]
+ * @setup
  *
  * Set the delay of each task in this library. Prevents the Cortex from heating up too much.
 */
