@@ -4,7 +4,6 @@
 #include "../ROBOTCtoC++/Cortex.h"
 #include <iostream>
 #include <cmath>
-
 #ifndef HELPERS_SOURCE
 #define HELPERS_SOURCE
 

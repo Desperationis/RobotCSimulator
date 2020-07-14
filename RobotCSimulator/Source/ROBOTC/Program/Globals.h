@@ -2,7 +2,6 @@
 #include "../ROBOTCtoC++/Cortex.h"
 #include <iostream>
 #include <cmath>
-
 #ifndef GLOBALS_HEADER
 #define GLOBALS_HEADER
 

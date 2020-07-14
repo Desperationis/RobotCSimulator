@@ -166,6 +166,7 @@
     <ClCompile Include="Source\Util\Time\DeltaClock.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\ROBOTC\Program\Compile.h" />
     <ClInclude Include="Source\ROBOTC\Program\Controllers.h" />
     <ClInclude Include="Source\ROBOTC\Program\Globals.h" />
     <ClInclude Include="Source\ROBOTC\Program\Helpers.h" />

@@ -6,7 +6,6 @@
 #include "../ROBOTCtoC++/Cortex.h"
 #include <iostream>
 #include <cmath>
-
 #ifndef CONTROLLERS_SOURCE
 #define CONTROLLERS_SOURCE
 

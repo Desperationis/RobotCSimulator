@@ -3,7 +3,6 @@
 #include "../ROBOTCtoC++/Cortex.h"
 #include <iostream>
 #include <cmath>
-
 #ifndef GLOBALS_SOURCE
 #define GLOBALS_SOURCE
 

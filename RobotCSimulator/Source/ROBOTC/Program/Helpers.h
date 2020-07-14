@@ -2,7 +2,6 @@
 #include "../ROBOTCtoC++/Cortex.h"
 #include <iostream>
 #include <cmath>
-
 #ifndef HELPERS_HEADER
 #define HELPERS_HEADER
 
