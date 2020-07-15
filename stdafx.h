@@ -9,6 +9,8 @@
 #include <memory>
 #include <ctime>
 #include <limits>
+#include <cstdint>
+#include <thread>
 
 // Math
 #include <cmath>
@@ -20,3 +22,4 @@
 #include <unordered_map>
 #include <deque>
 #include <queue>
+#include <array>

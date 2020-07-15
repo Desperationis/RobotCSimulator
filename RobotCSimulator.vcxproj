@@ -171,6 +171,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="RobotC.h" />
     <ClInclude Include="Dependencies\imgui-1.77\imconfig.h" />
     <ClInclude Include="Dependencies\imgui-1.77\imgui.h" />
     <ClInclude Include="Dependencies\imgui-1.77\imgui_internal.h" />
