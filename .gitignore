@@ -3,3 +3,5 @@ Release/
 Debug/
 RobotCSimulator/Release/
 RobotCSimulator/Debug/
+.user
+.filters
