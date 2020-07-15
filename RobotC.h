@@ -73,16 +73,16 @@ namespace RobotC {
 		};
 
 		typedef void task;
-		typedef signed char byte;
-		typedef unsigned char ubyte;
+		typedef int byte;
+		typedef unsigned int ubyte;
 		typedef short tMotor;
 		typedef short tSensors;
 	};
 
 	namespace Peripherals {
-		static std::array<int, 10> motor;
-		static std::array<int, 50> SensorValue;
-		static std::array<int, 20> vexRT;
+		extern std::array<int, 10> motor;
+		extern std::array<int, 50> SensorValue;
+		extern std::array<int, 20> vexRT;
 
 		static void config(std::string name, Types::MotorPort& motorPort, Types::MotorPort port, bool reverse) {
 			motorPort = port;
@@ -94,8 +94,8 @@ namespace RobotC {
 	}
 
 	namespace Threads {
-		static std::vector<std::unique_ptr<std::thread>> threads;
-		static bool active = true;
+		extern std::vector<std::unique_ptr<std::thread>> threads;
+		extern bool active;
 
 
 		static void delay(int ms) {
@@ -122,7 +122,5 @@ namespace RobotC {
 	
 	}
 };
-
-
 
 

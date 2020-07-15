@@ -30,13 +30,37 @@ void SetUp() {
 void GoForward(int amount);
 
 task programMain() {
+	InitCustomLibrary();
+
+	// Global Settings
+	SetAverageDelay(20);
+	SetMaxSpeed(1);
+
+	// Tell the library our chassis sensors and motors.
+	SetLeftMotor(leftMotor);
+	SetRightMotor(rightMotor);
+	SetLeftEncoder(leftEncoder);
+	SetRightEncoder(rightEncoder);
+
+	delay(2000); // Delay for RobotCSimulator.
+
+	// Activate Controllers
+	startTask(Slew);
+	startTask(PID);
+
+	// Slew Settings
+	AllowSlew(leftMotor, true);
+	AllowSlew(rightMotor, true);
+	SetSlewStep(30);
+
+	// PID Settings
+	AllowPID(true);
+	SetK(1.1, 0.5, 0.0);
+	GoForward(300);
 
 	while(true) {
 		// Keep program alive.
-		motor[leftMotor] = 100;
 		delay(GetDelay());
-
-		std::cout << motor[leftMotor] << std::endl;
 	}
 }
 
@@ -45,7 +69,6 @@ void GoForward(int amount) {
 	SetPIDTarget(RIGHT, amount);
 
 	while(!BothHasReached(leftEncoder, rightEncoder, -amount, 10)) {
-		std::cout << motor[rightMotor] << std::endl;
 		// Keep program alive.
 		delay(GetDelay());
 	}

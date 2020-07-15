@@ -53,6 +53,7 @@ task PID() {
 			SetMotorSlew( GetLeftMotor(), PIDCalculate(SensorValue[GetLeftEncoder()], target[0], &leftPID));
 			SetMotorSlew( GetRightMotor(), PIDCalculate(-SensorValue[GetRightEncoder()], target[1], &rightPID));
 		}
+
 		delay(GetDelay());
 	}
 }
