@@ -169,8 +169,22 @@
     <ClCompile Include="Dependencies\imgui-1.77\imgui_widgets.cpp" />
     <ClCompile Include="Dependencies\imgui-sfml-2.1\imgui-SFML.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="programref\Controllers.cpp" />
+    <ClCompile Include="programref\Globals.cpp" />
+    <ClCompile Include="programref\Helpers.cpp" />
+    <ClCompile Include="programref\PID.cpp" />
+    <ClCompile Include="programref\Setup.cpp" />
+    <ClCompile Include="programref\Slew.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="programref\Compile.h" />
+    <ClInclude Include="programref\Controllers.h" />
+    <ClInclude Include="programref\Globals.h" />
+    <ClInclude Include="programref\Helpers.h" />
+    <ClInclude Include="programref\PID.h" />
+    <ClInclude Include="programref\Program.h" />
+    <ClInclude Include="programref\Setup.h" />
+    <ClInclude Include="programref\Slew.h" />
     <ClInclude Include="RobotC.h" />
     <ClInclude Include="Dependencies\imgui-1.77\imconfig.h" />
     <ClInclude Include="Dependencies\imgui-1.77\imgui.h" />

@@ -1,9 +1,12 @@
 #include "Globals.h"
 #include "Helpers.h"
-#include "../ROBOTCtoC++/RobotC.h"
-#include "../ROBOTCtoC++/Cortex.h"
-#include <iostream>
-#include <cmath>
+#include "../RobotC.h"
+#include "../stdafx.h"
+using namespace RobotC::Types;
+using namespace RobotC::Threads;
+using namespace RobotC::Types;
+using namespace RobotC::Peripherals;
+using namespace RobotC::Functions;
 #ifndef HELPERS_SOURCE
 #define HELPERS_SOURCE
 

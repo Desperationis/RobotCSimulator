@@ -4,19 +4,13 @@
 #include "imgui-SFML.h"
 #include "Test.h"
 #include "RobotC.h"
+#include "programref\Program.h"
 
 using namespace RobotC::Types;
 using namespace RobotC::Threads;
-
-task test() {
-	int i = 0;
-	while(true) {
-		std::cout << "This is working!" << std::endl;
-		i++;
-
-		delay(100);
-	}
-}
+using namespace RobotC::Types;
+using namespace RobotC::Peripherals;
+using namespace RobotC::Functions;
 
 int main()
 {
@@ -24,9 +18,9 @@ int main()
 	Window::CreateWindow(sf::VideoMode(800, 800), "RobotCSimulator", sf::Style::Close);
 	ImGui::SFML::Init(*Window::rawWindow);
 
-
-
-	startTask(test);
+	// Run the program
+	SetUp();
+	startTask(programMain);
 
 
 	// Add objects

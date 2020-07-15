@@ -75,14 +75,22 @@ namespace RobotC {
 		typedef void task;
 		typedef signed char byte;
 		typedef unsigned char ubyte;
-		typedef MotorPort tMotor;
-		typedef SensorPort tSensors;
+		typedef short tMotor;
+		typedef short tSensors;
 	};
 
 	namespace Peripherals {
-		static std::array<Types::byte, 10> motors;
-		static std::array<int, 10> sensors;
-		static std::array<int, 10> vexRT;
+		static std::array<int, 10> motor;
+		static std::array<int, 50> SensorValue;
+		static std::array<int, 20> vexRT;
+
+		static void config(std::string name, Types::MotorPort& motorPort, Types::MotorPort port, bool reverse) {
+			motorPort = port;
+		}
+
+		static void config(std::string name, Types::SensorPort& sensorPort, Types::SensorPort port) {
+			sensorPort = port;
+		}
 	}
 
 	namespace Threads {
@@ -90,18 +98,18 @@ namespace RobotC {
 		static bool active = true;
 
 
-		void delay(int ms) {
+		static void delay(int ms) {
 			std::this_thread::sleep_for(std::chrono::milliseconds(ms));
 		}
 
-		void startTask(std::function<Types::task()> func) {
+		static void startTask(std::function<Types::task()> func) {
 			threads.push_back(std::make_unique<std::thread>(func));
 		}
 	}
 
 	namespace Functions {
 
-		int sgn(int input) {
+		static int sgn(int input) {
 			if (input < 0) {
 				return -1;
 			}
