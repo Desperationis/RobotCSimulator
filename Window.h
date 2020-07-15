@@ -9,6 +9,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "stdafx.h"
+#include "imgui.h"
+#include "imgui-SFML.h"
 
 /**
  * Makes creation, event handling, and rendering of a window easy!
@@ -70,6 +72,9 @@ namespace Window {
 			rawWindow->draw(*objects[i]);
 		}
 
+		// Render ImGui on top of objects.
+		ImGui::SFML::Render(*rawWindow);
+
 		rawWindow->display();
 	}
 
@@ -80,6 +85,10 @@ namespace Window {
 		sf::Event sfEvent;
 
 		while (rawWindow->pollEvent(sfEvent)) {
+
+			// Let ImGui know about events too
+			ImGui::SFML::ProcessEvent(sfEvent);
+
 			switch(sfEvent.type) {
 			
 			case sf::Event::Closed:

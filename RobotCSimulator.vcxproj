@@ -91,7 +91,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions);SFML_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\imgui-sfml-2.1;$(SolutionDir)Dependencies\imgui-1.77;$(SolutionDir)Dependencies\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -109,7 +109,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions);SFML_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\imgui-sfml-2.1;$(SolutionDir)Dependencies\imgui-1.77;$(SolutionDir)Dependencies\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -129,7 +129,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions);SFML_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\imgui-sfml-2.1;$(SolutionDir)Dependencies\imgui-1.77;$(SolutionDir)Dependencies\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -151,7 +151,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions);SFML_STATIC</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)Dependencies\imgui-sfml-2.1;$(SolutionDir)Dependencies\imgui-1.77;$(SolutionDir)Dependencies\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -163,10 +163,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Dependencies\imgui-1.77\imgui.cpp" />
+    <ClCompile Include="Dependencies\imgui-1.77\imgui_demo.cpp" />
+    <ClCompile Include="Dependencies\imgui-1.77\imgui_draw.cpp" />
+    <ClCompile Include="Dependencies\imgui-1.77\imgui_widgets.cpp" />
+    <ClCompile Include="Dependencies\imgui-sfml-2.1\imgui-SFML.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Dependencies\imgui-1.77\imconfig.h" />
+    <ClInclude Include="Dependencies\imgui-1.77\imgui.h" />
+    <ClInclude Include="Dependencies\imgui-1.77\imgui_internal.h" />
+    <ClInclude Include="Dependencies\imgui-1.77\imstb_rectpack.h" />
+    <ClInclude Include="Dependencies\imgui-1.77\imstb_textedit.h" />
+    <ClInclude Include="Dependencies\imgui-1.77\imstb_truetype.h" />
+    <ClInclude Include="Dependencies\imgui-sfml-2.1\imconfig-SFML.h" />
+    <ClInclude Include="Dependencies\imgui-sfml-2.1\imgui-SFML.h" />
+    <ClInclude Include="Dependencies\imgui-sfml-2.1\imgui-SFML_export.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="Test.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
