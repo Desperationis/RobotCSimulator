@@ -30,4 +30,10 @@ int main()
 		ImGui::ShowDemoWindow();
 		Window::Render();
 	}
+
+	// Stop all tasks, and wait for them to join again.
+	stopAllTasks();
+	for(int i = 0; i < threads.size(); i++) {
+		threads[i]->join();
+	}
 }

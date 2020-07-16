@@ -58,7 +58,7 @@ task programMain() {
 	SetK(1.1, 0.5, 0.0);
 	GoForward(300);
 
-	while(true) {
+	while(true && !killAll) {
 		// Keep program alive.
 		delay(GetDelay());
 	}
@@ -68,7 +68,7 @@ void GoForward(int amount) {
 	SetPIDTarget(LEFT, amount);
 	SetPIDTarget(RIGHT, amount);
 
-	while(!BothHasReached(leftEncoder, rightEncoder, -amount, 10)) {
+	while(!BothHasReached(leftEncoder, rightEncoder, -amount, 10) && !killAll) {
 		// Keep program alive.
 		delay(GetDelay());
 	}

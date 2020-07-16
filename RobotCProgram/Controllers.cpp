@@ -23,7 +23,7 @@ using namespace RobotC::Functions;
 
 
 task LeftArcadeControl() {
-	while (true) {
+	while (true && !killAll) {
 		// Arcade control with left joystick.
 		SetMotorSlew( GetLeftMotor(),  Clamp(-vexRT[Ch3] - vexRT[Ch4]) );
 		SetMotorSlew( GetRightMotor(),  Clamp(-vexRT[Ch3] + vexRT[Ch4]) );
@@ -33,7 +33,7 @@ task LeftArcadeControl() {
 }
 
 task RightArcadeControl() {
-	while (true) {
+	while (true && !killAll) {
 		// Arcade control with right joystick.
 		SetMotorSlew( GetLeftMotor(),  Clamp(-vexRT[Ch2] + vexRT[Ch1]) );
 		SetMotorSlew( GetRightMotor(),  Clamp(-vexRT[Ch2] - vexRT[Ch1]) );
@@ -43,7 +43,7 @@ task RightArcadeControl() {
 }
 
 task CustomTankControl() {
-	while (true) {
+	while (true && !killAll) {
 		// Tank control with both joysticks.
 		SetMotorSlew( GetLeftMotor(),  Clamp(-vexRT[Ch3]) );
 		SetMotorSlew( GetRightMotor(),  Clamp(-vexRT[Ch2]) );
@@ -53,7 +53,7 @@ task CustomTankControl() {
 }
 
 task GamerControl() {
-	while (true) {
+	while (true && !killAll) {
 		// Game control (Similar to controls in racing games)
 		// Left Axis: up / down
 		// Right Axis: right / left

@@ -76,6 +76,7 @@ namespace RobotC {
 
 	namespace Threads {
 		extern std::vector<std::unique_ptr<std::thread>> threads;
+		extern bool killAll;
 
 		static void delay(int ms) {
 			std::this_thread::sleep_for(std::chrono::milliseconds(ms));
@@ -83,6 +84,10 @@ namespace RobotC {
 
 		static void startTask(std::function<Types::task()> func) {
 			threads.push_back(std::make_unique<std::thread>(func));
+		}
+
+		static void stopAllTasks() {
+			killAll = true;
 		}
 	}
 
