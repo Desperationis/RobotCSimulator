@@ -14,42 +14,23 @@ namespace RobotC {
 	namespace Types {
 		// Ports
 		enum MotorPort {
-			port1,
-			port2,
-			port3,
-			port4,
-			port5,
-			port6,
-			port7,
-			port8,
-			port9,
+			port1,	port2,	port3,
+			port4,	port5,	port6,
+			port7,	port8,	port9,
 			port10
 		};
 
 		enum SensorPort {
 			// Digital Ports
-			dgtl1,
-			dgtl2,
-			dgtl3,
-			dgtl4,
-			dgtl5,
-			dgtl6,
-			dgtl7,
-			dgtl8,
-			dgtl9,
-			dgtl10,
-			dgtl11,
-			dgtl12,
+			dgtl1,	dgtl2,	dgtl3,
+			dgtl4,	dgtl5,	dgtl6,
+			dgtl7,	dgtl8,	dgtl9,
+			dgtl10,	dgtl11,	dgtl12,
 
 			// Analog Ports
-			in1,
-			in2,
-			in3,
-			in4,
-			in5,
-			in6,
-			in7,
-			in8
+			in1,	in2,	in3,
+			in4,	in5,	in6,
+			in7,	in8
 		};
 
 		enum VexRt {
@@ -73,16 +54,16 @@ namespace RobotC {
 		};
 
 		typedef void task;
-		typedef int byte;
-		typedef unsigned int ubyte;
+		typedef signed char byte;
+		typedef unsigned char ubyte;
 		typedef short tMotor;
 		typedef short tSensors;
 	};
 
 	namespace Peripherals {
-		extern std::array<int, 10> motor;
-		extern std::array<int, 50> SensorValue;
-		extern std::array<int, 20> vexRT;
+		extern std::array<Types::byte, 10> motor;
+		extern std::array<Types::byte, 16> vexRT;
+		extern std::array<int16_t, 20> SensorValue;
 
 		static void config(std::string name, Types::MotorPort& motorPort, Types::MotorPort port, bool reverse) {
 			motorPort = port;
@@ -95,8 +76,6 @@ namespace RobotC {
 
 	namespace Threads {
 		extern std::vector<std::unique_ptr<std::thread>> threads;
-		extern bool active;
-
 
 		static void delay(int ms) {
 			std::this_thread::sleep_for(std::chrono::milliseconds(ms));

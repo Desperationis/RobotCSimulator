@@ -169,22 +169,15 @@
     <ClCompile Include="Dependencies\imgui-1.77\imgui_widgets.cpp" />
     <ClCompile Include="Dependencies\imgui-sfml-2.1\imgui-SFML.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="programref\Controllers.cpp" />
-    <ClCompile Include="programref\Globals.cpp" />
-    <ClCompile Include="programref\Helpers.cpp" />
-    <ClCompile Include="programref\PID.cpp" />
-    <ClCompile Include="programref\Setup.cpp" />
-    <ClCompile Include="programref\Slew.cpp" />
+    <ClCompile Include="RobotC.cpp" />
+    <ClCompile Include="RobotCProgram\Controllers.cpp" />
+    <ClCompile Include="RobotCProgram\Globals.cpp" />
+    <ClCompile Include="RobotCProgram\Helpers.cpp" />
+    <ClCompile Include="RobotCProgram\PID.cpp" />
+    <ClCompile Include="RobotCProgram\Setup.cpp" />
+    <ClCompile Include="RobotCProgram\Slew.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="programref\Compile.h" />
-    <ClInclude Include="programref\Controllers.h" />
-    <ClInclude Include="programref\Globals.h" />
-    <ClInclude Include="programref\Helpers.h" />
-    <ClInclude Include="programref\PID.h" />
-    <ClInclude Include="programref\Program.h" />
-    <ClInclude Include="programref\Setup.h" />
-    <ClInclude Include="programref\Slew.h" />
     <ClInclude Include="RobotC.h" />
     <ClInclude Include="Dependencies\imgui-1.77\imconfig.h" />
     <ClInclude Include="Dependencies\imgui-1.77\imgui.h" />
@@ -195,8 +188,16 @@
     <ClInclude Include="Dependencies\imgui-sfml-2.1\imconfig-SFML.h" />
     <ClInclude Include="Dependencies\imgui-sfml-2.1\imgui-SFML.h" />
     <ClInclude Include="Dependencies\imgui-sfml-2.1\imgui-SFML_export.h" />
+    <ClInclude Include="RobotCProgram\Compile.h" />
+    <ClInclude Include="RobotCProgram\Controllers.h" />
+    <ClInclude Include="RobotCProgram\Globals.h" />
+    <ClInclude Include="RobotCProgram\Helpers.h" />
+    <ClInclude Include="RobotCProgram\PID.h" />
+    <ClInclude Include="RobotCProgram\Program.h" />
+    <ClInclude Include="RobotCProgram\Setup.h" />
+    <ClInclude Include="RobotCProgram\Slew.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="Test.h" />
+    <ClInclude Include="PeripheralTable.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
