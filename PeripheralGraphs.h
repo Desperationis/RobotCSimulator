@@ -40,8 +40,12 @@ public:
 		
 		// Update the values of the motor graph.
 		for (int i = 0; i < motorGraphs.size(); i++) {
-			motorGraphs[i]->AddValue(motor[i]);
-			motorGraphs[i]->Update();
+
+			if(motorConfigInfo.find((MotorPort)i) != motorConfigInfo.end()) {
+				motorGraphs[i]->AddValue(motor[i]);
+				motorGraphs[i]->Update();
+			}
+
 		}
 	
 	}
