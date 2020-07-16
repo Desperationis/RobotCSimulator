@@ -27,7 +27,7 @@ void InitSlew() {
 
 
 task Slew() {
-	while(true && !killAll) {
+	while((true) && !killAll) {
 		for(short i = 0; i < 10; i++) {
 			if(CanSlew(i)) {
 				motor[i] = Clamp(SlewStep(motor[i], GetSlewStep(), slewMotor[i] * GetMaxSpeed()));

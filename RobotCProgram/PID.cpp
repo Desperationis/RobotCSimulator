@@ -48,7 +48,7 @@ void SetK(float kP, float kI, float kD) {
 
 
 task PID() {
-	while(true && !killAll) {
+	while((true) && !killAll) {
 		if(canPID) {
 			SetMotorSlew( GetLeftMotor(), PIDCalculate(SensorValue[GetLeftEncoder()], target[0], &leftPID));
 			SetMotorSlew( GetRightMotor(), PIDCalculate(-SensorValue[GetRightEncoder()], target[1], &rightPID));
