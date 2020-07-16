@@ -8,6 +8,7 @@
 
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "WindowObject.h"
 #include "RobotC.h"
 
 using namespace RobotC::Peripherals;
@@ -16,7 +17,7 @@ using namespace RobotC::Types;
  /**
   * Uses a PS4 Controller as a VEX Controller.
   */
-class VexController : public sf::Drawable {
+class VexController : public WindowObject {
 public:
 	VexController() = default;
 

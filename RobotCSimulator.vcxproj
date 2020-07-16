@@ -200,6 +200,7 @@
     <ClInclude Include="PeripheralTable.h" />
     <ClInclude Include="VexController.h" />
     <ClInclude Include="Window.h" />
+    <ClInclude Include="WindowObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

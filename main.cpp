@@ -30,6 +30,7 @@ int main()
 		// Update and render window.
 		ImGui::SFML::Update(*Window::rawWindow, deltaClock.restart());
 		ImGui::ShowDemoWindow();
+		Window::Update();
 		Window::Render();
 	}
 

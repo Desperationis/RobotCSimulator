@@ -17,7 +17,7 @@ namespace RobotC {
 			port1,	port2,	port3,
 			port4,	port5,	port6,
 			port7,	port8,	port9,
-			port10
+			port10, MAX_MOTOR_PORT
 		};
 
 		enum SensorPort {
@@ -30,10 +30,10 @@ namespace RobotC {
 			// Analog Ports
 			in1,	in2,	in3,
 			in4,	in5,	in6,
-			in7,	in8
+			in7,	in8, MAX_SENSOR_PORT
 		};
 
-		enum VexRt {
+		enum VexRT {
 			// PS4 Controller Support
 			Btn5U, // Left Bumper
 			Btn5D, // Left Trigger
@@ -50,20 +50,27 @@ namespace RobotC {
 			Ch1,   // Right X Axis
 			Ch2,   // Right Y Axis
 			Ch3,   // Left Y Axis
-			Ch4    // Left X Axis
+			Ch4,   // Left X Axis
+			MAX_VEX_RT_PORT
 		};
 
+		// Types
 		typedef void task;
 		typedef signed char byte;
 		typedef unsigned char ubyte;
 		typedef short tMotor;
 		typedef short tSensors;
+
+		// Map to enumeration name
+		extern std::map<MotorPort, const char*> motorPortMap;
+		extern std::map<SensorPort, const char*> sensorPortMap;
+		extern std::map<VexRT, const char*> vexRTPortMap;
 	};
 
 	namespace Peripherals {
-		extern std::array<Types::byte, 10> motor;
-		extern std::array<Types::byte, 16> vexRT;
-		extern std::array<int16_t, 20> SensorValue;
+		extern std::array<Types::byte, Types::MAX_MOTOR_PORT> motor;
+		extern std::array<int16_t, Types::MAX_SENSOR_PORT> SensorValue;
+		extern std::array<Types::byte, Types::MAX_VEX_RT_PORT> vexRT;
 
 		static void config(std::string name, Types::MotorPort& motorPort, Types::MotorPort port, bool reverse) {
 			motorPort = port;

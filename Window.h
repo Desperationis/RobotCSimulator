@@ -9,6 +9,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "stdafx.h"
+#include "WindowObject.h"
 #include "imgui.h"
 #include "imgui-SFML.h"
 
@@ -23,9 +24,9 @@ namespace Window {
 
 
 	/**
-	 * sf::Drawable's to be drawn on screen.
+	 * WindowObject's to be drawn on screen.
 	 */
-	static std::vector<std::shared_ptr<sf::Drawable>> objects;
+	static std::vector<std::shared_ptr<WindowObject>> objects;
 
 
 	/**
@@ -45,20 +46,30 @@ namespace Window {
 	}
 
 	/**
-	 * Generic function that adds an object that derives from sf::Drawable
+	 * Generic function that adds an object that derives from WindowObject
 	 * to the list of drawables.
 	 * 
-	 * \param object - A std::shared_ptr<T> that derives from sf::Drawable.
+	 * \param object - A std::shared_ptr<T> that derives from WindowObject.
 	 */
 	template <class T>
 	void AddObject(std::shared_ptr<T> object) {
-		auto drawable = std::dynamic_pointer_cast<sf::Drawable>(object);
+		auto drawable = std::dynamic_pointer_cast<WindowObject>(object);
 
 		if (drawable) {
 			objects.push_back(drawable);
 		}
 		else {
-			printf("Window.h: \"%s\" did not derive from sf::Drawable! \n", typeid(T).name());
+			printf("Window.h: \"%s\" did not derive from WindowObject! \n", typeid(T).name());
+		}
+	}
+
+
+	/**
+	 * Updates all objects.
+	 */
+	void Update() {
+		for (unsigned int i = 0; i < objects.size(); i++) {
+			objects[i]->Update();
 		}
 	}
 
@@ -68,6 +79,7 @@ namespace Window {
 	void Render() {
 		rawWindow->clear();
 
+		// Draw all object to the screen.
 		for (unsigned int i = 0; i < objects.size(); i++) {
 			rawWindow->draw(*objects[i]);
 		}
