@@ -41,6 +41,7 @@ public:
 		// Update the values of the motor graph.
 		for (int i = 0; i < motorGraphs.size(); i++) {
 
+			// Only update if the motor is actually configured
 			if(motorConfigInfo.find((MotorPort)i) != motorConfigInfo.end()) {
 				motorGraphs[i]->AddValue(motor[i]);
 				motorGraphs[i]->Update();
