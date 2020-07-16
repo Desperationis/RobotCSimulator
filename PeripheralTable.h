@@ -15,6 +15,7 @@
 
 using namespace RobotC::Types;
 using namespace RobotC::Peripherals;
+using namespace RobotC::Functions;
 
 /**
  * Displays the values of peripherals using ImGui.
@@ -22,20 +23,6 @@ using namespace RobotC::Peripherals;
  */
 struct PeripheralTable : public WindowObject {
 	PeripheralTable() = default;
-
-	/**
-	 * Template function to increment a continous 
-	 * enumeration. Can fail when enumeration isn't 
-	 * continous (e.x. enum1 = 0, enum2 = 1, enum 3 = 5)
-	 * 
-	 * \param enumeration - An enumeration, of any kind!
-	 * \return The next enumeration.
-	 */
-	template <class T>
-	T IncrementEnum(T enumeration) const {
-		int increment = static_cast<int>(enumeration) + 1;
-		return static_cast<T>(increment);
-	}
 
 	void ShowMotorValues() const {
 		// Iterate through all ports of MotorPort

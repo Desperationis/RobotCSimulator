@@ -178,6 +178,8 @@
     <ClCompile Include="RobotCProgram\Slew.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ImGuiGraph.h" />
+    <ClInclude Include="PeripheralGraphs.h" />
     <ClInclude Include="RobotC.h" />
     <ClInclude Include="Dependencies\imgui-1.77\imconfig.h" />
     <ClInclude Include="Dependencies\imgui-1.77\imgui.h" />
