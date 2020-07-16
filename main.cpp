@@ -3,6 +3,7 @@
 #include "imgui.h"
 #include "imgui-SFML.h"
 #include "PeripheralTable.h"
+#include "VexController.h"
 #include "RobotC.h"
 #include "RobotCProgram\Program.h"
 
@@ -14,6 +15,7 @@ int main()
 
 	// Add objects to the window.
 	Window::AddObject(std::make_shared<PeripheralTable>());
+	Window::AddObject(std::make_shared<VexController>());
 
 	// Run the RobotC program
 	SetUp();

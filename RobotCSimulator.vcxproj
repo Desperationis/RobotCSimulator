@@ -198,6 +198,7 @@
     <ClInclude Include="RobotCProgram\Slew.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="PeripheralTable.h" />
+    <ClInclude Include="VexController.h" />
     <ClInclude Include="Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
