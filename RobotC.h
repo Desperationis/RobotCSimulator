@@ -83,7 +83,12 @@ namespace RobotC {
 		}
 
 		static void startTask(std::function<Types::task()> func) {
-			threads.push_back(std::make_unique<std::thread>(func));
+			if(threads.size() < 20) {
+				threads.push_back(std::make_unique<std::thread>(func));
+			}
+			else {
+				printf("RobotC.h: The maximum number of tasks (20) has already been reached!");
+			}
 		}
 
 		static void stopAllTasks() {

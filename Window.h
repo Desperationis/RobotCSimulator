@@ -89,15 +89,14 @@ namespace Window {
 			// Let ImGui know about events too
 			ImGui::SFML::ProcessEvent(sfEvent);
 
-			switch(sfEvent.type) {
-			
-			case sf::Event::Closed:
+			if (sfEvent.type == sf::Event::Closed) {
 				rawWindow->close();
-				break;
-
-			default:
-				break;
-
+			}
+			
+			if (sfEvent.type == sf::Event::KeyReleased) {
+				if(sfEvent.key.code == sf::Keyboard::Escape) {
+					rawWindow->close();
+				}
 			}
 		}
 	}
