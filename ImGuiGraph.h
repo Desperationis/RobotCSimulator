@@ -92,7 +92,7 @@ private:
 	/**
 	 * Buffer ImGui uses to display the graph.
 	 */
-	float buffer[10000];
+	float buffer[1000];
 
 	/**
 	 * Maximum size of the deque.
