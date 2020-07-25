@@ -6,7 +6,7 @@
  * \date   July 2020
  *********************************************************************/
 #pragma once
-#include "stdafx.h"
+#include "../stdafx.h"
 #include "WindowObject.h"
 #include "imgui.h"
 #include "imgui-SFML.h"
@@ -42,7 +42,6 @@ public:
 		else {
 			printf("ImGuiGraph.h: The size (%f, %f) had negative values!", size.x, size.y);
 		}
-	
 	}
 
 

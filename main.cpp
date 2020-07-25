@@ -2,11 +2,13 @@
 #include "Window.h"
 #include "imgui.h"
 #include "imgui-SFML.h"
-#include "PeripheralTable.h"
-#include "PeripheralGraphs.h"
-#include "VexController.h"
+#include "RobotCProgram/Program.h"
 #include "RobotC.h"
-#include "RobotCProgram\Program.h"
+#include "WindowObjects/PeripheralTable.h"
+#include "WindowObjects/PeripheralGraphs.h"
+#include "WindowObjects/VexController.h"
+#include "WindowObjects/Robot.h"
+#include "Utility/DeltaClock.h"
 
 int main()
 {
@@ -18,6 +20,7 @@ int main()
 	Window::AddObject(std::make_shared<PeripheralTable>());
 	Window::AddObject(std::make_shared<VexController>());
 	Window::AddObject(std::make_shared<PeripheralGraphs>());
+	Window::AddObject(std::make_shared<Robot>());
 
 	// Run the RobotC program
 	SetUp();
@@ -30,8 +33,9 @@ int main()
 
 
 		// Update and render window.
+		DeltaClock::Update();
 		ImGui::SFML::Update(*Window::rawWindow, deltaClock.restart());
-		ImGui::ShowDemoWindow();
+		ImGui::ShowMetricsWindow();
 		Window::Update();
 		Window::Render();
 	}

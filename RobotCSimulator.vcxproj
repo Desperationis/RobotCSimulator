@@ -176,10 +176,13 @@
     <ClCompile Include="RobotCProgram\PID.cpp" />
     <ClCompile Include="RobotCProgram\Setup.cpp" />
     <ClCompile Include="RobotCProgram\Slew.cpp" />
+    <ClCompile Include="Utility\DeltaClock.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ImGuiGraph.h" />
-    <ClInclude Include="PeripheralGraphs.h" />
+    <ClInclude Include="Utility\DeltaClock.h" />
+    <ClInclude Include="Utility\TextureSprite.h" />
+    <ClInclude Include="WindowObjects\ImGuiGraph.h" />
+    <ClInclude Include="WindowObjects\PeripheralGraphs.h" />
     <ClInclude Include="RobotC.h" />
     <ClInclude Include="Dependencies\imgui-1.77\imconfig.h" />
     <ClInclude Include="Dependencies\imgui-1.77\imgui.h" />
@@ -199,10 +202,11 @@
     <ClInclude Include="RobotCProgram\Setup.h" />
     <ClInclude Include="RobotCProgram\Slew.h" />
     <ClInclude Include="stdafx.h" />
-    <ClInclude Include="PeripheralTable.h" />
-    <ClInclude Include="VexController.h" />
+    <ClInclude Include="WindowObjects\PeripheralTable.h" />
+    <ClInclude Include="WindowObjects\Robot.h" />
+    <ClInclude Include="WindowObjects\VexController.h" />
     <ClInclude Include="Window.h" />
-    <ClInclude Include="WindowObject.h" />
+    <ClInclude Include="WindowObjects\WindowObject.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

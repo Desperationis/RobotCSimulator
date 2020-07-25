@@ -1,5 +1,7 @@
 #pragma once
 
+#define M_PI 3.1415
+
 // System
 #include <iostream>
 #include <string>

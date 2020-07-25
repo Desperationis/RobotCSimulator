@@ -7,9 +7,9 @@
  *********************************************************************/
 #pragma once
 #include <SFML/Graphics.hpp>
-#include "stdafx.h"
+#include "../stdafx.h"
 #include "WindowObject.h"
-#include "RobotC.h"
+#include "../RobotC.h"
 #include "ImGuiGraph.h"
 
 using namespace RobotC::Types;

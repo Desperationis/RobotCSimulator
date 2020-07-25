@@ -9,9 +9,9 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "stdafx.h"
-#include "WindowObject.h"
 #include "imgui.h"
 #include "imgui-SFML.h"
+#include "WindowObjects/WindowObject.h"
 
 /**
  * Makes creation, event handling, and rendering of a window easy!
