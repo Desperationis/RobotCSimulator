@@ -16,7 +16,7 @@
 struct WindowObject : public sf::Drawable {
 
 	/**
-	 * Updates the object; Called before render()/
+	 * Called before draw().
 	 */
 	virtual void Update() {
 

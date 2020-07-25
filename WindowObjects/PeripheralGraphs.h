@@ -16,8 +16,7 @@ using namespace RobotC::Types;
 using namespace RobotC::Functions;
 
 /**
- * Displays the graphs of peripherals in a value
- * vs frame format.
+ * Displays the graphs of peripherals in a value vs frame format.
  */
 class PeripheralGraphs : public WindowObject {
 public:
@@ -37,18 +36,14 @@ public:
 	 * Updates the values of the graphs.
 	 */
 	void Update() {
-		
 		// Update the values of the motor graph.
 		for (int i = 0; i < motorGraphs.size(); i++) {
 
 			// Only update if the motor is actually configured
 			if(motorConfigInfo.find((MotorPort)i) != motorConfigInfo.end()) {
 				motorGraphs[i]->AddValue(motor[i]);
-				motorGraphs[i]->Update();
 			}
-
 		}
-	
 	}
 
 	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const {

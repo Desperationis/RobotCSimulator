@@ -14,13 +14,12 @@
 using namespace RobotC::Peripherals;
 using namespace RobotC::Types;
 
- /**
-  * Uses a PS4 Controller as a VEX Controller.
-  */
+/**
+ * Uses a PS4 Controller as a VEX Controller.
+ */
 class VexController : public WindowObject {
 public:
 	VexController() = default;
-
 
 	/**
 	 * Normalizes PS4 axis value to VEX motor value.
@@ -35,7 +34,7 @@ public:
 	/**
 	 * Updates PS4 inputs into vexRT
 	 */
-	virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const {
+	void Update() override {
 		if (sf::Joystick::isConnected(0)) {
 			// Right Joystick X
 			vexRT[Ch1] = AxisNormalize(sf::Joystick::getAxisPosition(0, sf::Joystick::Axis::Z));

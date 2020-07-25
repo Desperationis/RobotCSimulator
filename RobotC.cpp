@@ -4,12 +4,12 @@ using namespace RobotC::Types;
 using namespace RobotC::Peripherals;
 
 // Define external variables once
-std::array<byte, MAX_MOTOR_PORT> RobotC::Peripherals::motor;
-std::array<int16_t, MAX_SENSOR_PORT> RobotC::Peripherals::SensorValue;
-std::array<byte, MAX_VEX_RT_PORT> RobotC::Peripherals::vexRT;
+std::array<byte, MAX_MOTOR_PORT>          RobotC::Peripherals::motor;
+std::array<int16_t, MAX_SENSOR_PORT>      RobotC::Peripherals::SensorValue;
+std::array<byte, MAX_VEX_RT_PORT>         RobotC::Peripherals::vexRT;
 
-std::map<MotorPort, MotorInfo> RobotC::Peripherals::motorConfigInfo;
-std::map<SensorPort, SensorInfo> RobotC::Peripherals::sensorConfigInfo;
+std::map<MotorPort, MotorInfo>            RobotC::Peripherals::motorConfigInfo;
+std::map<SensorPort, SensorInfo>          RobotC::Peripherals::sensorConfigInfo;
 
 std::vector<std::unique_ptr<std::thread>> RobotC::Threads::threads;
 bool RobotC::Threads::killAll = false;

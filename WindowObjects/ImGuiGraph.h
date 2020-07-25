@@ -58,12 +58,8 @@ public:
 		if (graphValues.size() > maxSize) {
 			graphValues.pop_front();
 		}
-	}
 
-	/**
-	 * Copy the value of deque onto buffer.
-	 */
-	void Update() {
+		// Copy the value of deque onto buffer.
 		for (int i = 0; i < graphValues.size(); i++) {
 			buffer[i] = graphValues[i];
 		}

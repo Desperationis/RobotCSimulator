@@ -17,17 +17,8 @@
  * Makes creation, event handling, and rendering of a window easy!
  */
 namespace Window {
-	/**
-	 * sf::RenderWindow responsible for managing the window.
-	 */
 	static std::unique_ptr<sf::RenderWindow> rawWindow;
-
-
-	/**
-	 * WindowObject's to be drawn on screen.
-	 */
 	static std::vector<std::shared_ptr<WindowObject>> objects;
-
 
 	/**
 	 * Creates, or recreates, the window.
@@ -49,7 +40,7 @@ namespace Window {
 	 * Generic function that adds an object that derives from WindowObject
 	 * to the list of drawables.
 	 * 
-	 * \param object - A std::shared_ptr<T> that derives from WindowObject.
+	 * \param object - std::shared_ptr<T> that derives from WindowObject.
 	 */
 	template <class T>
 	void AddObject(std::shared_ptr<T> object) {
@@ -63,19 +54,12 @@ namespace Window {
 		}
 	}
 
-
-	/**
-	 * Updates all objects.
-	 */
 	void Update() {
 		for (unsigned int i = 0; i < objects.size(); i++) {
 			objects[i]->Update();
 		}
 	}
 
-	/**
-	 * Renders all objects onto the window.
-	 */
 	void Render() {
 		rawWindow->clear();
 
@@ -90,9 +74,6 @@ namespace Window {
 		rawWindow->display();
 	}
 
-	/**
-	 * Polls window events!
-	 */
 	void PollEvents() {
 		sf::Event sfEvent;
 
