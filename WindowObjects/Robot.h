@@ -27,31 +27,8 @@ public:
 	};
 
 	void Update() override {
-		auto delta = DeltaClock::GetDelta();
-		canOvercomeFriction = abs(motor[leftMotorPort]) + abs(motor[rightMotorPort]) > STATICFRICTION;
-
-		if (canOvercomeFriction) {
-			UpdateTurning(delta);
-			UpdateVelocity(delta);
-		}
+		setPosition(sf::Vector2f(getPosition().x + 1, getPosition().y));
 	};
-
-	void UpdateTurning(float delta) {
-		// Turn based on motor's values.
-		float angularSpeed = ((motor[leftMotorPort] - motor[rightMotorPort]) / 254.0f) * turnSpeed;
-		rotate(angularSpeed * delta);
-	}
-
-	void UpdateVelocity(float delta) {
-		// Set velocity based on motor values
-		float radianAngle = GetRadians(getRotation());
-		float combinedSpeed = ((motor[leftMotorPort] + motor[rightMotorPort]) / 254.0f) * SPEED;
-		
-		velocity.x = cos(radianAngle) * combinedSpeed * delta;
-		velocity.y = sin(radianAngle) * combinedSpeed * delta;
-
-		move(velocity);
-	}
 
 
 private:
@@ -60,7 +37,6 @@ private:
 
 	const float SPEED;
 	const float STATICFRICTION;
-
 
 	float turnSpeed;
 	sf::Vector2f velocity;
