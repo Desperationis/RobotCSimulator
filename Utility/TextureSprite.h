@@ -8,7 +8,7 @@
 #include <string>
 #include "../WindowObjects/WindowObject.h"
 
-class TextureSprite : public sf::Drawable, public sf::Transformable, public WindowObject {
+class TextureSprite : public sf::Transformable, public WindowObject {
 public:
 	TextureSprite() = default;
 

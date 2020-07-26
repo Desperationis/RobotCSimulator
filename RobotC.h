@@ -89,80 +89,21 @@ namespace RobotC {
 		extern std::map<Types::MotorPort, MotorInfo> motorConfigInfo;
 		extern std::map<Types::SensorPort, SensorInfo> sensorConfigInfo;
 
-		static void config(std::string name, Types::MotorPort& motorPort, Types::MotorPort port, bool reverse) {
-			// Assign the reference to the port.
-			motorPort = port;
-
-			// Write down that configuration information for later.
-			MotorInfo configInfo;
-			configInfo.motorPort = motorPort;
-			configInfo.reversed = reverse;
-			configInfo.name = name;
-			motorConfigInfo[motorPort] = configInfo;
-		}
-
-		static void config(std::string name, Types::SensorPort& sensorPort, Types::SensorPort port) {
-			// Assign the reference to the port.
-			sensorPort = port;
-
-			// Write down that configuration information for later.
-			SensorInfo configInfo;
-			configInfo.sensorPort = sensorPort;
-			configInfo.name = name;
-			sensorConfigInfo[sensorPort] = configInfo;
-		}
+		extern void config(std::string name, Types::MotorPort& motorPort, Types::MotorPort port, bool reverse);
+		extern void config(std::string name, Types::SensorPort& sensorPort, Types::SensorPort port);
 	}
 
 	namespace Threads {
 		extern std::vector<std::unique_ptr<std::thread>> threads;
 		extern bool killAll;
 
-		static void delay(int ms) {
-			std::this_thread::sleep_for(std::chrono::milliseconds(ms));
-		}
-
-		static void startTask(std::function<Types::task()> func) {
-			if(threads.size() < 20) {
-				threads.push_back(std::make_unique<std::thread>(func));
-			}
-			else {
-				printf("RobotC.h: The maximum number of tasks (20) has already been reached!");
-			}
-		}
-
-		static void stopAllTasks() {
-			killAll = true;
-		}
+		extern void delay(int ms);
+		extern void startTask(std::function<Types::task()> func);
+		extern void stopAllTasks();
 	}
 
 	namespace Functions {
-		/**
-		 * Template function to increment a continous
-		 * enumeration. Can fail when enumeration isn't
-		 * continous (e.x. enum1 = 0, enum2 = 1, enum 3 = 5)
-		 *
-		 * \param enumeration - An enumeration, of any kind!
-		 * \return The next enumeration.
-		 */
-		template <class T>
-		T IncrementEnum(T enumeration) {
-			int increment = static_cast<int>(enumeration) + 1;
-			return static_cast<T>(increment);
-		}
-
-
-
-		static int sgn(int input) {
-			if (input < 0) {
-				return -1;
-			}
-			if (input > 0) {
-				return 1;
-			}
-
-			return 0;
-		}
-	
+		extern int sgn(int input);
 	}
 };
 

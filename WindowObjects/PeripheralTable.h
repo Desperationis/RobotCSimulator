@@ -24,29 +24,26 @@ using namespace RobotC::Functions;
 struct PeripheralTable : public WindowObject {
 	PeripheralTable() = default;
 
-	void ShowMotorValues() const {
-		// Iterate through all ports of MotorPort
-		for (MotorPort index = port1; index != MAX_MOTOR_PORT; index = IncrementEnum(index)) {
-			byte portValue = motor[index];
-			const char* portName = motorPortMap[index];
+	void ShowMotorValues() const { 
+		for (unsigned int port = port1; port != MAX_MOTOR_PORT; port++) {
+			byte portValue = motor[port];
+			const char* portName = motorPortMap[(MotorPort)port];
 			ImGui::Text("%s: %i", portName, portValue);
 		}
 	}
 
 	void ShowSensorValues() const {
-		// Iterate through all ports of SensorPort
-		for (SensorPort index = dgtl1; index != MAX_SENSOR_PORT; index = IncrementEnum(index)) {
-			int16_t portValue = SensorValue[index];
-			const char* portName = sensorPortMap[index];
+		for (unsigned int port = dgtl1; port != MAX_SENSOR_PORT; port++) {
+			int16_t portValue = SensorValue[port];
+			const char* portName = sensorPortMap[(SensorPort)port];
 			ImGui::Text("%s: %i", portName, portValue);
 		}
 	}
 
 	void ShowRTValues() const {
-		// Iterate through all ports of vexRT
-		for (VexRT index = Btn5U; index != MAX_VEX_RT_PORT; index = IncrementEnum(index)) {
-			byte portValue = vexRT[index];
-			const char* portName = vexRTPortMap[index];
+		for (unsigned int port = Btn5U; port != MAX_VEX_RT_PORT; port++) {
+			byte portValue = vexRT[port];
+			const char* portName = vexRTPortMap[(VexRT)port];
 			ImGui::Text("%s: %i", portName, portValue);
 		}
 	}

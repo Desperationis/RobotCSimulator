@@ -25,9 +25,9 @@ public:
 		sf::Vector2f range(-100, 100);
 		sf::Vector2f size(100, 100);
 
-		for (MotorPort port = port1; port != MAX_MOTOR_PORT; port = IncrementEnum(port)) {
+		for (unsigned int port = port1; port != MAX_MOTOR_PORT; port++) {
 			// Make a new ImGuiGraph, with the current motor name, maxSize, range, and canvas size.
-			const char* motorName = motorPortMap[port];
+			const char* motorName = motorPortMap[(MotorPort)port];
 			motorGraphs.push_back(std::make_unique<ImGuiGraph>(motorName, maxSize, range, size));
 		}
 	}
