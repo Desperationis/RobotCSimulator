@@ -8,13 +8,12 @@
 using namespace RobotC::Peripherals;
 using namespace RobotC::Types;
 
-
-
 class Robot : public TextureSprite {
 public:
 	float GetRadians(float degrees) {
 		return degrees * (M_PI / 180.0f);
 	}
+
 	Robot() : SPEED(500), STATICFRICTION(20), velocity(0, 0), canOvercomeFriction(false) {
 
 		LoadTextureFromFile("Assets/Clawbot.png");
@@ -47,7 +46,7 @@ public:
 		// Set velocity based on motor values
 		float radianAngle = GetRadians(getRotation());
 		float combinedSpeed = ((motor[leftMotorPort] + motor[rightMotorPort]) / 254.0f) * SPEED;
-
+		
 		velocity.x = cos(radianAngle) * combinedSpeed * delta;
 		velocity.y = sin(radianAngle) * combinedSpeed * delta;
 
