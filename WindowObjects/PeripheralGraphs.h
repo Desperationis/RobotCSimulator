@@ -8,8 +8,8 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "../stdafx.h"
-#include "WindowObject.h"
 #include "../RobotC.h"
+#include "WindowObject.h"
 #include "ImGuiGraph.h"
 
 using namespace RobotC::Types;
@@ -41,7 +41,7 @@ public:
 
 			// Only update if the motor is actually configured
 			if(motorConfigInfo.find((MotorPort)i) != motorConfigInfo.end()) {
-				motorGraphs[i]->AddValue(motor[i]);
+				motorGraphs[i]->PushValue(motor[i]);
 			}
 		}
 	}
@@ -53,7 +53,7 @@ public:
 			// Put motorGraphs into 3 seperate columns.
 			ImGui::Columns(3);
 			for(int i = 0; i < motorGraphs.size(); i++) {
-				motorGraphs[i]->SetSize(sf::Vector2f(ImGui::GetColumnWidth(), 100));
+				motorGraphs[i]->SetDimensions(sf::Vector2f(ImGui::GetColumnWidth(), 100));
 				motorGraphs[i]->DrawGraph();
 
 				if ((i + 1) % 3 == 0) {

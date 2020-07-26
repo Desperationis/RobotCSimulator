@@ -18,12 +18,12 @@ public:
 	Robot() : SPEED(500), STATICFRICTION(20), velocity(0, 0), canOvercomeFriction(false) {
 
 		LoadTextureFromFile("Assets/Clawbot.png");
-		SetSize(sf::Vector2f(50, 50));
+		SetRectSize(sf::Vector2f(50, 50));
 
 		setOrigin(sf::Vector2f(25, 25));
 		setPosition(sf::Vector2f(500, 500));
 
-		turnSpeed = (SPEED / ((float)rect.getLocalBounds().width * M_PI)) * 360;
+		turnSpeed = (SPEED / ((float)rectangleShape.getLocalBounds().width * M_PI)) * 360;
 
 	};
 

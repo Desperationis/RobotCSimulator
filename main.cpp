@@ -26,15 +26,13 @@ int main()
 	SetUp();
 	startTask(programMain);
 
-	sf::Clock deltaClock;
 	while (Window::rawWindow->isOpen()) {
 		// Poll window events
 		Window::PollEvents();
 
-
 		// Update and render window.
-		DeltaClock::Update();
-		ImGui::SFML::Update(*Window::rawWindow, deltaClock.restart());
+		ImGui::SFML::Update(*Window::rawWindow, DeltaClock::bufferTime);
+		DeltaClock::ResetTimer();
 		ImGui::ShowMetricsWindow();
 		Window::Update();
 		Window::Render();

@@ -1,6 +1,6 @@
 /*****************************************************************//**
  * \file   ImGuiGraph.h
- * \brief  A Wrapper for ImGui's PlotLines.
+ * \brief  A wrapper for ImGui::PlotLines.
  * 
  * \author smart
  * \date   July 2020
@@ -11,97 +11,47 @@
 #include "imgui.h"
 #include "imgui-SFML.h"
 
-/**
- * A wrapper for ImGui's PlotLines.
- */
 class ImGuiGraph : public WindowObject {
 public:
-	/**
-	 * Contructs the graph.
-	 * 
-	 * \param label - The label of the graph, shown in the top center of it.
-	 * \param _maxSize - Maximum amount of points to be visible at any given time.
-	 * \param range - The minimum and maximum range, given as a sf::Vector2f.
-	 * \param size - The size of the graph, given as sf::Vector2f.
-	 */
-	ImGuiGraph(const char* label, int _maxSize, sf::Vector2f range, sf::Vector2f size) : maxSize(_maxSize) {
-		this->label = label;
-		this->range = range;
-		SetSize(size);
+	ImGuiGraph(std::string label, int maxPoints, sf::Vector2f range, sf::Vector2f dimensions) : MAX_POINTS(maxPoints), LABEL(label), RANGE(range) {
+		SetDimensions(dimensions);
 
-		// Set all the deque's values to 0
-		for (int i = 0; i < maxSize; i++) {
-			graphValues.push_back(i);
+		for (int i = 0; i < MAX_POINTS; i++) {
+			values.push_back(i);
 		}
 	}
 
-	void SetSize(sf::Vector2f size) {
-		if (size.x > 0 && size.y > 0) {
-			this->size = size;
+	void SetDimensions(sf::Vector2f dimensions) {
+		if (dimensions.x > 0 && dimensions.y > 0) {
+			this->dimensions = dimensions;
 		}
 		else {
-			printf("ImGuiGraph.h: The size (%f, %f) had negative values!", size.x, size.y);
+			printf("ImGuiGraph.h: The size (%f, %f) had negative values!", dimensions.x, dimensions.y);
 		}
 	}
 
+	void PushValue(float value) {
+		values.push_back(value);
+		values.pop_front();
 
-	/**
-	 * Adds a float to the graph. Size will be held constant.
-	 * 
-	 * \param value - The float to be added to the graph.
-	 */
-	void AddValue(float value) {
-		// Add value to deque.
-		graphValues.push_back(value);
-
-		// If it's too big, limit it's size.
-		if (graphValues.size() > maxSize) {
-			graphValues.pop_front();
-		}
-
-		// Copy the value of deque onto buffer.
-		for (int i = 0; i < graphValues.size(); i++) {
-			buffer[i] = graphValues[i];
+		for (int i = 0; i < values.size(); i++) {
+			buffer[i] = values[i];
 		}
 	}
 
 	/**
-	 * Manually renders the graph once ImGui::Begin() is called.
+	 * Should be called after ImGui::Begin().
 	 */
 	void DrawGraph() {
-		ImGui::PlotLines("", buffer, maxSize, 0, label, range.x, range.y, size);
-		//ImGui::PlotHistogram()
+		ImGui::PlotLines("", buffer, MAX_POINTS, 0, LABEL.c_str(), RANGE.x, RANGE.y, dimensions);
 	}
 
 private:
-	/**
-	 * Deque holding the actual values of the graph.
-	 */
-	std::deque<float> graphValues;
-
-	/**
-	 * Label of the graph.
-	 */
-	const char* label;
-
-	/**
-	 * Buffer ImGui uses to display the graph.
-	 */
+	const unsigned int MAX_POINTS;
+	const std::string LABEL;
+	const sf::Vector2f RANGE;
 	float buffer[1000];
 
-	/**
-	 * Maximum size of the deque.
-	 */
-	const int maxSize;
-
-	/**
-	 * Range of values shown.
-	 */
-	sf::Vector2f range;
-
-
-	/**
-	 * Size of the graph, in pixels.
-	 */
-	ImVec2 size;
+	std::deque<float> values;
+	sf::Vector2f dimensions;
 };
