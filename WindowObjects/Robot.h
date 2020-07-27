@@ -8,12 +8,13 @@
 using namespace RobotC::Peripherals;
 using namespace RobotC::Types;
 
+
+
 class Robot : public TextureSprite {
 public:
 	float GetRadians(float degrees) {
 		return degrees * (M_PI / 180.0f);
 	}
-
 	Robot() : SPEED(500), STATICFRICTION(20), velocity(0, 0), canOvercomeFriction(false) {
 
 		LoadTextureFromFile("Assets/Clawbot.png");
@@ -27,8 +28,31 @@ public:
 	};
 
 	void Update() override {
-		setPosition(sf::Vector2f(getPosition().x + 1, getPosition().y));
+		auto delta = DeltaClock::GetDelta();
+		canOvercomeFriction = abs(motor[leftMotorPort]) + abs(motor[rightMotorPort]) > STATICFRICTION;
+
+		if (canOvercomeFriction) {
+			UpdateTurning(delta);
+			UpdateVelocity(delta);
+		}
 	};
+
+	void UpdateTurning(float delta) {
+		// Turn based on motor's values.
+		float angularSpeed = ((motor[leftMotorPort] - motor[rightMotorPort]) / 254.0f) * turnSpeed;
+		rotate(angularSpeed * delta);
+	}
+
+	void UpdateVelocity(float delta) {
+		// Set velocity based on motor values
+		float radianAngle = GetRadians(getRotation());
+		float combinedSpeed = ((motor[leftMotorPort] + motor[rightMotorPort]) / 254.0f) * SPEED;
+
+		velocity.x = cos(radianAngle) * combinedSpeed * delta;
+		velocity.y = sin(radianAngle) * combinedSpeed * delta;
+
+		move(velocity);
+	}
 
 
 private:
@@ -37,6 +61,7 @@ private:
 
 	const float SPEED;
 	const float STATICFRICTION;
+
 
 	float turnSpeed;
 	sf::Vector2f velocity;
