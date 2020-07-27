@@ -32,6 +32,7 @@ public:
 		ImGui::Begin("Robot");
 		ImGui::Text("Position x: %g", getPosition().x);
 		ImGui::Text("Position y: %g", getPosition().y);
+		ImGui::Text("Linear Velocity: %g", sqrt(pow(velocity.x, 2) + pow(velocity.y, 2)));
 		ImGui::End();
 
 
@@ -46,39 +47,44 @@ public:
 
 	void Update() override {
 		auto delta = DeltaClock::GetDelta();
-		//float leftMotorValue = 100.0f;
-		//float rightMotorValue = 127.0f;
-		float leftMotorValue = motor[leftMotorPort];
-		float rightMotorValue = motor[rightMotorPort];
-		sf::Vector2f velocity(0, 0);
+		float leftMotorValue = (motor[leftMotorPort] / 127.0f) * 80;
+		float rightMotorValue = (motor[rightMotorPort] / 127.0f) * 80;
 
-		if((rightMotorValue - leftMotorValue) != 0) {
-			float L = rectangleShape.getLocalBounds().width;
+		if(abs(rightMotorValue - leftMotorValue) >= 2) {
+			//float L = rectangleShape.getLocalBounds().width;
+			float L = 18.0f; // Inches
 			float R = (L / 2) * ((leftMotorValue + rightMotorValue) / (rightMotorValue - leftMotorValue));
 			float rotationalSpeed = (rightMotorValue - leftMotorValue) / L;
 		
-			//setRotation(45.0f);
-
 			ICCPosition.x = getPosition().x + (sin(GetRadians()) * R);
 			ICCPosition.y = getPosition().y - (cos(GetRadians()) * R);
-			//ICCPosition = sf::Vector2f(900, 500);
 
-			setRotation(getRotation() - (rotationalSpeed * delta * 30));
+			setRotation(getRotation() - (rotationalSpeed * delta * 360));
 
 			sf::Vector2f position = getPosition();
-			float xDif = position.x - ICCPosition.x;
-			float yDif = position.y - ICCPosition.y;
-			float distance = sqrt(pow(xDif, 2) + pow(yDif, 2));
 
 			position.x = ICCPosition.x + (-sin(GetRadians()) * R);
 			position.y = ICCPosition.y + (cos(GetRadians()) * R);
 
+			velocity.x = position.x - getPosition().x;
+			velocity.y = position.y - getPosition().y;
+
 			setPosition(position);
 		}
+		else {
+			sf::Vector2f position = getPosition();
+
+			position.x += (leftMotorValue * cos(GetRadians()) * delta) * 5;
+			position.y += (leftMotorValue * sin(GetRadians()) * delta) * 5;
+
+			velocity.x = position.x - getPosition().x;
+			velocity.y = position.y - getPosition().y;
+
+			setPosition(position);
 
 
 		
-		setPosition(getPosition() + velocity);
+		}
 	};
 
 private:
@@ -86,4 +92,5 @@ private:
 	MotorPort rightMotorPort = port5;
 
 	sf::Vector2f ICCPosition;
+	sf::Vector2f velocity;
 };
