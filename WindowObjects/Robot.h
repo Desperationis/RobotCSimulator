@@ -13,12 +13,12 @@ using namespace RobotC::Types;
 class Robot : public TextureSprite {
 public:
 
-	Robot() {
-
+	Robot() : SPEED(50), renderICC(false) {
 		LoadTextureFromFile("Assets/Clawbot.png");
-		SetRectSize(sf::Vector2f(50, 50));
+		SetRectSize(sf::Vector2f(50, 100));
 
-		setOrigin(sf::Vector2f(25, 25));
+		// Origin defines the midpoint of the wheels. 
+		setOrigin(sf::Vector2f(rectangleShape.getLocalBounds().width / 2, rectangleShape.getLocalBounds().height / 2));
 		setPosition(sf::Vector2f(1000, 500));
 	};
 
@@ -28,31 +28,38 @@ public:
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const {
 		TextureSprite::draw(target, states);
-		
+
+		if(renderICC) {
+			sf::CircleShape ICC;
+			ICC.setRadius(2.0f);
+			ICC.setOrigin(sf::Vector2f(2.0f, 2.0f));
+			ICC.setPosition(ICCPosition);
+			ICC.setFillColor(sf::Color::Red);
+			target.draw(ICC);
+		}
+	}
+
+	void ImGuiDraw() override {
+		auto delta = DeltaClock::GetDelta();
 		ImGui::Begin("Robot");
-		ImGui::Text("Position x: %g", getPosition().x);
-		ImGui::Text("Position y: %g", getPosition().y);
-		ImGui::Text("Linear Velocity: %g", sqrt(pow(velocity.x, 2) + pow(velocity.y, 2)));
+		ImGui::Text("Position x (px): %g", getPosition().x);
+		ImGui::Text("Position y (px): %g", getPosition().y);
+		ImGui::Text("Velocity (px/s): %g", sqrt(pow(velocity.x, 2) + pow(velocity.y, 2)) / delta);
+		ImGui::Checkbox("Render ICC: ", &renderICC);
 		ImGui::End();
-
-
-		sf::CircleShape ICC;
-		ICC.setRadius(2.0f);
-		ICC.setOrigin(sf::Vector2f(2.0f, 2.0f));
-		ICC.setPosition(ICCPosition);
-		ICC.setFillColor(sf::Color::Red);
-
-		target.draw(ICC);
 	}
 
 	void Update() override {
 		auto delta = DeltaClock::GetDelta();
-		float leftMotorValue = (motor[leftMotorPort] / 127.0f) * 80;
-		float rightMotorValue = (motor[rightMotorPort] / 127.0f) * 80;
+
+		// Scale raw motor values down to emulate speed
+		float leftMotorValue =  (motor[leftMotorPort] / 127.0f)  * SPEED;
+		float rightMotorValue = (motor[rightMotorPort] / 127.0f) * SPEED;
+
+		sf::Vector2f position = getPosition();
 
 		if(abs(rightMotorValue - leftMotorValue) >= 2) {
-			//float L = rectangleShape.getLocalBounds().width;
-			float L = 18.0f; // Inches
+			float L = rectangleShape.getLocalBounds().width;
 			float R = (L / 2) * ((leftMotorValue + rightMotorValue) / (rightMotorValue - leftMotorValue));
 			float rotationalSpeed = (rightMotorValue - leftMotorValue) / L;
 		
@@ -61,30 +68,20 @@ public:
 
 			setRotation(getRotation() - (rotationalSpeed * delta * 360));
 
-			sf::Vector2f position = getPosition();
-
 			position.x = ICCPosition.x + (-sin(GetRadians()) * R);
 			position.y = ICCPosition.y + (cos(GetRadians()) * R);
 
 			velocity.x = position.x - getPosition().x;
 			velocity.y = position.y - getPosition().y;
-
-			setPosition(position);
 		}
 		else {
-			sf::Vector2f position = getPosition();
-
 			position.x += (leftMotorValue * cos(GetRadians()) * delta) * 5;
 			position.y += (leftMotorValue * sin(GetRadians()) * delta) * 5;
 
 			velocity.x = position.x - getPosition().x;
 			velocity.y = position.y - getPosition().y;
-
-			setPosition(position);
-
-
-		
 		}
+		setPosition(position);
 	};
 
 private:
@@ -93,4 +90,8 @@ private:
 
 	sf::Vector2f ICCPosition;
 	sf::Vector2f velocity;
+
+	bool renderICC;
+
+	const int SPEED;
 };

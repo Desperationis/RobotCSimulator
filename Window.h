@@ -66,6 +66,7 @@ namespace Window {
 		// Draw all object to the screen.
 		for (unsigned int i = 0; i < objects.size(); i++) {
 			rawWindow->draw(*objects[i]);
+			objects[i]->ImGuiDraw();
 		}
 
 		// Render ImGui on top of objects.
