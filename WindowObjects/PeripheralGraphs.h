@@ -38,10 +38,11 @@ public:
 	void Update() {
 		// Update the values of the motor graph.
 		for (int i = 0; i < motorGraphs.size(); i++) {
-
 			// Only update if the motor is actually configured
 			if(motorConfigInfo.find((MotorPort)i) != motorConfigInfo.end()) {
-				motorGraphs[i]->PushValue(motor[i]);
+				int reversed = motorConfigInfo[(MotorPort)i].reversed ? -1 : 1;
+
+				motorGraphs[i]->PushValue(motor[i] * reversed);
 			}
 		}
 	}
@@ -50,15 +51,13 @@ public:
 		ImGui::Begin("Peripheral Graphs");
 
 		if(ImGui::TreeNode("Motor Graphs")) {
-			// Put motorGraphs into 3 seperate columns.
-			ImGui::Columns(3);
+			// Put motorGraphs into 2 seperate columns.
+			ImGui::Columns(2);
 			for(int i = 0; i < motorGraphs.size(); i++) {
 				motorGraphs[i]->SetDimensions(sf::Vector2f(ImGui::GetColumnWidth(), 100));
 				motorGraphs[i]->DrawGraph();
 
-				if ((i + 1) % 3 == 0) {
-					ImGui::NextColumn();
-				}
+				ImGui::NextColumn();
 			}
 			ImGui::TreePop();
 		}
