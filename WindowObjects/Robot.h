@@ -7,7 +7,7 @@
 
 using namespace RobotC::Peripherals;
 using namespace RobotC::Types;
-
+using namespace RobotC::Functions;
 
 
 class Robot : public TextureSprite {
@@ -45,10 +45,6 @@ public:
 		ImGui::End();
 	}
 
-	float GetRadians() {
-		return getRotation() * (M_PI / 180.0f);
-	}
-
 	sf::Vector2f GetWrappedPosition(sf::Vector2f position) {
 		// Wrap the robot's position so it's always in view.
 		sf::VideoMode windowMode = sf::VideoMode::getDesktopMode();
@@ -80,13 +76,13 @@ public:
 		float rotationalSpeed = (rightMotorValue - leftMotorValue) / width;
 		
 		// Make a turn around a pivot (ICC) based on rotational speed.
-		ICCPosition.x = getPosition().x + (sin(GetRadians()) * distanceToICC);
-		ICCPosition.y = getPosition().y - (cos(GetRadians()) * distanceToICC);
+		ICCPosition.x = getPosition().x + (sinDegrees(getRotation()) * distanceToICC);
+		ICCPosition.y = getPosition().y - (cosDegrees(getRotation()) * distanceToICC);
 
 		setRotation(getRotation() - (rotationalSpeed * delta * 360));
 
-		position.x = ICCPosition.x + (-sin(GetRadians()) * distanceToICC);
-		position.y = ICCPosition.y + (cos(GetRadians()) * distanceToICC);
+		position.x = ICCPosition.x + (-sinDegrees(getRotation()) * distanceToICC);
+		position.y = ICCPosition.y + (cosDegrees(getRotation()) * distanceToICC);
 		
 		return position;
 	}
@@ -108,8 +104,8 @@ public:
 		}
 		else {
 			auto delta = DeltaClock::GetDelta();
-			position.x += (leftMotorValue * cos(GetRadians()) * delta) * 5;
-			position.y += (leftMotorValue * sin(GetRadians()) * delta) * 5;
+			position.x += (leftMotorValue * cosDegrees(getRotation()) * delta) * 5;
+			position.y += (leftMotorValue * sinDegrees(getRotation()) * delta) * 5;
 		}
 
 		velocity.x = position.x - getPosition().x;

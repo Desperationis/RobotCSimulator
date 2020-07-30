@@ -10,6 +10,20 @@
 #include "WindowObjects/Robot.h"
 #include "Utility/DeltaClock.h"
 
+/**
+ * Code Breakdown:
+ * 
+ * Create window
+ * Run task programMain (Program.h) in a different thread.
+ * 
+ * while window is not closed:
+ *		React to motor[], SensorValue[], and vexRT[] changes with graphs, virtual robots, ect.
+ *		Draw it to the window.
+ * 
+ * Kill program threads.
+ */
+
+
 int main()
 {
 	// Initialize window and ImGui

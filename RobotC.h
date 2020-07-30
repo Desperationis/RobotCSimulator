@@ -10,6 +10,10 @@
 #include <SFML/Graphics.hpp>
 #include "stdafx.h"
 
+/**
+ * Bind RobotC functionality with C++. This includes RobotC types,
+ * ports, peripheral info, and more.
+ */
 namespace RobotC {
 	namespace Types {
 		// Ports
@@ -54,7 +58,7 @@ namespace RobotC {
 			MAX_VEX_RT_PORT
 		};
 
-		// Types
+		// RobotC Types
 		typedef void task;
 		typedef signed char byte;
 		typedef unsigned char ubyte;
@@ -68,21 +72,18 @@ namespace RobotC {
 	};
 
 	namespace Peripherals {
-		// Holds peripheral values.
 		extern std::array<Types::byte, Types::MAX_MOTOR_PORT> motor;
 		extern std::array<int16_t, Types::MAX_SENSOR_PORT> SensorValue;
 		extern std::array<Types::byte, Types::MAX_VEX_RT_PORT> vexRT;
 
 
 		struct MotorInfo {
-			MotorInfo() = default;
 			Types::MotorPort motorPort;
 			std::string name;
 			bool reversed;
 		};
 
 		struct SensorInfo {
-			SensorInfo() = default;
 			Types::SensorPort sensorPort;
 			std::string name;
 		};
@@ -105,7 +106,13 @@ namespace RobotC {
 	}
 
 	namespace Functions {
+		extern const float PI;
+
 		extern int sgn(int input);
+		extern float degreesToRadians(float degrees);
+		extern float radiansToDegrees(float radians);
+		extern float cosDegrees(float degrees);
+		extern float sinDegrees(float degrees);
 	}
 };
 
