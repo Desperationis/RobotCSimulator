@@ -49,8 +49,28 @@ public:
 		ImGui::End();
 	}
 
-	void Update() override {
+	sf::Vector2f CalculateNewTurnPosition(float leftMotorValue, float rightMotorValue) {
+		auto position = getPosition();
 		auto delta = DeltaClock::GetDelta();
+
+		// Use a modified formula of tangetial velocity to find circle center (ICC) + rotational speed.
+		float width = rectangleShape.getLocalBounds().width;
+		float distanceToICC = (width / 2) * ((leftMotorValue + rightMotorValue) / (rightMotorValue - leftMotorValue));
+		float rotationalSpeed = (rightMotorValue - leftMotorValue) / width;
+		
+		// Make a turn around a pivot (ICC) based on rotational speed.
+		ICCPosition.x = getPosition().x + (sin(GetRadians()) * distanceToICC);
+		ICCPosition.y = getPosition().y - (cos(GetRadians()) * distanceToICC);
+
+		setRotation(getRotation() - (rotationalSpeed * delta * 360));
+
+		position.x = ICCPosition.x + (-sin(GetRadians()) * distanceToICC);
+		position.y = ICCPosition.y + (cos(GetRadians()) * distanceToICC);
+		
+		return position;
+	}
+
+	void Update() override {
 
 		// Scale raw motor values down to emulate speed
 		float leftMotorValue =  (motor[leftMotorPort] / 127.0f)  * SPEED;
@@ -58,29 +78,19 @@ public:
 
 		sf::Vector2f position = getPosition();
 
+		// Turn or go straight based on motor velocities.
 		if(abs(rightMotorValue - leftMotorValue) >= 2) {
-			float L = rectangleShape.getLocalBounds().width;
-			float R = (L / 2) * ((leftMotorValue + rightMotorValue) / (rightMotorValue - leftMotorValue));
-			float rotationalSpeed = (rightMotorValue - leftMotorValue) / L;
-		
-			ICCPosition.x = getPosition().x + (sin(GetRadians()) * R);
-			ICCPosition.y = getPosition().y - (cos(GetRadians()) * R);
-
-			setRotation(getRotation() - (rotationalSpeed * delta * 360));
-
-			position.x = ICCPosition.x + (-sin(GetRadians()) * R);
-			position.y = ICCPosition.y + (cos(GetRadians()) * R);
-
-			velocity.x = position.x - getPosition().x;
-			velocity.y = position.y - getPosition().y;
+			position = CalculateNewTurnPosition(leftMotorValue, rightMotorValue);
 		}
 		else {
+			auto delta = DeltaClock::GetDelta();
 			position.x += (leftMotorValue * cos(GetRadians()) * delta) * 5;
 			position.y += (leftMotorValue * sin(GetRadians()) * delta) * 5;
-
-			velocity.x = position.x - getPosition().x;
-			velocity.y = position.y - getPosition().y;
 		}
+
+		velocity.x = position.x - getPosition().x;
+		velocity.y = position.y - getPosition().y;
+
 		setPosition(position);
 	};
 
