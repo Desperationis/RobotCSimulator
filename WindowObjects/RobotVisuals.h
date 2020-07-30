@@ -25,7 +25,7 @@ public:
 	};
 
 	void Update() override {
-		auto robotPtr = robot.lock();
+		const auto robotPtr = robot.lock();
 		
 		if(robotPtr) {
 			if (robotPtr->renderICC) {
@@ -39,7 +39,7 @@ public:
 	}
 
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const {
-		auto robotPtr = robot.lock();
+		const auto robotPtr = robot.lock();
 
 		if (robotPtr) {
 			if (robotPtr->renderICC) {

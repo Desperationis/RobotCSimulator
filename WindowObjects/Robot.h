@@ -13,7 +13,6 @@ class RobotTable;
 class RobotVisuals;
 class Robot : public TextureSprite {
 public:
-
 	Robot() : SPEED(50), renderICC(false) {
 		LoadTextureFromFile("Assets/Clawbot.png");
 		SetRectSize(sf::Vector2f(50, 100));
@@ -45,13 +44,13 @@ public:
 	}
 
 	sf::Vector2f CalculateNewTurnPosition(float leftMotorValue, float rightMotorValue) {
+		const auto delta = DeltaClock::GetDelta();
 		auto position = getPosition();
-		auto delta = DeltaClock::GetDelta();
 
 		// Use a modified formula of tangetial velocity to find circle center (ICC) + rotational speed.
-		float width = rectangleShape.getLocalBounds().width;
-		float distanceToICC = (width / 2) * ((leftMotorValue + rightMotorValue) / (rightMotorValue - leftMotorValue));
-		float rotationalSpeed = (rightMotorValue - leftMotorValue) / width;
+		const float width = rectangleShape.getLocalBounds().width;
+		const float distanceToICC = (width / 2) * ((leftMotorValue + rightMotorValue) / (rightMotorValue - leftMotorValue));
+		const float rotationalSpeed = (rightMotorValue - leftMotorValue) / width;
 		
 		// Make a turn around a pivot (ICC) based on rotational speed.
 		ICCPosition.x = getPosition().x + (sinDegrees(getRotation()) * distanceToICC);
@@ -68,8 +67,8 @@ public:
 	void Update() override {
 
 		// Scale raw motor values down to emulate speed
-		float leftMotorValue = (motor[leftMotorPort] / 127.0f)  * SPEED;
-		float rightMotorValue = (motor[rightMotorPort] / 127.0f) * SPEED;
+		const float leftMotorValue = (motor[leftMotorPort] / 127.0f)  * SPEED;
+		const float rightMotorValue = (motor[rightMotorPort] / 127.0f) * SPEED;
 
 		SensorValue[leftEncoderPort] += leftMotorValue;
 		SensorValue[rightEncoderPort] += rightMotorValue * -1;

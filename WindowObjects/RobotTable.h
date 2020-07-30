@@ -24,8 +24,8 @@ public:
 	};
 
 	void ImGuiDraw() override {
-		auto delta = DeltaClock::GetDelta();
-		auto robotPtr = robot.lock();
+		const auto delta = DeltaClock::GetDelta();
+		const auto robotPtr = robot.lock();
 		ImGui::Begin("Robot");
 
 		if(robotPtr) {
