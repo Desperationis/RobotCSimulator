@@ -16,6 +16,9 @@ int main()
 	Window::CreateWindow(sf::VideoMode(1920, 1000), "RobotCSimulator", sf::Style::Resize | sf::Style::Close);
 	ImGui::SFML::Init(*Window::rawWindow);
 
+	// Config motors, sensors, ect.
+	SetUp();
+
 	// Add objects to the window.
 	Window::AddObject(std::make_shared<PeripheralTable>());
 	Window::AddObject(std::make_shared<VexController>());
@@ -23,7 +26,6 @@ int main()
 	Window::AddObject(std::make_shared<Robot>());
 
 	// Run the RobotC program
-	SetUp();
 	startTask(programMain);
 
 	while (Window::rawWindow->isOpen()) {

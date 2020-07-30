@@ -94,8 +94,11 @@ public:
 	void Update() override {
 
 		// Scale raw motor values down to emulate speed
-		float leftMotorValue =  (motor[leftMotorPort] / 127.0f)  * SPEED;
+		float leftMotorValue = (motor[leftMotorPort] / 127.0f)  * SPEED;
 		float rightMotorValue = (motor[rightMotorPort] / 127.0f) * SPEED;
+
+		SensorValue[leftEncoderPort] += leftMotorValue;
+		SensorValue[rightEncoderPort] += rightMotorValue;
 
 		sf::Vector2f position = getPosition();
 
@@ -118,6 +121,9 @@ public:
 private:
 	MotorPort leftMotorPort = port1;
 	MotorPort rightMotorPort = port5;
+
+	SensorPort leftEncoderPort = dgtl1;
+	SensorPort rightEncoderPort = dgtl3;
 
 	sf::Vector2f ICCPosition;
 	sf::Vector2f velocity;

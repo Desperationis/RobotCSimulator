@@ -75,12 +75,14 @@ namespace RobotC {
 
 
 		struct MotorInfo {
+			MotorInfo() = default;
 			Types::MotorPort motorPort;
 			std::string name;
 			bool reversed;
 		};
 
 		struct SensorInfo {
+			SensorInfo() = default;
 			Types::SensorPort sensorPort;
 			std::string name;
 		};
