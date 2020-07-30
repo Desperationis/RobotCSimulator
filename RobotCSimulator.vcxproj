@@ -207,6 +207,8 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="WindowObjects\PeripheralTable.h" />
     <ClInclude Include="WindowObjects\Robot.h" />
+    <ClInclude Include="WindowObjects\RobotTable.h" />
+    <ClInclude Include="WindowObjects\RobotVisuals.h" />
     <ClInclude Include="WindowObjects\VexController.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="WindowObjects\WindowObject.h" />

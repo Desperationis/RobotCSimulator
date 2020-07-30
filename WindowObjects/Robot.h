@@ -9,7 +9,8 @@ using namespace RobotC::Peripherals;
 using namespace RobotC::Types;
 using namespace RobotC::Functions;
 
-
+class RobotTable;
+class RobotVisuals;
 class Robot : public TextureSprite {
 public:
 
@@ -21,29 +22,6 @@ public:
 		setOrigin(sf::Vector2f(rectangleShape.getLocalBounds().width / 2, rectangleShape.getLocalBounds().height / 2));
 		setPosition(sf::Vector2f(1000, 500));
 	};
-
-	void draw(sf::RenderTarget& target, sf::RenderStates states) const {
-		TextureSprite::draw(target, states);
-
-		if(renderICC) {
-			sf::CircleShape ICC;
-			ICC.setRadius(2.0f);
-			ICC.setOrigin(sf::Vector2f(2.0f, 2.0f));
-			ICC.setPosition(ICCPosition);
-			ICC.setFillColor(sf::Color::Red);
-			target.draw(ICC);
-		}
-	}
-
-	void ImGuiDraw() override {
-		auto delta = DeltaClock::GetDelta();
-		ImGui::Begin("Robot");
-		ImGui::Text("Position x (px): %g", getPosition().x);
-		ImGui::Text("Position y (px): %g", getPosition().y);
-		ImGui::Text("Velocity (px/s): %g", sqrt(pow(velocity.x, 2) + pow(velocity.y, 2)) / delta);
-		ImGui::Checkbox("Render ICC: ", &renderICC);
-		ImGui::End();
-	}
 
 	sf::Vector2f GetWrappedPosition(sf::Vector2f position) {
 		// Wrap the robot's position so it's always in view.
@@ -127,4 +105,7 @@ private:
 	bool renderICC;
 
 	const int SPEED;
+
+	friend class RobotTable;
+	friend class RobotVisuals;
 };
