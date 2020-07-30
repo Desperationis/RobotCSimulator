@@ -98,7 +98,7 @@ public:
 		float rightMotorValue = (motor[rightMotorPort] / 127.0f) * SPEED;
 
 		SensorValue[leftEncoderPort] += leftMotorValue;
-		SensorValue[rightEncoderPort] += rightMotorValue;
+		SensorValue[rightEncoderPort] += rightMotorValue * -1;
 
 		sf::Vector2f position = getPosition();
 
