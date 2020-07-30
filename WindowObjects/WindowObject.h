@@ -34,8 +34,7 @@ struct WindowObject : public sf::Drawable {
 	}
 
 	/**
-	 * Render stuff in ImGui without the restraints of
-	 * const.
+	 * Render stuff in ImGui.
 	 */
 	virtual void ImGuiDraw() {
 	
