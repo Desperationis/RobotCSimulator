@@ -22,10 +22,6 @@ public:
 		setPosition(sf::Vector2f(1000, 500));
 	};
 
-	float GetRadians() {
-		return getRotation() * (M_PI / 180.0f);
-	}
-
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const {
 		TextureSprite::draw(target, states);
 
@@ -47,6 +43,31 @@ public:
 		ImGui::Text("Velocity (px/s): %g", sqrt(pow(velocity.x, 2) + pow(velocity.y, 2)) / delta);
 		ImGui::Checkbox("Render ICC: ", &renderICC);
 		ImGui::End();
+	}
+
+	float GetRadians() {
+		return getRotation() * (M_PI / 180.0f);
+	}
+
+	sf::Vector2f GetWrappedPosition(sf::Vector2f position) {
+		// Wrap the robot's position so it's always in view.
+		sf::VideoMode windowMode = sf::VideoMode::getDesktopMode();
+
+		if(position.x > windowMode.width) {
+			position.x = 0;
+		}
+		if (position.x < 0) {
+			position.x = windowMode.width;
+		}
+		
+		if (position.y > windowMode.height) {
+			position.y = 0;
+		}
+		if (position.y < 0) {
+			position.y = windowMode.height;
+		}
+
+		return position;
 	}
 
 	sf::Vector2f CalculateNewTurnPosition(float leftMotorValue, float rightMotorValue) {
@@ -91,7 +112,7 @@ public:
 		velocity.x = position.x - getPosition().x;
 		velocity.y = position.y - getPosition().y;
 
-		setPosition(position);
+		setPosition(GetWrappedPosition(position));
 	};
 
 private:
