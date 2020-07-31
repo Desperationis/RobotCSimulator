@@ -51,12 +51,17 @@ public:
 		const float width = rectangleShape.getLocalBounds().width;
 		const float distanceToICC = (width / 2) * ((leftMotorValue + rightMotorValue) / (rightMotorValue - leftMotorValue));
 		const float rotationalSpeed = (rightMotorValue - leftMotorValue) / width;
+		const float maxRotationalSpeed = 254.0f / width;
 		
 		// Make a turn around a pivot (ICC) based on rotational speed.
 		ICCPosition.x = getPosition().x + (sinDegrees(getRotation()) * distanceToICC);
 		ICCPosition.y = getPosition().y - (cosDegrees(getRotation()) * distanceToICC);
 
-		setRotation(getRotation() - (rotationalSpeed * delta * 360));
+		float ICCCircumference = distanceToICC * 2 * PI;
+		float distanceCovered = maxRotationalSpeed * ICCCircumference;
+
+		// Scale down the rotation speed in such a way where the maximum arc distance covered in a second is equivalent to speed (px).
+		setRotation(getRotation() - ((rotationalSpeed / maxRotationalSpeed) * (speed / (width * PI)) * delta * 360));
 
 		position.x = ICCPosition.x + (-sinDegrees(getRotation()) * distanceToICC);
 		position.y = ICCPosition.y + (cosDegrees(getRotation()) * distanceToICC);
@@ -67,8 +72,8 @@ public:
 	void Update() override {
 
 		// Scale raw motor values down to emulate speed
-		const float leftMotorValue = (motor[leftMotorPort] / 127.0f)   * speed;
-		const float rightMotorValue = (motor[rightMotorPort] / 127.0f) * speed;
+		const float leftMotorValue = motor[leftMotorPort];
+		const float rightMotorValue = motor[rightMotorPort];
 
 		UpdateSensors(leftMotorValue, rightMotorValue);
 
@@ -80,8 +85,8 @@ public:
 		}
 		else {
 			auto delta = DeltaClock::GetDelta();
-			position.x += (leftMotorValue * cosDegrees(getRotation()) * delta) * 5;
-			position.y += (leftMotorValue * sinDegrees(getRotation()) * delta) * 5;
+			position.x += ((leftMotorValue / 127.0f) * speed * cosDegrees(getRotation()) * delta);
+			position.y += ((leftMotorValue / 127.0f) * speed * sinDegrees(getRotation()) * delta);
 		}
 
 		velocity.x = position.x - getPosition().x;
