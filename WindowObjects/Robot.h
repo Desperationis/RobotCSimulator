@@ -72,9 +72,6 @@ public:
 
 		UpdateSensors(leftMotorValue, rightMotorValue);
 
-		SensorValue[leftEncoderPort] += leftMotorValue;
-		SensorValue[rightEncoderPort] += rightMotorValue * -1;
-
 		sf::Vector2f position = getPosition();
 
 		// Turn or go straight based on motor velocities.
