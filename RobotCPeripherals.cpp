@@ -34,3 +34,12 @@ void RobotC::Peripherals::config(std::string name, SensorPort& sensorPort, Senso
 	sensorConfigInfo[sensorPort] = configInfo;
 }
 
+byte RobotC::Peripherals::GetConvertedMotorValue(MotorPort port) {
+	if(motorConfigInfo.find(port) != motorConfigInfo.end()) {
+		int reversed = motorConfigInfo[port].reversed ? -1 : 1;
+		return motor[port] * reversed;
+	}
+	printf("RobotCPeripherals.cpp: Data not available; Port was not configured.");
+	return 0;
+}
+

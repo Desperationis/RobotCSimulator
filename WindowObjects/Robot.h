@@ -13,7 +13,7 @@ class RobotTable;
 class RobotVisuals;
 class Robot : public TextureSprite {
 public:
-	Robot() : speed(50), renderICC(false) {
+	Robot() : speed(50), pixelsNeededToTurn(50), renderICC(false) {
 		LoadTextureFromFile("Assets/Clawbot.png");
 		SetRectSize(sf::Vector2f(50, 100));
 
@@ -75,7 +75,7 @@ public:
 		const float leftMotorValue = motor[leftMotorPort];
 		const float rightMotorValue = motor[rightMotorPort];
 
-		UpdateSensors(leftMotorValue, rightMotorValue);
+		UpdateSensors();
 
 		sf::Vector2f position = getPosition();
 
@@ -95,9 +95,22 @@ public:
 		setPosition(GetWrappedPosition(position));
 	};
 
-	void UpdateSensors(const float leftMotorValue, const float rightMotorValue) const {
-		SensorValue[leftEncoderPort] += leftMotorValue;
-		SensorValue[rightEncoderPort] += rightMotorValue * -1;
+	void UpdateSensors() {
+		auto delta = DeltaClock::GetDelta();
+
+		// Sensors care about the actual, real-world value.
+		const float leftMotorValue = RobotC::Peripherals::GetConvertedMotorValue(leftMotorPort);
+		const float rightMotorValue = RobotC::Peripherals::GetConvertedMotorValue(rightMotorPort);
+
+		// In the real world, encoders use strips of black lines to tell their position.
+		// Each time the infrared beam of the encoder hits a black line, it increments its
+		// counter by a single tick; no decimal. This "snapping" mechanism can be replicated
+		// by using floats as buffers for converting into short ints.
+		encoderBuffer.x += (leftMotorValue / 127.0f) * pixelsNeededToTurn * delta;
+		encoderBuffer.y += (rightMotorValue / 127.0f) * pixelsNeededToTurn * delta;
+
+		SensorValue[leftEncoderPort] = encoderBuffer.x;
+		SensorValue[rightEncoderPort] = encoderBuffer.y;
 	}
 
 private:
@@ -107,10 +120,13 @@ private:
 	SensorPort leftEncoderPort = dgtl1;
 	SensorPort rightEncoderPort = dgtl3;
 
+	sf::Vector2f encoderBuffer;
+
 	sf::Vector2f ICCPosition;
 	sf::Vector2f velocity;
 
 	int speed;
+	int pixelsNeededToTurn;
 	bool renderICC;
 
 	friend class RobotTable;

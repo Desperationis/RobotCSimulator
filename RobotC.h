@@ -94,6 +94,7 @@ namespace RobotC {
 
 		extern void config(std::string name, Types::MotorPort& motorPort, Types::MotorPort port, bool reverse);
 		extern void config(std::string name, Types::SensorPort& sensorPort, Types::SensorPort port);
+		extern Types::byte GetConvertedMotorValue(Types::MotorPort);
 	}
 
 	namespace Threads {
