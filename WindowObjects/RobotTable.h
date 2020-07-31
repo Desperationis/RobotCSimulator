@@ -30,9 +30,13 @@ public:
 
 		if(robotPtr) {
 
-			char buffer[20];
+			char buffer[45];
 			sprintf_s(buffer, "Speed (px / s): %i", robotPtr->speed);
 			ImGui::SliderInt(buffer, &robotPtr->speed, 1, 300);
+
+			sprintf_s(buffer, "Distance to make an encoder turn (px): %i", robotPtr->pixelsNeededToTurn);
+			ImGui::SliderInt(buffer, &robotPtr->pixelsNeededToTurn, 1, 300);
+
 			ImGui::Text("Position x (px): %g", robotPtr->getPosition().x);
 			ImGui::Text("Position y (px): %g", robotPtr->getPosition().y);
 			ImGui::Text("Angle (degrees): %g", robotPtr->getRotation());

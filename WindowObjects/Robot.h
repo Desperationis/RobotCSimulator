@@ -106,8 +106,11 @@ public:
 		// Each time the infrared beam of the encoder hits a black line, it increments its
 		// counter by a single tick; no decimal. This "snapping" mechanism can be replicated
 		// by using floats as buffers for converting into short ints.
-		encoderBuffer.x += (leftMotorValue / 127.0f) * pixelsNeededToTurn * delta;
-		encoderBuffer.y += (rightMotorValue / 127.0f) * pixelsNeededToTurn * delta;
+		float leftDistanceInDelta = (leftMotorValue / 127.0f) * speed * delta;
+		float rightDistanceInDelta = (rightMotorValue / 127.0f) * speed * delta;
+
+		encoderBuffer.x += (leftDistanceInDelta / pixelsNeededToTurn) * 360;
+		encoderBuffer.y += (rightDistanceInDelta / pixelsNeededToTurn) * 360;
 
 		SensorValue[leftEncoderPort] = encoderBuffer.x;
 		SensorValue[rightEncoderPort] = encoderBuffer.y;
