@@ -13,7 +13,7 @@ class RobotTable;
 class RobotVisuals;
 class Robot : public TextureSprite {
 public:
-	Robot() : SPEED(50), renderICC(false) {
+	Robot() : speed(50), renderICC(false) {
 		LoadTextureFromFile("Assets/Clawbot.png");
 		SetRectSize(sf::Vector2f(50, 100));
 
@@ -67,8 +67,10 @@ public:
 	void Update() override {
 
 		// Scale raw motor values down to emulate speed
-		const float leftMotorValue = (motor[leftMotorPort] / 127.0f)  * SPEED;
-		const float rightMotorValue = (motor[rightMotorPort] / 127.0f) * SPEED;
+		const float leftMotorValue = (motor[leftMotorPort] / 127.0f)   * speed;
+		const float rightMotorValue = (motor[rightMotorPort] / 127.0f) * speed;
+
+		UpdateSensors(leftMotorValue, rightMotorValue);
 
 		SensorValue[leftEncoderPort] += leftMotorValue;
 		SensorValue[rightEncoderPort] += rightMotorValue * -1;
@@ -91,6 +93,11 @@ public:
 		setPosition(GetWrappedPosition(position));
 	};
 
+	void UpdateSensors(const float leftMotorValue, const float rightMotorValue) const {
+		SensorValue[leftEncoderPort] += leftMotorValue;
+		SensorValue[rightEncoderPort] += rightMotorValue * -1;
+	}
+
 private:
 	MotorPort leftMotorPort = port1;
 	MotorPort rightMotorPort = port5;
@@ -101,9 +108,8 @@ private:
 	sf::Vector2f ICCPosition;
 	sf::Vector2f velocity;
 
+	int speed;
 	bool renderICC;
-
-	const int SPEED;
 
 	friend class RobotTable;
 	friend class RobotVisuals;

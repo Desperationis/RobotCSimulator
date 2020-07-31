@@ -29,6 +29,10 @@ public:
 		ImGui::Begin("Robot");
 
 		if(robotPtr) {
+
+			char buffer[20];
+			sprintf_s(buffer, "Speed: %i", robotPtr->speed);
+			ImGui::SliderInt(buffer, &robotPtr->speed, 1, 100);
 			ImGui::Text("Position x (px): %g", robotPtr->getPosition().x);
 			ImGui::Text("Position y (px): %g", robotPtr->getPosition().y);
 			ImGui::Text("Velocity (px/s): %g", sqrt(pow(robotPtr->velocity.x, 2) + pow(robotPtr->velocity.y, 2)) / delta);
