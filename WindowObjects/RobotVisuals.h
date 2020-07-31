@@ -22,6 +22,10 @@ public:
 		ICC.setRadius(2.0f);
 		ICC.setOrigin(sf::Vector2f(2.0f, 2.0f));
 		ICC.setFillColor(sf::Color::Red);
+
+		path.setFillColor(sf::Color::Transparent);
+		path.setOutlineColor(sf::Color::Cyan);
+		path.setOutlineThickness(1.0f);
 	};
 
 	void Update() override {
@@ -30,6 +34,14 @@ public:
 		if(robotPtr) {
 			if (robotPtr->renderICC) {
 				ICC.setPosition(robotPtr->ICCPosition);
+			}
+			if(robotPtr->renderPath) {
+				path.setPosition(robotPtr->ICCPosition);
+
+				float distance = sqrt(pow(robotPtr->ICCPosition.x - robotPtr->getPosition().x, 2) + pow(robotPtr->ICCPosition.y - robotPtr->getPosition().y, 2));
+
+				path.setRadius(distance);
+				path.setOrigin(sf::Vector2f(path.getRadius(), path.getRadius()));
 			}
 		}
 		else if (!error) {
@@ -45,11 +57,15 @@ public:
 			if (robotPtr->renderICC) {
 				target.draw(ICC);
 			}
+			if(robotPtr->renderPath) {
+				target.draw(path);
+			}
 		}
 	}
 
 private:
 	sf::CircleShape ICC;
+	sf::CircleShape path;
 	std::weak_ptr<Robot> robot;
 	bool error = false;
 };

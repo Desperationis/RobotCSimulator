@@ -13,7 +13,7 @@ class RobotTable;
 class RobotVisuals;
 class Robot : public TextureSprite {
 public:
-	Robot() : speed(50), pixelsNeededToTurn(50), renderICC(false) {
+	Robot() : speed(50), pixelsNeededToTurn(50), renderICC(false), renderPath(false) {
 		LoadTextureFromFile("Assets/Clawbot.png");
 		SetRectSize(sf::Vector2f(50, 100));
 
@@ -131,6 +131,7 @@ private:
 	int speed;
 	int pixelsNeededToTurn;
 	bool renderICC;
+	bool renderPath;
 
 	friend class RobotTable;
 	friend class RobotVisuals;

@@ -42,6 +42,7 @@ public:
 			ImGui::Text("Angle (degrees): %g", robotPtr->getRotation());
 			ImGui::Text("Velocity (px/s): %g", sqrt(pow(robotPtr->velocity.x, 2) + pow(robotPtr->velocity.y, 2)) / delta);
 			ImGui::Checkbox("Render ICC: ", &robotPtr->renderICC);
+			ImGui::Checkbox("Render Path: ", &robotPtr->renderPath);
 		}
 		else {
 			ImGui::Text("Robot not connected. Check if a pointer to it exists.");
