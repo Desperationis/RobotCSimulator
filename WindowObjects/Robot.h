@@ -118,7 +118,7 @@ public:
 
 private:
 	MotorPort leftMotorPort = port1;
-	MotorPort rightMotorPort = port10;
+	MotorPort rightMotorPort = port5;
 
 	SensorPort leftEncoderPort = dgtl1;
 	SensorPort rightEncoderPort = dgtl3;

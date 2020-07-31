@@ -33,7 +33,7 @@ int main()
 	ImGui::SFML::Init(*Window::rawWindow);
 
 	// Config motors, sensors, ect.
-	SetUp();
+	SetUpConfig();
 
 	// Add objects to the window.
 	Window::AddObject(std::make_shared<PeripheralTable>());
