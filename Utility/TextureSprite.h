@@ -1,6 +1,6 @@
 /*****************************************************************//**
- * \file   ClassicSprite.h
- * \brief  A sf::Drawable with sprite properties.
+ * \file   TextureSprite.h
+ * \brief  A sf::Drawable with an integrated sf::RectangleShape.
  *********************************************************************/
 
 #pragma once
@@ -8,6 +8,9 @@
 #include <string>
 #include "../WindowObjects/WindowObject.h"
 
+/**
+ * A sf::Drawable with an integrated sf::RectangleShape.
+ */
 class TextureSprite : public sf::Transformable, public WindowObject {
 public:
 	TextureSprite() = default;
