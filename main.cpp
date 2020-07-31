@@ -26,7 +26,6 @@
  * Kill program threads.
  */
 
-
 int main()
 {
 	// Initialize window and ImGui
