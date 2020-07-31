@@ -46,7 +46,7 @@ task programMain() {
 
 	// Activate Controllers
 	startTask(Slew);
-	startTask(GamerControl);
+	startTask(PID);
 
 	// Slew Settings
 	AllowSlew(leftMotor, true);
@@ -56,6 +56,7 @@ task programMain() {
 	// PID Settings
 	AllowPID(true);
 	SetK(1.1, 0.5, 0.0);
+	GoForward(300);
 
 	while((true) && !killAll) {
 		// Keep program alive.
