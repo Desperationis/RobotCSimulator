@@ -4,7 +4,6 @@
 #include "Slew.h"
 #include "../RobotC.h"
 #include "../stdafx.h"
-#include "Externs.h"
 using namespace RobotC::Types;
 using namespace RobotC::Threads;
 using namespace RobotC::Types;
