@@ -5,53 +5,62 @@ using namespace RobotC::Threads;
 using namespace RobotC::Types;
 using namespace RobotC::Peripherals;
 using namespace RobotC::Functions;
-#ifndef HELPERS_HEADER
-#define HELPERS_HEADER
+#include "Externs.h"
+#ifndef HELPERS_SOURCE
+#define HELPERS_SOURCE
 
-/*
- * Helpers.h
- *
- * General functions that are needed throughout the program.
+
+/**
+ * Returns the maximum of two values.
 */
+short Max(short a, short b) {
+	return a > b ? a: b;
+}
 
 
-/*
- * Reset chassis' encoder's value to zero. Useful for preventing
- * integer overflow.
+/**
+ * Returns the minimum of two values.
 */
-void ResetEncoders();
+short Min(short a, short b) {
+	return a < b ? a: b;
+}
 
 
-/*
- * Clamps values down to -127 and 127. Used for motor speed.
+/**
+ * Constrains a value into a range.
 */
-short Clamp(short value);
+short Clamp(short value, short min, short max) {
+	return Max(Min(value, max), min);
+}
 
 
-/*
- * "Steps" towards a value by a maximum amount.
+/**
+ * Ensures a value never surpasses the motor
+ * speed limit.
 */
-short Step(short original, short step, short target);
+short MotorClamp(short value) {
+	return Clamp(value, -127, 127);
+}
 
-/*
- * "Steps" towards a value if the target's value's
- * is faster  than the original. Used for slew controller.
+
+/**
+ * Linearly interpolates between two values by a
+ * maximum value.
 */
-short SlewStep(short original, short step, short target);
+short Step(short original, short step, short target){
+	if(abs(original - target) > step){
+		return original + (sgn(target - original) * step);
+	}
+	return target;
+}
 
 
-/*
- * Tells you whether or not an encoder has reached an absolute threshold.
+/**
+ * Determines if a value has reached a target within
+ * a specified range.
 */
-bool HasReached(short encoderPort, short value, short range);
-
-
-/*
- * Tells you whether or not two encoders have reached an absolute threshold.
-*/
-bool BothHasReached(short encoder1, short encoder2, short value, short range);
-
-
-
+bool HasReached(short original, short target, short range) {
+	return abs(original) - abs(target) <= range;
+}
 
 #endif

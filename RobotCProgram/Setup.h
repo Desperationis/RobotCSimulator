@@ -5,23 +5,16 @@ using namespace RobotC::Threads;
 using namespace RobotC::Types;
 using namespace RobotC::Peripherals;
 using namespace RobotC::Functions;
-#ifndef SETUP_HEADER
-#define SETUP_HEADER
+#include "Externs.h"
+#ifndef SETUP_SOURCE
+#define SETUP_SOURCE
 
-/*
- * Setup.h
- *
- * The place for setup functions and variables.
- * @setup Can be used in comments to tell RobotCDocs
- * whether a function should be under the Setup tag.
-*/
+#define TASK_DELAY 20
 
-/*
- * @setup
- *
- * Initializes the library. Should be called
- * BEFORE anything else.
-*/
-void InitCustomLibrary();
+// Used for controllers
+#define LEFT_MOTOR_PORT leftMotor
+#define RIGHT_MOTOR_PORT rightMotor
+
+#define SLEW_STEP 15
 
 #endif

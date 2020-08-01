@@ -169,12 +169,6 @@
     <ClCompile Include="Dependencies\imgui-1.77\imgui_widgets.cpp" />
     <ClCompile Include="Dependencies\imgui-sfml-2.1\imgui-SFML.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="RobotCProgram\Controllers.cpp" />
-    <ClCompile Include="RobotCProgram\Globals.cpp" />
-    <ClCompile Include="RobotCProgram\Helpers.cpp" />
-    <ClCompile Include="RobotCProgram\PID.cpp" />
-    <ClCompile Include="RobotCProgram\Setup.cpp" />
-    <ClCompile Include="RobotCProgram\Slew.cpp" />
     <ClCompile Include="RobotCTypes.cpp" />
     <ClCompile Include="RobotCFunctions.cpp" />
     <ClCompile Include="RobotCPeripherals.cpp" />
@@ -182,9 +176,8 @@
     <ClCompile Include="Utility\DeltaClock.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="RobotCProgram\Compile.h" />
     <ClInclude Include="RobotCProgram\Controllers.h" />
-    <ClInclude Include="RobotCProgram\Globals.h" />
+    <ClInclude Include="RobotCProgram\Externs.h" />
     <ClInclude Include="RobotCProgram\Helpers.h" />
     <ClInclude Include="RobotCProgram\PID.h" />
     <ClInclude Include="RobotCProgram\Program.h" />
