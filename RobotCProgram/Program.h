@@ -53,8 +53,8 @@ task programMain() {
 	SetPIDConstants(leftMotor, 1, 0, 0);
 	SetPIDConstants(rightMotor, 1, 0, 0);
 
-	SetPIDTarget(leftMotor, 1000);
-	SetPIDTarget(rightMotor, -1000);
+	SetPIDTarget(leftMotor, 500);
+	SetPIDTarget(rightMotor, 1500);
 
 	while((true) && !killAll) {
 		// Keep program alive.
