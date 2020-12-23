@@ -1,5 +1,5 @@
 # RobotCSimulator
-![Image of the simulator](Img/Capture.PNG)
+![Image of the simulator](RobotCSimulator.gif)
 A basic VEX robot simulator meant for simulating chassis movement.
 
 ## Features
